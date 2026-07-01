@@ -33,8 +33,8 @@ function void axi_fifo_environment::connect_phase(uvm_phase phase);
   super.connect_phase(phase);
   act_agt.a_mon_h.a_mon_port.connect(scb.act_scb_port);
   act_agt.a_mon_h.a_mon_port.connect(sub.analysis_export);
-  pas_agt.axi_fifo_pass_mon.passive_mon_port.connect(sub.analysis_export);
-  pas_agt.axi_fifo_pass_mon.passive_mon_port.connect(sub.pass_scb_port);
+  pas_agt.axi_fifo_pass_mon.passive_mon_port.connect(sub.sub_pas_mon_port);
+  pas_agt.axi_fifo_pass_mon.passive_mon_port.connect(scb.pas_scb_port);
 
   // need to think on axi slave vip connecting the componenents
 
