@@ -1,66 +1,60 @@
-`ifndef AXI4_IF_INCLUDED_
-`define AXI4_IF_INCLUDED_
+`include "axi_defines.sv"
 
-// Import axi4_globals_pkg 
-import axi4_globals_pkg::*;
+interface axi4_if(input logic aclk,
+                  input logic aresetn);
 
-//--------------------------------------------------------------------------------------------
-// Interface : axi4_if
-// Declaration of pin level signals for axi4 interface
-//--------------------------------------------------------------------------------------------
-interface axi4_if(input aclk, input aresetn);
+  // Write Address Channel
+  logic [`AXI_ID_WIDTH-1:0]      awid;
+  logic [`AXI_ADDR_WIDTH-1:0]    awaddr;
+  logic [`AXI_LEN_WIDTH-1:0]     awlen;
+  logic [`AXI_SIZE_WIDTH-1:0]    awsize;
+  logic [`AXI_BURST_WIDTH-1:0]   awburst;
+  logic [`AXI_LOCK_WIDTH-1:0]    awlock;
+  logic [`AXI_CACHE_WIDTH-1:0]   awcache;
+  logic [`AXI_PROT_WIDTH-1:0]    awprot;
+  logic [`AXI_QOS_WIDTH-1:0]     awqos;
+  logic [`AXI_REGION_WIDTH-1:0]  awregion;
+  logic [`AXI_USER_WIDTH-1:0]    awuser;
+  logic                          awvalid;
+  logic                          awready;
 
-  //Write_address_channel
-  logic     [3: 0] awid     ;
-  logic     [ADDRESS_WIDTH-1: 0] awaddr ;
-  logic     [3: 0] awlen     ;
-  logic     [2: 0] awsize    ;
-  logic     [1: 0] awburst   ;
-  logic     [1: 0] awlock    ;
-  logic     [1: 0] awcache   ;
-  logic     [2: 0] awprot    ;
-  logic     [3:0] awqos      ;
-  logic     [3:0] awregion   ;
-  logic           awuser     ;
-  logic            awvalid   ;
-  logic            awready   ;
-  //Write_data_channel
-  logic     [DATA_WIDTH-1: 0] wdata     ;
-  logic     [(DATA_WIDTH/8)-1: 0] wstrb ;
-  logic            wlast     ;
-  logic      [3:0] wuser     ;
-  logic            wvalid    ;
-  logic            wready    ;
-  //Write Response Channel
-  logic     [3: 0] bid       ;
-  logic     [1: 0] bresp     ;
-  logic     [3: 0] buser     ;
-  logic            bvalid    ;
-  logic            bready    ;
-  //Read Address Channel
-  logic     [3: 0] arid     ;
-  logic     [ADDRESS_WIDTH-1:0] araddr  ;
-  logic     [3:0] arlen      ;
-  logic     [2:0] arsize     ;
-  logic     [1:0] arburst    ;
-  logic     [1:0] arlock     ;
-  logic     [1:0] arcache    ;
-  logic     [2:0] arprot     ;
-  logic     [3:0] arqos      ;
-  logic     [3:0] arregion   ;
-  logic     [3:0] aruser     ;
-  logic           arvalid    ;
-  logic           arready    ;
-  //Read Data Channel
-  logic     [3: 0] rid      ;
-  logic     [DATA_WIDTH-1: 0] rdata     ;
-  logic     [1:0] rresp      ;
-  logic           rlast      ;
-  logic     [3:0] ruser      ;
-  logic           rvalid     ;
-  logic           rready     ;
-  
+  // Write Data Channel
+  logic [`AXI_DATA_WIDTH-1:0]    wdata;
+  logic [`AXI_STRB_WIDTH-1:0]    wstrb;
+  logic                          wlast;
+  logic [`AXI_USER_WIDTH-1:0]    wuser;
+  logic                          wvalid;
+  logic                          wready;
 
-endinterface: axi4_if 
+  // Write Response Channel
+  logic [`AXI_ID_WIDTH-1:0]      bid;
+  logic [`AXI_RESP_WIDTH-1:0]    bresp;
+  logic [`AXI_USER_WIDTH-1:0]    buser;
+  logic                          bvalid;
+  logic                          bready;
 
-`endif
+  // Read Address Channel
+  logic [`AXI_ID_WIDTH-1:0]      arid;
+  logic [`AXI_ADDR_WIDTH-1:0]    araddr;
+  logic [`AXI_LEN_WIDTH-1:0]     arlen;
+  logic [`AXI_SIZE_WIDTH-1:0]    arsize;
+  logic [`AXI_BURST_WIDTH-1:0]   arburst;
+  logic [`AXI_LOCK_WIDTH-1:0]    arlock;
+  logic [`AXI_CACHE_WIDTH-1:0]   arcache;
+  logic [`AXI_PROT_WIDTH-1:0]    arprot;
+  logic [`AXI_QOS_WIDTH-1:0]     arqos;
+  logic [`AXI_REGION_WIDTH-1:0]  arregion;
+  logic [`AXI_USER_WIDTH-1:0]    aruser;
+  logic                          arvalid;
+  logic                          arready;
+
+  // Read Data Channel
+  logic [`AXI_ID_WIDTH-1:0]      rid;
+  logic [`AXI_DATA_WIDTH-1:0]    rdata;
+  logic [`AXI_RESP_WIDTH-1:0]    rresp;
+  logic                          rlast;
+  logic [`AXI_USER_WIDTH-1:0]    ruser;
+  logic                          rvalid;
+  logic                          rready;
+
+endinterface
