@@ -23,10 +23,10 @@ function void cpu_active_monitor::build_phase(uvm_phase phase);
 endfunction: build_phase
 
 task cpu_active_monitor::run_phase(uvm_phase phase);
-  repeat(2)@(vif.cpu_active_mon_cb);
+  repeat(2)@(fifo_vif.cpu_active_mon_cb);
   forever begin
    in_item = cpu_sequence_item::type_id::create("in_item");
-   repeat(1)@(vif.cpu_active_mon_cb);
+   repeat(1)@(fifo_vif.cpu_active_mon_cb);
    // coding logic
    a_mon_port.write(in_item);
   end
