@@ -21,12 +21,11 @@ module top;
   bit clk = 0;
   wire ACLK ;
 
-  bit rstn = 1;
+  bit rstn;
   wire ARESETn;
-
   assign ARESETn = rstn;
+ 
   assign ACLK = clk;
-
   always #(HALF_PERIOD) clk = ~clk;
 
   // axi interface declaration 
@@ -42,12 +41,12 @@ module top;
     .prot_wid (`PROT_WID),
     .strb_wid (`STRB_WID),
     .rsp_wid  (`RSP_WID)
-  ) axi_vif ( ACLK , ARESETn) ;
+  ) axi_vif ( ACLK ) ;
 
   // fifo_interface declaration
   fifo_interface#(
    .FIFO_DATA_WIDTH(`FIFO_DATA_WIDTH)
-  ) fifo_vif ( clk, rstn );
+  ) fifo_vif ( clk );
 
   // dut instance 
   Top_Module_AXI4#(

@@ -1,4 +1,3 @@
-
 `ifndef AXI4_IF_INCLUDED_
 `define AXI4_IF_INCLUDED_
 
@@ -6,7 +5,6 @@
 import axi4_globals_pkg::*;
 
 interface axi4_if #(
-
   parameter int ID_WID    = `ID_WID,
   parameter int ADR_WID   = `ADR_WID,
   parameter int DATA_WID  = `DATA_WID,
@@ -18,12 +16,7 @@ interface axi4_if #(
   parameter int CACH_WID  = `CACH_WID,
   parameter int PROT_WID  = `PROT_WID,
   parameter int RSP_WID   = `RSP_WID
-
-)
-(
-  input logic ACLK,
-  input logic ARESETn
-);
+) ( input bit ACLK );
 
   //==================================================
   // Write Address Channel

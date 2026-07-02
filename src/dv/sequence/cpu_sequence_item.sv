@@ -112,7 +112,6 @@ class cpu_sequence_item extends uvm_sequence_item;
   `uvm_field_int(wstrb , UVM_ALL_ON)
   `uvm_field_int(addr  , UVM_ALL_ON)
   `uvm_field_int(wdata  , UVM_ALL_ON)
-  `uvm_field_int(rdata  , UVM_ALL_ON)
   `uvm_field_enum(channel_e, ch,       UVM_ALL_ON)
   `uvm_field_enum(txn_id_e,  txn_id,   UVM_ALL_ON)
   `uvm_field_enum(len_e,     len,      UVM_ALL_ON)
@@ -137,40 +136,24 @@ class cpu_sequence_item extends uvm_sequence_item;
   constraint c2{
     if( ch == AW_CH )
     {  
-      addr  != 32'b0;
-      len   != 4'b0;
-      size  != 3'b0;
-      burst != 2'b0;
-      lock  != 2'b0;
-      cache != 2'b0;
-      prot  != 2'b0;
       wstrb == 4'b0000;
       wdata == 1024'b0;
     }
     else if(ch == W_CH)
     { 
       addr  == 32'b0;
-      len   == 4'b0;
-      size  == 3'b0;
-      burst == 2'b0;
-      lock  == 2'b0;
-      cache == 2'b0;
-      prot  == 2'b0;
       wstrb != 4'b0000;
       wdata != 1024'b0;
     }
     else if(ch == AR_CH)
     {
-      addr  != 32'b0;
-      len   != 4'b0;
-      size  != 3'b0;
-      burst != 2'b0;
-      lock  != 2'b0;
-      cache != 2'b0;
-      prot  != 2'b0;
       wstrb == 4'b0000;
     }
   }
+
+  constraint c3 { addr % ( 1 << size ) == 0; }
+  constraint c4 { if( burst == WRAP ) addr % ( ( len + 1 ) * ( 1 << size ) ) == 0; }
+  
 endclass
 
 function cpu_sequence_item::new(string name = "cpu_sequence_item");

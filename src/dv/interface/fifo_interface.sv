@@ -1,9 +1,7 @@
-interface fifo_interface #(
-  parameter FIFO_DATA_WIDTH = 128
-)(
-  input logic clk,
-  input logic rstn
-);
+interface fifo_interface#( parameter FIFO_DATA_WIDTH = 128 ) ( input bit clk );
+
+  // fifo reset signal
+  bit rstn;
 
   //============================================================
   // CPU -> Write FIFO
@@ -22,8 +20,9 @@ interface fifo_interface #(
   //============================================================
   // CPU Driver Clocking Block
   //============================================================
-  clocking cpu_driver_cb @(posedge ACLK);
+  clocking cpu_driver_cb @(posedge clk);
     default input #1 output #0;
+    output rstn;
     output wr_en;
     output wr_data;
     output rd_en;
@@ -35,8 +34,9 @@ interface fifo_interface #(
   //============================================================
   // CPU Active Monitor Clocking Block
   //============================================================
-  clocking cpu_active_mon_cb @(posedge ACLK);
+  clocking cpu_active_mon_cb @(posedge clk);
     default input #1 output #0;
+    input rstn;
     input wr_en;
     input wr_data;
     input rd_en;
@@ -48,8 +48,9 @@ interface fifo_interface #(
   //============================================================
   // CPU Passive Monitor Clocking Block
   //============================================================
-  clocking cpu_passive_mon_cb @(posedge ACLK);
+  clocking cpu_passive_mon_cb @(posedge clk);
     default input #1 output #0;
+    input rstn;
     input wr_en;
     input wr_data;
     input rd_en;
@@ -61,23 +62,9 @@ interface fifo_interface #(
   //============================================================
   // Modports
   //============================================================
-  modport CPU_DRIVER_MP (
-    clocking cpu_driver_cb,
-    input clk,
-    input rstn
-  );
-
-  modport CPU_ACTIVE_MON_MP (
-    clocking cpu_active_mon_cb,
-    input clk,
-    input rstn
-  );
-
-  modport CPU_PASSIVE_MON_MP (
-    clocking cpu_passive_mon_cb,
-    input clk,
-    input rstn
-  );
+  modport CPU_DRIVER_MP( clocking cpu_driver_cb , input clk );
+  modport CPU_ACTIVE_MON_MP( clocking cpu_active_mon_cb , input clk );
+  modport CPU_PASSIVE_MON_MP( clocking cpu_passive_mon_cb , input clk );
 
 endinterface : fifo_interface
 
