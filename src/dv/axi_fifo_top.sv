@@ -1,7 +1,7 @@
 `include "defines.sv"
 //`include "../rtl/axi_fifo_design.v"
-`include "fifo_interface.sv"
-`include "axi4_interface.sv"
+`include "interface/fifo_interface.sv"
+`include "interface/axi4_interface.sv"
 //`include "axi_fifo_packages.sv"
 //`include "axi_fifo_assertions.sv"
 
@@ -21,10 +21,10 @@ module top;
   bit clk = 0;
   wire ACLK ;
 
-  bit rst_n = 1;
+  bit rstn = 1;
   wire ARESETn;
 
-  assign ARESETn = rst_n;
+  assign ARESETn = rstn;
   assign ACLK = clk;
 
   always #(HALF_PERIOD) clk = ~clk;
@@ -40,13 +40,14 @@ module top;
     .loc_wid  (`LOC_WID),
     .cach_wid (`CACH_WID),
     .prot_wid (`PROT_WID),
+    .strb_wid (`STRB_WID),
     .rsp_wid  (`RSP_WID)
-  ) axi_vif ( ACLK ) ;
+  ) axi_vif ( ACLK , ARESETn) ;
 
   // fifo_interface declaration
   fifo_interface#(
    .FIFO_DATA_WIDTH(`FIFO_DATA_WIDTH)
-  ) fifo_vif ( clk );
+  ) fifo_vif ( clk, rstn );
 
   // dut instance 
   Top_Module_AXI4#(
@@ -59,6 +60,7 @@ module top;
     .loc_wid  (`LOC_WID),
     .cach_wid (`CACH_WID),
     .prot_wid (`PROT_WID),
+    .strb_wid (`STRB_WID),
     .rsp_wid  (`RSP_WID)
   ) DUT (
 

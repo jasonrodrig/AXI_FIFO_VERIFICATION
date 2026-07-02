@@ -1,20 +1,14 @@
-`ifndef AXI_DEFINES_SV
-`define AXI_DEFINES_SV
 
-// Width Parameters
-`define id_wid       4
-`define adr_wid      32
-`define data_wid     32
-`define strb_wid     (`data_wid/8)
-`define len_wid      4
-`define siz_wid      3
-`define bst_wid      2
-`define loc_wid      2
-`define cach_wid     4
-`define prot_wid     3
-`define rsp_wid      2
-`define qos_wid      4
-`define region_wid   4
-`define user_wid     4
-
-`endif
+`define SET_CLK          100_000_000         
+`define FIFO_DATA_WIDTH  128                  
+`define ID_WID           4                    
+`define ADR_WID          32                     
+`define DATA_WID         32                       
+`define STRB_WID         (`DATA_WID/8)         
+`define LEN_WID          4                      
+`define SIZ_WID          3                     
+`define BST_WID          2                    
+`define LOC_WID          2                        
+`define CACH_WID         4                      
+`define PROT_WID         3                       
+`define RSP_WID          2

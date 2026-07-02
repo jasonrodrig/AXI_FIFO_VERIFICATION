@@ -1,8 +1,8 @@
 interface fifo_interface #(
   parameter FIFO_DATA_WIDTH = 128
 )(
-  input logic ACLK,
-  input logic ARESETn
+  input logic clk,
+  input logic rstn
 );
 
   //============================================================
@@ -63,20 +63,20 @@ interface fifo_interface #(
   //============================================================
   modport CPU_DRIVER_MP (
     clocking cpu_driver_cb,
-    input ACLK,
-    input ARESETn
+    input clk,
+    input rstn
   );
 
   modport CPU_ACTIVE_MON_MP (
     clocking cpu_active_mon_cb,
-    input ACLK,
-    input ARESETn
+    input clk,
+    input rstn
   );
 
   modport CPU_PASSIVE_MON_MP (
     clocking cpu_passive_mon_cb,
-    input ACLK,
-    input ARESETn
+    input clk,
+    input rstn
   );
 
 endinterface : fifo_interface
