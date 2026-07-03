@@ -1,4 +1,3 @@
-
 `define SET_CLK          100_000_000         
 `define FIFO_DATA_WIDTH  128                  
 `define ID_WID           4                    
