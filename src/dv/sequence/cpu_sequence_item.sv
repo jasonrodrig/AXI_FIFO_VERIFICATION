@@ -88,6 +88,8 @@ typedef enum bit [1:0] {
 
 class cpu_sequence_item extends uvm_sequence_item;
 
+  rand bit rstn , wr_en , rd_en; 
+
   rand bit [31:0] addr;
   rand bit [3:0]  wstrb;
   rand bit [1023:0] wdata;
@@ -101,6 +103,9 @@ class cpu_sequence_item extends uvm_sequence_item;
   rand cache_e  cache;
   rand prot_e  prot;
 
+  bit [127:0] rd_data;
+  bit full , empty;
+
   bit [7:0] sop = 8'hAA;
   bit [7:0] eop = 8'h53;
   bit [7:0] rdata = 8'h00;
@@ -109,9 +114,13 @@ class cpu_sequence_item extends uvm_sequence_item;
   bit [127:0] fifo_word[];
 
   `uvm_object_utils_begin(cpu_sequence_item)
+  `uvm_field_int(rstn , UVM_ALL_ON)
+  `uvm_field_int(wr_en , UVM_ALL_ON)
+  `uvm_field_int(rd_en  , UVM_ALL_ON)
   `uvm_field_int(wstrb , UVM_ALL_ON)
   `uvm_field_int(addr  , UVM_ALL_ON)
   `uvm_field_int(wdata  , UVM_ALL_ON)
+
   `uvm_field_enum(channel_e, ch,       UVM_ALL_ON)
   `uvm_field_enum(txn_id_e,  txn_id,   UVM_ALL_ON)
   `uvm_field_enum(len_e,     len,      UVM_ALL_ON)
@@ -120,6 +129,10 @@ class cpu_sequence_item extends uvm_sequence_item;
   `uvm_field_enum(lock_e,    lock,     UVM_ALL_ON)
   `uvm_field_enum(cache_e,   cache,    UVM_ALL_ON)
   `uvm_field_enum(prot_e,    prot,     UVM_ALL_ON)
+
+  `uvm_field_int(rd_data, UVM_ALL_ON )
+  `uvm_field_int(full, UVM_ALL_ON )
+  `uvm_field_int(empty, UVM_ALL_ON )
   `uvm_object_utils_end
 
   extern function new(string name = "cpu_sequence_item");
@@ -163,8 +176,10 @@ endfunction
 function void cpu_sequence_item::build_fifo_packet();
   if( ch == AW_CH || ch == W_CH )
   begin
-    fifo_word = new[9];
 
+    fifo_word = new[9];
+    fifo_word.delete();
+   
     // First FIFO word
     fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , wdata[1023:960] };
 
@@ -183,8 +198,11 @@ function void cpu_sequence_item::build_fifo_packet();
 
   else if(ch == AR_CH)
   begin
+
     fifo_word = new[1];
+    fifo_word.delete();
     fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , rdata , eop , 48'h0 };
+  
   end
 endfunction
 

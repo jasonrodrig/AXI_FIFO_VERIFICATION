@@ -3,7 +3,7 @@
 `include "interface/fifo_interface.sv"
 `include "interface/axi4_interface.sv"
 //`include "axi_fifo_packages.sv"
-//`include "axi_fifo_assertions.sv"
+`include "assertions/axi_fifo_assertion.sv"
 
 import uvm_pkg::*;
 import axi_fifo_pkg::*;
@@ -138,7 +138,19 @@ module top;
   );
 
   // assertion bind instance
-  bind vif axi_fifo_assertions ASSERT(
+  bind vif axi_fifo_assertions#(  
+    .data_wid (`DATA_WID),
+    .adr_wid  (`ADR_WID),
+    .id_wid   (`ID_WID),
+    .len_wid  (`LEN_WID),
+    .siz_wid  (`SIZ_WID),
+    .bst_wid  (`BST_WID),
+    .loc_wid  (`LOC_WID),
+    .cach_wid (`CACH_WID),
+    .prot_wid (`PROT_WID),
+    .strb_wid (`STRB_WID),
+    .rsp_wid  (`RSP_WID)
+  ) ASSERT(
 
     //GLOBAL SIGNALS
     .clk(vif.clk),

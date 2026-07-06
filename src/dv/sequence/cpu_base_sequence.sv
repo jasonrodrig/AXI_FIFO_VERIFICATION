@@ -6,6 +6,8 @@ class cpu_base_sequence extends uvm_sequence #(cpu_sequence_item);
   extern function new(string name = "cpu_base_sequence");
   extern task reset();
   extern task send_transaction(
+    bit       wr_en  = 1'b0;
+    bit       rd_en  = 1'b0;
     channel_e ch     = AW_CH,
     txn_id_e  txn_id = ID_0,
     len_e     len    = BURST_LEN1,
@@ -23,7 +25,7 @@ function cpu_base_sequence::new(string name = "cpu_base_sequence");
   super.new(name);
 endfunction
 
-task cpu_base_seqeunce::reset();
+task cpu_base_sequence::reset();
   req = cpu_sequence_item::type_id::create("req");
   start_item(req);
   if(!req.randomize() with {rstn == 0;}) 
@@ -32,6 +34,8 @@ task cpu_base_seqeunce::reset();
 endtask
 
 task cpu_base_seqeunce::send_transaction(
+  bit       wr_en  = 1'b0;
+  bit       rd_en  = 1'b0;
   channel_e ch     = AW_CH,
   txn_id_e  txn_id = ID_0,
   len_e     len    = BURST_LEN1,
@@ -47,6 +51,8 @@ task cpu_base_seqeunce::send_transaction(
 
   start_item(req);
   if(!req.randomize() with {
+    this.wr_en  == wr_en;
+    this.rd_en  == rd_en;
     this.ch     == ch;
     this.txn_id == txn_id;
     this.len    == len;

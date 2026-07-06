@@ -28,8 +28,53 @@ task cpu_driver::run_phase(uvm_phase phase);
 endtask
 
 task cpu_driver::drive_to_dut();
-  @(fifo_vif.cpu_driver_cb);
- // coding logic  
+  if(!req.rstn) begin
+    fifo_vif.cpu_driver_cb.rstn    <=  req.rstn;
+    fifo_vif.cpu_driver_cb.wr_en   <=  req.wr_en;
+    fifo_vif.cpu_driver_cb.rd_en   <=  req.rd_en; 
+    fifo_vif.cpu_driver_cb.wr_data <=  128'b0;
+    @(fifo_vif.cpu_driver_cb); 
+    fifo_vif.cpu_driver_cb.rstn    <=  1'b1;
+  end
+
+  else begin
+
+    if( req.rd_en && !req.wr_en )
+    begin
+      fifo_vif.cpu_driver_cb.rstn    <=  req.rstn;
+      fifo_vif.cpu_driver_cb.wr_en   <=  req.wr_en;
+      fifo_vif.cpu_driver_cb.rd_en   <=  req.rd_en; 
+      fifo_vif.cpu_driver_cb.wr_data <=  128'b0;
+      @(fifo_vif.cpu_driver_cb);
+    end
+
+    else if( req.wr_en && !req.rd_en )
+    begin
+      fifo_vif.cpu_driver_cb.rstn    <=  req.rstn;
+      fifo_vif.cpu_driver_cb.wr_en   <=  req.wr_en;
+      fifo_vif.cpu_driver_cb.rd_en   <=  req.rd_en; 
+      foreach( req.fifo_word[i] )
+      begin
+        fifo_vif.cpu_driver_cb.wr_data <=  req.fifo_word[i];
+        @(fifo_vif.cpu_driver_cb);
+      end
+    end
+
+    else if(req.wr_en && req.rd_en)
+    begin
+      // should think about this scenario
+      fifo_vif.cpu_driver_cb.rstn    <=  req.rstn;
+      fifo_vif.cpu_driver_cb.wr_en   <=  req.wr_en;
+      fifo_vif.cpu_driver_cb.rd_en   <=  req.rd_en; 
+      foreach( req.fifo_word[i] )
+      begin
+        fifo_vif.cpu_driver_cb.wr_data <=  req.fifo_word[i];
+        @(fifo_vif.cpu_driver_cb);
+      end
+    end
+
+  end
+
 endtask
 
 
