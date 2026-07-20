@@ -2,14 +2,14 @@
 
 `include "define.sv"
 `include "uvm_macros.svh" 
+`include "../rtl/axi_fifo_design.v"
 //`include "assertions/axi_fifo_assertion.sv"
-import uvm_pkg::*;
 
+import uvm_pkg::*;
 import axi4_globals_pkg::*; 
 import axi4_master_pkg::*;
 import axi4_slave_pkg::*;
-import cpu_pkg::*;
-import axi_fifo_pkg::*;
+import axi_fifo_test_pkg::*;
 
 module top;
 
@@ -280,11 +280,11 @@ module top;
   ) DUT (
 
     //GLOBAL SIGNALS
-    .clk(fifo_vif.clk),
-    .rstn(fifo_vif.rstn),
+    .clk(clk),
+    .rstn(rstn),
     
-    .ACLK(axi_vif.ACLK),
-    .ARESETn(axi_vif.ARESETn),
+    .ACLK(ACLK),
+    .ARESETn(ARESETn),
 
     //FIFO INPUT
     .wr_en (fifo_vif.wr_en),
@@ -314,15 +314,15 @@ module top;
 
     // B INPUT
     .BID_a (axi_vif.bid),
-    .BRESP_a (vif.bresp),
-    .BVALID_a (vif.bvalid),
+    .BRESP_a (axi_vif.bresp),
+    .BVALID_a (axi_vif.bvalid),
 
     // AW OUTPUT
     .AWID_a (axi_vif.awid),
     .AWADDR_a (axi_vif.awaddr),
     .AWLEN_a (axi_vif.awlen),
     .AWSIZE_a (axi_vif.awsize),
-    .AWBUSRT_a (axi_vif.awbusrt),
+    .AWBURST_a (axi_vif.awburst),
     .AWLOCK_a (axi_vif.awlock),
     .AWCACHE_a (axi_vif.awcache),
     .AWPROT_a (axi_vif.awprot),
@@ -333,8 +333,8 @@ module top;
     .ARADDR_a(axi_vif.araddr),
     .ARLEN_a (axi_vif.arlen),
     .ARSIZE_a (axi_vif.arsize),
-    .ARBUSRT_a (axi_vif.arbusrt),
-    .ARLOCK_a (axi_if.arlock),
+    .ARBURST_a (axi_vif.arburst),
+    .ARLOCK_a (axi_vif.arlock),
     .ARCACHE_a (axi_vif.arcache),
     .ARPROT_a (axi_vif.arprot),
     .ARVALID_a (axi_vif.arvalid),

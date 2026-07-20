@@ -1,8 +1,71 @@
-# vsim -c -voptargs="+acc" -l simulation.log -do "log -r /*; run -all; quit -f" -L work "+UVM_TESTNAME=axi_fifo_base_test" work.top 
-# Start time: 11:51:42 on Jul 14,2026
+# vsim -c -voptargs="+acc" -assertdebug -sva -coverage -l simulation.log -do "log -r /*; coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb; run -all; exit" -wlf waveform.wlf -L work "+UVM_TESTNAME=axi_fifo_base_test" work.top 
+# Start time: 11:44:29 on Jul 20,2026
 # ** Note: (vsim-3812) Design is being optimized...
-# ** Error: ./axi_fifo_top.sv(280): Module 'Top_Module_AXI4' is not defined.
-# Optimization failed
+# ** Note: (vopt-143) Recognized 1 FSM in module "AXI_MASTER_WRITE_CONTROL(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "my_decoder(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "AXI_MASTER_READ_Control(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "write_response_handler(fast)".
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.fifo_interface(fast)
+# Loading mtiUvm.uvm_pkg
+# Loading work.cpu_sequence_item_pkg(fast)
+# Loading work.cpu_passive_agent_pkg(fast)
+# Loading work.cpu_active_agent_pkg(fast)
+# Loading work.cpu_pkg(fast)
+# Loading work.axi4_slave_driver_bfm(fast)
+# Loading work.axi4_slave_monitor_bfm(fast)
+# Loading work.axi4_globals_pkg(fast)
+# Loading work.axi4_slave_pkg(fast)
+# Loading work.axi4_master_driver_bfm(fast)
+# Loading work.axi4_master_monitor_bfm(fast)
+# Loading work.axi4_master_pkg(fast)
+# Loading work.axi_fifo_pkg(fast)
+# Loading work.cpu_sequence_pkg(fast)
+# Loading work.axi_sequence_pkg(fast)
+# Loading work.axi_fifo_virtual_sequence_pkg(fast)
+# Loading work.axi_fifo_test_pkg(fast)
+# Loading work.axi_fifo_top_sv_unit(fast)
+# Loading work.top(fast)
+# Loading work.axi4_if_sv_unit(fast)
+# Loading work.axi4_if(fast)
+# Loading work.fifo_interface(fast)
+# Loading work.axi4_master_agent_bfm(fast)
+# Loading work.axi4_master_driver_bfm_sv_unit(fast)
+# Loading work.axi4_master_driver_bfm(fast)
+# Loading work.axi4_master_monitor_bfm_sv_unit(fast)
+# Loading work.axi4_master_monitor_bfm(fast)
+# Loading work.axi4_slave_agent_bfm(fast)
+# Loading work.axi4_slave_driver_bfm_sv_unit(fast)
+# Loading work.axi4_slave_driver_bfm(fast)
+# Loading work.axi4_slave_monitor_bfm_sv_unit(fast)
+# Loading work.axi4_slave_monitor_bfm(fast)
+# Loading work.Top_Module_AXI4(fast)
+# Loading work.design_fifo(fast)
+# Loading work.sync_fifo(fast)
+# Loading work.my_decoder(fast)
+# Loading work.write_response_handler(fast)
+# Loading work.AXI_Master(fast)
+# Loading work.AXI_MASTER_WRITE_CONTROL(fast)
+# Loading work.AXI_MASTER_READ_Control(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.axi4_if(fast)
+# ** Fatal: (vsim-8274) ./cpu/cpu_passive_agent/cpu_passive_monitor.sv(35): Virtual interface elem. 'cpu_passive_mon_cb' not found in 'fifo_interface'.
+#    Time: 0 ps  Iteration: 0  Region: /cpu_passive_agent_pkg File: ./cpu/cpu_passive_agent/cpu_passive_agent.sv
+# FATAL ERROR while loading design
 # Error loading design
-# End time: 11:51:43 on Jul 14,2026, Elapsed time: 0:00:01
+# End time: 11:44:32 on Jul 20,2026, Elapsed time: 0:00:03
 # Errors: 1, Warnings: 0

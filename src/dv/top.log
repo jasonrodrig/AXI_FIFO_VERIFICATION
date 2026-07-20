@@ -1,17 +1,32 @@
 QuestaSim vlog 10.6c Compiler 2017.07 Jul 25 2017
-Start time: 11:51:41 on Jul 14,2026
-vlog -l top.log -work work "+incdir+./axi_avip/globals+./axi_avip/hvl_top/master+./axi_avip/hvl_top/slave+./cpu_active_agent+./cpu_passive_agent+./interface" ./axi_fifo_top.sv 
+Start time: 11:44:28 on Jul 20,2026
+vlog -sv "+acc" "+cover" "+fcover" -work work -l top.log "+incdir+../rtl" "+incdir+./axi_avip/globals" "+incdir+./axi_avip/hvl_top/master" "+incdir+./axi_avip/hvl_top/slave" "+incdir+./cpu/cpu_active_agent" "+incdir+./cpu/cpu_passive_agent" "+incdir+./cpu/cpu_sequence_item" "+incdir+./interface" "+incdir+./env" "+incdir+./sequence" "+incdir+./virtual_sequence" "+incdir+./test" ./axi_fifo_top.sv 
 ** Note: (vlog-2286) ./axi_fifo_top.sv(4): Using implicit +incdir+/tools/mentor/questasim_10.6c/questasim/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling module AXI_MASTER_WRITE_CONTROL
+-- Compiling module AXI_MASTER_READ_Control
+-- Compiling module AXI_Master
+-- Compiling module write_response_handler
+-- Compiling module my_decoder
+-- Compiling module sync_fifo
+-- Compiling module design_fifo
+-- Compiling module Top_Module_AXI4
 -- Compiling package axi_fifo_top_sv_unit
 -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
 -- Importing package axi4_globals_pkg
 -- Importing package axi4_master_pkg
 -- Importing package axi4_slave_pkg
--- Importing package cpu_pkg
+-- Importing package axi_fifo_test_pkg
+-- Importing package cpu_sequence_item_pkg
+-- Importing package axi_sequence_pkg
+-- Importing package cpu_sequence_pkg
 -- Importing package axi_fifo_pkg
+-- Importing package cpu_active_agent_pkg
+-- Importing package cpu_passive_agent_pkg
+-- Importing package cpu_pkg
+-- Importing package axi_fifo_virtual_sequence_pkg
 -- Compiling module top
 
 Top level modules:
 	top
-End time: 11:51:42 on Jul 14,2026, Elapsed time: 0:00:01
+End time: 11:44:28 on Jul 20,2026, Elapsed time: 0:00:00
 Errors: 0, Warnings: 0
