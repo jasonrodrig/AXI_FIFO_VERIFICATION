@@ -1,5 +1,5 @@
 $date
-	Fri Jul 17 18:18:10 2026
+	Mon Jul 20 15:14:15 2026
 $end
 $version
 	QuestaSim Version 10.6c
@@ -3481,97 +3481,81 @@ $upscope $end
 $upscope $end
 $upscope $end
 
-$scope begin axi4_globals_pkg $end
-$var parameter 1 30 MASTER_AGENT_ACTIVE $end
-$var parameter 1 40 SLAVE_AGENT_ACTIVE $end
-$var parameter 32 50 NO_OF_MASTERS $end
-$var parameter 32 60 NO_OF_SLAVES $end
-$var parameter 32 70 ADDRESS_WIDTH $end
-$var parameter 32 80 DATA_WIDTH $end
-$var parameter 32 90 SLAVE_MEMORY_SIZE $end
-$var parameter 32 :0 SLAVE_MEMORY_GAP $end
-$var parameter 32 ;0 MEMORY_WIDTH $end
-$var parameter 32 <0 STROBE_WIDTH $end
-$var parameter 32 =0 MEM_ID $end
-$var parameter 32 >0 LENGTH $end
-$var parameter 32 ?0 OUTSTANDING_FIFO_DEPTH $end
-$upscope $end
-
 $scope begin uvm_pkg $end
-$var parameter 32 @0 UVM_HDL_MAX_WIDTH $end
-$var parameter 32 A0 UVM_STREAMBITS $end
-$var parameter 32 B0 UVM_RADIX $end
-$var parameter 32 C0 UVM_MACRO_NUMFLAGS $end
-$var parameter 32 D0 UVM_DEFAULT $end
-$var parameter 32 E0 UVM_ALL_ON $end
-$var parameter 32 F0 UVM_FLAGS_ON $end
-$var parameter 32 G0 UVM_FLAGS_OFF $end
-$var parameter 32 H0 UVM_COPY $end
-$var parameter 32 I0 UVM_NOCOPY $end
-$var parameter 32 J0 UVM_COMPARE $end
-$var parameter 32 K0 UVM_NOCOMPARE $end
-$var parameter 32 L0 UVM_PRINT $end
-$var parameter 32 M0 UVM_NOPRINT $end
-$var parameter 32 N0 UVM_RECORD $end
-$var parameter 32 O0 UVM_NORECORD $end
-$var parameter 32 P0 UVM_PACK $end
-$var parameter 32 Q0 UVM_NOPACK $end
-$var parameter 32 R0 UVM_PHYSICAL $end
-$var parameter 32 S0 UVM_ABSTRACT $end
-$var parameter 32 T0 UVM_READONLY $end
-$var parameter 32 U0 UVM_NODEFPRINT $end
-$var parameter 32 V0 UVM_MACRO_EXTRAS $end
-$var parameter 32 W0 UVM_FLAGS $end
-$var parameter 32 X0 UVM_UNPACK $end
-$var parameter 32 Y0 UVM_CHECK_FIELDS $end
-$var parameter 32 Z0 UVM_END_DATA_EXTRA $end
-$var parameter 32 [0 UVM_START_FUNCS $end
-$var parameter 32 \0 UVM_SET $end
-$var parameter 32 ]0 UVM_SETINT $end
-$var parameter 32 ^0 UVM_SETOBJ $end
-$var parameter 32 _0 UVM_SETSTR $end
-$var parameter 32 `0 UVM_END_FUNCS $end
-$var parameter 32 a0 UVM_STR_CRC_POLYNOMIAL $end
-$var parameter 32 b0 UVM_STDOUT $end
-$var parameter 32 c0 UVM_LINE_WIDTH $end
-$var parameter 32 d0 UVM_NUM_LINES $end
-$var parameter 32 e0 UVM_SMALL_STRING $end
-$var parameter 32 f0 UVM_LARGE_STRING $end
-$var reg 1 g0 uvm_start_uvm_declarations $end
-$var integer 32 h0 uvm_global_random_seed $end
-$var integer 32 i0 UVM_UNBOUNDED_CONNECTIONS $end
+$var parameter 32 30 UVM_HDL_MAX_WIDTH $end
+$var parameter 32 40 UVM_STREAMBITS $end
+$var parameter 32 50 UVM_RADIX $end
+$var parameter 32 60 UVM_MACRO_NUMFLAGS $end
+$var parameter 32 70 UVM_DEFAULT $end
+$var parameter 32 80 UVM_ALL_ON $end
+$var parameter 32 90 UVM_FLAGS_ON $end
+$var parameter 32 :0 UVM_FLAGS_OFF $end
+$var parameter 32 ;0 UVM_COPY $end
+$var parameter 32 <0 UVM_NOCOPY $end
+$var parameter 32 =0 UVM_COMPARE $end
+$var parameter 32 >0 UVM_NOCOMPARE $end
+$var parameter 32 ?0 UVM_PRINT $end
+$var parameter 32 @0 UVM_NOPRINT $end
+$var parameter 32 A0 UVM_RECORD $end
+$var parameter 32 B0 UVM_NORECORD $end
+$var parameter 32 C0 UVM_PACK $end
+$var parameter 32 D0 UVM_NOPACK $end
+$var parameter 32 E0 UVM_PHYSICAL $end
+$var parameter 32 F0 UVM_ABSTRACT $end
+$var parameter 32 G0 UVM_READONLY $end
+$var parameter 32 H0 UVM_NODEFPRINT $end
+$var parameter 32 I0 UVM_MACRO_EXTRAS $end
+$var parameter 32 J0 UVM_FLAGS $end
+$var parameter 32 K0 UVM_UNPACK $end
+$var parameter 32 L0 UVM_CHECK_FIELDS $end
+$var parameter 32 M0 UVM_END_DATA_EXTRA $end
+$var parameter 32 N0 UVM_START_FUNCS $end
+$var parameter 32 O0 UVM_SET $end
+$var parameter 32 P0 UVM_SETINT $end
+$var parameter 32 Q0 UVM_SETOBJ $end
+$var parameter 32 R0 UVM_SETSTR $end
+$var parameter 32 S0 UVM_END_FUNCS $end
+$var parameter 32 T0 UVM_STR_CRC_POLYNOMIAL $end
+$var parameter 32 U0 UVM_STDOUT $end
+$var parameter 32 V0 UVM_LINE_WIDTH $end
+$var parameter 32 W0 UVM_NUM_LINES $end
+$var parameter 32 X0 UVM_SMALL_STRING $end
+$var parameter 32 Y0 UVM_LARGE_STRING $end
+$var reg 1 Z0 uvm_start_uvm_declarations $end
+$var integer 32 [0 uvm_global_random_seed $end
+$var integer 32 \0 UVM_UNBOUNDED_CONNECTIONS $end
 
 $scope function uvm_hdl_check_path $end
-$var integer 32 j0 uvm_hdl_check_path $end
+$var integer 32 ]0 uvm_hdl_check_path $end
 $upscope $end
 
 $scope function uvm_hdl_deposit $end
-$var integer 32 k0 uvm_hdl_deposit $end
-$var reg 1024 l0 value [1023:0] $end
+$var integer 32 ^0 uvm_hdl_deposit $end
+$var reg 1024 _0 value [1023:0] $end
 $upscope $end
 
 $scope function uvm_hdl_force $end
-$var integer 32 m0 uvm_hdl_force $end
-$var reg 1024 n0 value [1023:0] $end
+$var integer 32 `0 uvm_hdl_force $end
+$var reg 1024 a0 value [1023:0] $end
 $upscope $end
 
 $scope task uvm_hdl_force_time $end
-$var reg 1024 o0 value [1023:0] $end
-$var time 64 p0 force_time $end
+$var reg 1024 b0 value [1023:0] $end
+$var time 64 c0 force_time $end
 $upscope $end
 
 $scope function uvm_hdl_release_and_read $end
-$var integer 32 q0 uvm_hdl_release_and_read $end
-$var reg 1024 r0 value [1023:0] $end
+$var integer 32 d0 uvm_hdl_release_and_read $end
+$var reg 1024 e0 value [1023:0] $end
 $upscope $end
 
 $scope function uvm_hdl_release $end
-$var integer 32 s0 uvm_hdl_release $end
+$var integer 32 f0 uvm_hdl_release $end
 $upscope $end
 
 $scope function uvm_hdl_read $end
-$var integer 32 t0 uvm_hdl_read $end
-$var reg 1024 u0 value [1023:0] $end
+$var integer 32 g0 uvm_hdl_read $end
+$var reg 1024 h0 value [1023:0] $end
 $upscope $end
 
 $scope function uvm_dpi_get_next_arg_c $end
@@ -3596,14 +3580,14 @@ $scope function uvm_dpi_regcomp $end
 $upscope $end
 
 $scope function uvm_dpi_regexec $end
-$var integer 32 v0 uvm_dpi_regexec $end
+$var integer 32 i0 uvm_dpi_regexec $end
 $upscope $end
 
 $scope function uvm_dpi_regfree $end
 $upscope $end
 
 $scope function uvm_re_match $end
-$var integer 32 w0 uvm_re_match $end
+$var integer 32 j0 uvm_re_match $end
 $upscope $end
 
 $scope function uvm_dump_re_cache $end
@@ -3616,55 +3600,55 @@ $scope function uvm_revision_string $end
 $upscope $end
 
 $scope function uvm_radix_to_string $end
-$var integer 32 x0 radix $end
+$var integer 32 k0 radix $end
 $upscope $end
 
 $scope function uvm_instance_scope $end
-$var reg 8 y0 c [7:0] $end
-$var integer 32 z0 pos $end
+$var reg 8 l0 c [7:0] $end
+$var integer 32 m0 pos $end
 $upscope $end
 
 $scope function uvm_oneway_hash $end
-$var integer 32 {0 uvm_oneway_hash $end
-$var integer 32 |0 seed $end
-$var reg 1 }0 msb $end
-$var reg 8 ~0 current_byte [7:0] $end
-$var reg 32 !1 crc1 [31:0] $end
+$var integer 32 n0 uvm_oneway_hash $end
+$var integer 32 o0 seed $end
+$var reg 1 p0 msb $end
+$var reg 8 q0 current_byte [7:0] $end
+$var reg 32 r0 crc1 [31:0] $end
 $upscope $end
 
 $scope function uvm_create_random_seed $end
-$var integer 32 "1 uvm_create_random_seed $end
+$var integer 32 s0 uvm_create_random_seed $end
 $upscope $end
 
 $scope function uvm_object_value_str $end
 $upscope $end
 
 $scope function uvm_leaf_scope $end
-$var reg 8 #1 scope_separator [7:0] $end
-$var reg 8 $1 bracket_match [7:0] $end
-$var integer 32 %1 pos $end
-$var integer 32 &1 bmatches $end
+$var reg 8 t0 scope_separator [7:0] $end
+$var reg 8 u0 bracket_match [7:0] $end
+$var integer 32 v0 pos $end
+$var integer 32 w0 bmatches $end
 $upscope $end
 
 $scope function uvm_vector_to_string $end
-$var reg 4096 '1 value [4095:0] $end
-$var integer 32 (1 size $end
-$var integer 32 )1 radix $end
+$var reg 4096 x0 value [4095:0] $end
+$var integer 32 y0 size $end
+$var integer 32 z0 radix $end
 $upscope $end
 
 $scope function uvm_get_array_index_int $end
-$var integer 32 *1 uvm_get_array_index_int $end
-$var reg 1 +1 is_wildcard $end
-$var integer 32 ,1 i $end
+$var integer 32 {0 uvm_get_array_index_int $end
+$var reg 1 |0 is_wildcard $end
+$var integer 32 }0 i $end
 $upscope $end
 
 $scope function uvm_get_array_index_string $end
-$var reg 1 -1 is_wildcard $end
-$var integer 32 .1 i $end
+$var reg 1 ~0 is_wildcard $end
+$var integer 32 !1 i $end
 $upscope $end
 
 $scope function uvm_is_array $end
-$var reg 1 /1 uvm_is_array $end
+$var reg 1 "1 uvm_is_array $end
 $upscope $end
 
 $scope function uvm_has_wildcard $end
@@ -3677,80 +3661,80 @@ $scope function global_stop_request $end
 $upscope $end
 
 $scope function set_global_timeout $end
-$var time 64 01 timeout $end
-$var reg 1 11 overridable $end
+$var time 64 #1 timeout $end
+$var reg 1 $1 overridable $end
 $upscope $end
 
 $scope function set_global_stop_timeout $end
-$var time 64 21 timeout $end
+$var time 64 %1 timeout $end
 $upscope $end
 
 $scope function uvm_report_enabled $end
-$var reg 1 31 uvm_report_enabled $end
-$var integer 32 41 verbosity $end
-$var reg 2 51 severity [1:0] $end
+$var reg 1 &1 uvm_report_enabled $end
+$var integer 32 '1 verbosity $end
+$var reg 2 (1 severity [1:0] $end
 $upscope $end
 
 $scope function uvm_report $end
-$var reg 2 61 severity [1:0] $end
-$var integer 32 71 verbosity $end
-$var integer 32 81 line $end
+$var reg 2 )1 severity [1:0] $end
+$var integer 32 *1 verbosity $end
+$var integer 32 +1 line $end
 $upscope $end
 
 $scope function uvm_report_info $end
-$var integer 32 91 verbosity $end
-$var integer 32 :1 line $end
+$var integer 32 ,1 verbosity $end
+$var integer 32 -1 line $end
 $upscope $end
 
 $scope function uvm_report_warning $end
-$var integer 32 ;1 verbosity $end
-$var integer 32 <1 line $end
+$var integer 32 .1 verbosity $end
+$var integer 32 /1 line $end
 $upscope $end
 
 $scope function uvm_report_error $end
-$var integer 32 =1 verbosity $end
-$var integer 32 >1 line $end
+$var integer 32 01 verbosity $end
+$var integer 32 11 line $end
 $upscope $end
 
 $scope function uvm_report_fatal $end
-$var integer 32 ?1 verbosity $end
-$var integer 32 @1 line $end
+$var integer 32 21 verbosity $end
+$var integer 32 31 line $end
 $upscope $end
 
 $scope function uvm_string_to_severity $end
-$var reg 1 A1 uvm_string_to_severity $end
-$var reg 2 B1 sev [1:0] $end
+$var reg 1 41 uvm_string_to_severity $end
+$var reg 2 51 sev [1:0] $end
 $upscope $end
 
 $scope function uvm_string_to_action $end
 $upscope $end
 
 $scope function set_config_int $end
-$var reg 4096 C1 value [4095:0] $end
+$var reg 4096 61 value [4095:0] $end
 $upscope $end
 
 $scope function set_config_object $end
-$var reg 1 D1 clone $end
+$var reg 1 71 clone $end
 $upscope $end
 
 $scope function set_config_string $end
 $upscope $end
 
 $scope function uvm_is_match $end
-$var reg 1 E1 uvm_is_match $end
+$var reg 1 81 uvm_is_match $end
 $upscope $end
 
 $scope function uvm_string_to_bits $end
-$var reg 115200 F1 uvm_string_to_bits [115199:0] $end
+$var reg 115200 91 uvm_string_to_bits [115199:0] $end
 $upscope $end
 
 $scope function uvm_bits_to_string $end
-$var reg 115200 G1 str [115199:0] $end
+$var reg 115200 :1 str [115199:0] $end
 $upscope $end
 
 $scope task uvm_wait_for_nba_region $end
-$var integer 32 H1 nba $end
-$var integer 32 I1 next_nba $end
+$var integer 32 ;1 nba $end
+$var integer 32 <1 next_nba $end
 $upscope $end
 
 $scope function uvm_split_string $end
@@ -3760,10 +3744,53 @@ $scope function uvm_hdl_concat2string $end
 $upscope $end
 $upscope $end
 
+$scope begin cpu_sequence_item_pkg $end
+$upscope $end
+
+$scope begin cpu_passive_agent_pkg $end
+$upscope $end
+
+$scope begin cpu_active_agent_pkg $end
+$upscope $end
+
+$scope begin cpu_pkg $end
+$upscope $end
+
+$scope begin axi4_globals_pkg $end
+$var parameter 1 =1 MASTER_AGENT_ACTIVE $end
+$var parameter 1 >1 SLAVE_AGENT_ACTIVE $end
+$var parameter 32 ?1 NO_OF_MASTERS $end
+$var parameter 32 @1 NO_OF_SLAVES $end
+$var parameter 32 A1 ADDRESS_WIDTH $end
+$var parameter 32 B1 DATA_WIDTH $end
+$var parameter 32 C1 SLAVE_MEMORY_SIZE $end
+$var parameter 32 D1 SLAVE_MEMORY_GAP $end
+$var parameter 32 E1 MEMORY_WIDTH $end
+$var parameter 32 F1 STROBE_WIDTH $end
+$var parameter 32 G1 MEM_ID $end
+$var parameter 32 H1 LENGTH $end
+$var parameter 32 I1 OUTSTANDING_FIFO_DEPTH $end
+$upscope $end
+
 $scope begin axi4_slave_pkg $end
 $upscope $end
 
 $scope begin axi4_master_pkg $end
+$upscope $end
+
+$scope begin axi_fifo_pkg $end
+$upscope $end
+
+$scope begin cpu_sequence_pkg $end
+$upscope $end
+
+$scope begin axi_sequence_pkg $end
+$upscope $end
+
+$scope begin axi_fifo_virtual_sequence_pkg $end
+$upscope $end
+
+$scope begin axi_fifo_test_pkg $end
 $upscope $end
 
 $scope begin axi_fifo_top_sv_unit $end

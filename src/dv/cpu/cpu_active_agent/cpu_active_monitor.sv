@@ -1,7 +1,7 @@
 class cpu_active_monitor extends uvm_monitor;
 
   `uvm_component_utils(cpu_active_monitor)
-  virtual fifo_interface.CPU_ACTIVE_MON_MP fifo_vif;
+  virtual fifo_interface fifo_vif;
   uvm_analysis_port#(cpu_sequence_item) a_mon_port;
   cpu_sequence_item seq;
 

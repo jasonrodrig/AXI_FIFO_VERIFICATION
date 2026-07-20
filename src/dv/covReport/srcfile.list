@@ -1,0 +1,15 @@
+../rtl/AXI_MASTER_READ_CONTROL.v
+../rtl/AXI_MASTER_WRITE_CONTROL.v
+../rtl/AXI_Master.v
+../rtl/axi_fifo_design.v
+../rtl/decoder.v
+../rtl/design_fifo.v
+../rtl/sync_fifo.v
+../rtl/write_response_handler.v
+./axi_avip/hvl_top/master/axi4_master_coverage.sv
+./axi_avip/hvl_top/master/axi4_master_pkg.sv
+./axi_avip/hvl_top/slave/axi4_slave_coverage.sv
+./axi_avip/hvl_top/slave/axi4_slave_pkg.sv
+./axi_fifo_top.sv
+./cpu/cpu_packages.sv
+./cpu/cpu_subscriber.sv
