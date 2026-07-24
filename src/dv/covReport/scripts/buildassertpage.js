@@ -318,7 +318,7 @@ function getAssertViewTableConfigObj(assertData) {
 					 data     : null,
 					 render   : {
 						 filter : function (cellData, type, fullRowJsonObj, meta) {
-							 var content = hdlPaths[cellData.parent] + '/' + cellData.z;
+							 var content = hdlPaths[cellData.parent].path + '/' + cellData.z;
 							 switch (cellData.c) {
 							 case 'F':
 								 content +=  '#status:Failed';

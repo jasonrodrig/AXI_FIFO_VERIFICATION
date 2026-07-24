@@ -16,7 +16,7 @@ for (var i = 0; i<row.childNodes.length -1; i++) {
 var child = row.childNodes[row.childNodes.length -1];
 for (var j = 0; j < child.childNodes.length ; j++) {
 	if (child.childNodes[j].nodeName.match(/.*script.*/i) || child.childNodes[j].nodeName.match(/.*br.*/i))
-	{		
+	{
 		continue;
 	}
 	if (child.childNodes[j].nodeType == 1) {
@@ -27,7 +27,7 @@ for (var j = 0; j < child.childNodes.length ; j++) {
 			child.childNodes[j].nodeValue = child.childNodes[j].nodeValue.replace(/%t%/g,"    ");
 		}
 }
-	
+
 var body = document.getElementsByTagName("BODY")[0];
 for (var k = 0; k < 100; k++) {
 	var br = document.createElement('BR');

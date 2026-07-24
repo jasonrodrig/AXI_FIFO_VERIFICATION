@@ -33,7 +33,7 @@ function countinueBuildStmtTable(g_linesArr) {
 			divObj);
 
 	var show_excl_button = 0;
-	var linesArr;   
+	var linesArr;
 	var t = 0;
 
 	for (var int = 1; int < g_stmtDetailsArray[g_s_id].length; int++) {
@@ -137,7 +137,7 @@ function countinueBuildStmtTable(g_linesArr) {
 									+ popupHight + '\">' + hits + '</a>';
 						} else {
 							newCells[2].innerHTML = hits;
-						}                          
+						}
 						if (hits > 0) {
 							newRow.className = 'covered';
 						} else {
@@ -172,7 +172,7 @@ function countinueBuildStmtTable(g_linesArr) {
 			tbodyElement.appendChild(newRow);
 		}
 
-		table.appendChild(tbodyElement);           
+		table.appendChild(tbodyElement);
 
 		if (show_excl_button == 1) {
 			if (buttonsTable) {

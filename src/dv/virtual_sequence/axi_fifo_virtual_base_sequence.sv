@@ -24,6 +24,7 @@ class axi_fifo_virtual_base_sequence extends uvm_sequence;
       end
 
     join_any
+    wait fork;
 
   endtask 
 endclass

@@ -19,13 +19,6 @@ module hdl_top;
   bit aresetn;
 
   //-------------------------------------------------------
-  // Display statement for HDL_TOP
-  //-------------------------------------------------------
-  initial begin
-    $display("HDL_TOP");
-  end
-
-  //-------------------------------------------------------
   // System Clock Generation
   //-------------------------------------------------------
   initial begin
@@ -46,12 +39,17 @@ module hdl_top;
     end
     aresetn = 1'b1;
   end
+  
+  initial begin
+    $dumpfile("waveform.vcd");      // name of the VCD file
+    $dumpvars(0, hdl_top);    // dump variables from the testbench top
+  end
 
   // Variable : intf
   // axi4 Interface Instantiation
   axi4_if intf(.aclk(aclk),
                .aresetn(aresetn));
-
+               
   //-------------------------------------------------------
   // AXI4  No of Master and Slaves Agent Instantiation
   //-------------------------------------------------------

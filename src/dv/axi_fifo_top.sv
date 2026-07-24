@@ -31,9 +31,11 @@ module top;
   always #(HALF_PERIOD) ACLK = ~ACLK;
 
   initial begin    
-    rstn = 0 ; ARESETn = 0;
-    @(posedge clk or posedge ACLK) ;
     rstn = 1 ; ARESETn = 1;
+    repeat(1) @(posedge clk or posedge ACLK) ;
+    rstn = 0 ; ARESETn = 0;
+    repeat(1) @(posedge clk or posedge ACLK) ;
+    rstn = 1  ; ARESETn = 1;
   end
   
   // axi interface declaration 
@@ -44,8 +46,8 @@ module top;
   
   // Instantiate the VIP's Master and slave BFM Module
   axi4_master_agent_bfm axi_bfm_master_wrapper( axi_vif );
-  axi4_slave_agent_bfm axi_bfm_slave_wrapper( axi_vif );
 
+  axi4_slave_agent_bfm axi_bfm_slave_wrapper( axi_vif );
   /* axi4_master_driver_bfm  axi_master_driver_bfm_h( */
 
   /* .aclk(axi_vif.ACK), */

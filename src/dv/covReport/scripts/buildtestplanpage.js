@@ -56,7 +56,7 @@ function showTpSectionsAndLinks() {
 
 function getTaggedItemDataCellClass(isOdd, cntrRightLeft, isMissingLink, isExcluded,colorIsGray) {
 	var className = '';
-	
+
 	if (isExcluded) {
 		className += 'Excl';
 	} else if (isMissingLink) {
@@ -64,7 +64,7 @@ function getTaggedItemDataCellClass(isOdd, cntrRightLeft, isMissingLink, isExclu
 	} else if (colorIsGray == 1) {
 		className += 'Gray';
 	}
-	
+
 	className += cntrRightLeft;
 
 	if (isOdd) {
@@ -72,18 +72,18 @@ function getTaggedItemDataCellClass(isOdd, cntrRightLeft, isMissingLink, isExclu
 	} else {
 		className += 'Even';
 	}
-	
-	return (className  += 'TgTd');	
+
+	return (className  += 'TgTd');
 }
 
 function getTestplanSectionDataCellClass(isOdd, cntrRightLeft, isExcluded, cellType,colorIsGray) {
 	var className = '';
-	
+
 	if (isExcluded) {
 		className += 'Excl';
 	}else if (colorIsGray == 1) {
 		className += 'Gray';
-	}		
+	}
 	className += cntrRightLeft;
 
 	if (isOdd) {
@@ -91,7 +91,7 @@ function getTestplanSectionDataCellClass(isOdd, cntrRightLeft, isExcluded, cellT
 	} else {
 		className += 'Even';
 	}
-	
+
 	return (className  += cellType);
 }
 
@@ -123,7 +123,7 @@ function buildHeaderRow(rowObj) {
 	addHeaderCell(rowObj, '% Hit'           , 'odd' , 1);
 	addHeaderCell(rowObj, 'Link Status'     , 'even', 1);
 	addHeaderCell(rowObj, 'Description'     , 'odd' , 1); // this is the last default column
-	
+
 	var lastClassOdd = true;
 	var i = 1;
 	var tmp;
@@ -136,7 +136,7 @@ function buildHeaderRow(rowObj) {
 		} else {
 			className = 'odd';
 		}
-		addHeaderCell(rowObj, tmp, className, 1);	
+		addHeaderCell(rowObj, tmp, className, 1);
 		lastClassOdd = !lastClassOdd;
 	}
 	NUM_OF_ATTRIBUTES = i-1;
@@ -160,14 +160,14 @@ function addTaggedItemNameCell(rowObj, isExcluded, isMissingLink, rowNum) {
 	var newCell = document.createElement('TD');
 
 	newCell.className = getTaggedItemDataCellClass(1, '', isMissingLink, isExcluded,colorIsGray);
-	
+
 	tmp = rowObj.getAttribute('s');
 	if (tmp > 1) {
 		newCell.setAttribute("colSpan", tmp);
 	} else {
 		newCell.setAttribute("colSpan", "1");
 	}
-	
+
 	tmp = rowObj.getAttribute('i');
 	if (tmp) {
 		// This means this tagged item has a full path row (the following row in the table)
@@ -175,19 +175,19 @@ function addTaggedItemNameCell(rowObj, isExcluded, isMissingLink, rowNum) {
 		expandCollapseButton.id = 't' + tmp + 'L' + rowObj.getAttribute('in') + "IdB" ;
 		expandCollapseButton.className = "btnD";
 		expandCollapseButton.setAttribute("onclick", "toggleContentsDisplay(globalTpTreeNodesArray[" + rowNum + '])');
-		
+
 		var expandCollapseButtonImage = document.createElement('IMG');
 		expandCollapseButtonImage.src = "images/rtr.png";
 		expandCollapseButton.appendChild(expandCollapseButtonImage);
 		newCell.appendChild(expandCollapseButton);
-		
+
 		// initialize the expand/collapse button object in the tree node object
 		globalTpTreeNodesArray[rowNum].divButtonDomObj = expandCollapseButton;
 	}
 	var newElement = document.createElement('DIV');
 	newElement.className = "tpD";
 	newElement.innerHTML = rowObj.getAttribute('z');
-	
+
 	newCell.appendChild(newElement);
 	rowObj.appendChild(newCell);
 }
@@ -217,7 +217,7 @@ function addColoredPcntgDataCell(rowObj, valueAttrName, colorAttrName, isOdd, co
 				addDataCell(rowObj, value+'%', className+'CntrEvenTd');
 			}
 		}
-		
+
 	} else {
 		if (colorIsGray == 1) {
 			className = 'Gray';
@@ -234,13 +234,13 @@ function addTextBoxCell(rowObj, text, isOdd, isExcluded) {
 	var newCell = document.createElement('TD');
 	var colorIsGray = rowObj.getAttribute('cl');
 	newCell.className = getTestplanSectionDataCellClass(isOdd, '', isExcluded, 'Td',colorIsGray);
-	
+
 	if (text) {
 		if (text.length > TEXTAREA_COLS) {
 			var newElement = document.createElement('textarea');
 			newElement.readonly = "readonly";
 			newElement.className = getTestplanSectionDataCellClass(isOdd, '', isExcluded, 'TxtBox',colorIsGray);
-			
+
 			newElement.cols = TEXTAREA_COLS_STR;
 			newElement.rows = TEXTAREA_ROWS_STR;
 			newElement.innerHTML = text;
@@ -249,16 +249,16 @@ function addTextBoxCell(rowObj, text, isOdd, isExcluded) {
 			newCell.innerHTML = text;
 		}
 	} // end if (text)
-	
+
 	rowObj.appendChild(newCell);
 }
 
-function addTestplanSectionDataCells(rowObj, isExcluded, linkStatusValue) {		
+function addTestplanSectionDataCells(rowObj, isExcluded, linkStatusValue) {
 	if (isExcluded) {
 		addDataCell(rowObj, '--',
 				getTestplanSectionDataCellClass(0, '', isExcluded, 'Td',0));          /*Linked Items*/
 		addDataCell(rowObj, '--',
-				getTestplanSectionDataCellClass(1 ,'', isExcluded, 'Td',0));          /*Covered Items*/		
+				getTestplanSectionDataCellClass(1 ,'', isExcluded, 'Td',0));          /*Covered Items*/
 		addDataCell(rowObj, '--', //'Excluded'
 				getTestplanSectionDataCellClass(0, '', isExcluded, 'Td',0));          /*Coverage*/
 		addDataCell(rowObj, '--',
@@ -274,11 +274,11 @@ function addTestplanSectionDataCells(rowObj, isExcluded, linkStatusValue) {
 		addDataCell(rowObj, getLinkStatusToStr(linkStatusValue),
 				getTestplanSectionDataCellClass(0 , 'Cntr', isExcluded, 'Td',0));     /*LinkStatus*/
 	} else {
-		var colorIsGray = rowObj.getAttribute('cl');		
+		var colorIsGray = rowObj.getAttribute('cl');
 		addDataCell(rowObj, rowObj.getAttribute('c'),
-				getTestplanSectionDataCellClass(0 , 'Right', isExcluded, 'Td',colorIsGray));        /*Linked Items*/		
+				getTestplanSectionDataCellClass(0 , 'Right', isExcluded, 'Td',colorIsGray));        /*Linked Items*/
 		addDataCell(rowObj, rowObj.getAttribute('v'),
-				getTestplanSectionDataCellClass(1 , 'Right', isExcluded, 'Td',colorIsGray));        /*Covered Items*/		
+				getTestplanSectionDataCellClass(1 , 'Right', isExcluded, 'Td',colorIsGray));        /*Covered Items*/
 		addColoredPcntgDataCell(rowObj, 'h', 'hc', 0, colorIsGray);                                  /*Coverage*/
 		addColoredPcntgDataCell(rowObj, 'p', 'pc', 1, colorIsGray);                                  /*% of Goal*/
 		addDataCell(rowObj, rowObj.getAttribute('t'),
@@ -292,10 +292,10 @@ function addTestplanSectionDataCells(rowObj, isExcluded, linkStatusValue) {
 		addDataCell(rowObj, getLinkStatusToStr(linkStatusValue),
 				getTestplanSectionDataCellClass(0 , 'Cntr', isExcluded, 'Td',colorIsGray));         /* LinkStatus */
 	}
-	
+
 	// description:
 	addTextBoxCell(rowObj, rowObj.getAttribute('ch'), 1 , isExcluded);
-	
+
 	// attributes
 	// NOTE: if the default columns are changed, then lastClassOdd should be changed accordingly
 	// according to the class of the last column of the default columns
@@ -306,7 +306,7 @@ function addTestplanSectionDataCells(rowObj, isExcluded, linkStatusValue) {
 	} /* end for loop to print attributes */
 }
 
-function addTaggedItemDataCells(rowObj, isExcluded, isMissingLink) {		
+function addTaggedItemDataCells(rowObj, isExcluded, isMissingLink) {
 	if (isMissingLink) {
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(0, '', 1, 0,0)/*'missingTgTdE'*/);              /* Linked Items */
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(1, '', 1, 0,0)/*'missingTgTdO'*/);              /* Covered Items */
@@ -318,7 +318,7 @@ function addTaggedItemDataCells(rowObj, isExcluded, isMissingLink) {
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(1, 'Cntr', 1, 0,0)/*'missingTgTdCntrO'*/);          /* % Hits */
 		addDataCell(rowObj, getLinkStatusToStr(isMissingLink), getTaggedItemDataCellClass(0, 'Cntr', 1, 0, 'TgTd',0)/*'missingTgTdCntrE'*/);     /* Link Status */
 		addDataCell(rowObj, '', getTaggedItemDataCellClass(1, 'Cntr', 1, 0,0)/*'missingTgTdCntrO'*/);            /* Description */
-		
+
 		// attributes
 		// NOTE: if the default columns are changed, then lastClassOdd should be changed accordingly
 		// according to the class of the last column of the default columns
@@ -331,7 +331,7 @@ function addTaggedItemDataCells(rowObj, isExcluded, isMissingLink) {
 			}
 			lastClassOdd = !lastClassOdd;
 		} /* end for loop to print attributes */
-		
+
 	} else if (isExcluded) {
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(0, '', 0, 1,0)/*'exclTgTdE'*/);                 /* Linked Items */
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(1, '', 0, 1,0)/*'exclTgTdO'*/);                 /* Covered Items */
@@ -343,7 +343,7 @@ function addTaggedItemDataCells(rowObj, isExcluded, isMissingLink) {
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(1, 'Cntr', 0, 1,0)/*'exclTgTdCntrO'*/);          /* % Hits */
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(0, 'Cntr', 0, 1,0)/*'exclTgTdCntrE'*/);          /* Link Status */
 		addDataCell(rowObj, '', getTaggedItemDataCellClass(1, 'Cntr', 0, 1,0)/*'exclTgTdCntrO'*/);            /* Description */
-		
+
 		// attributes
 		// NOTE: if the default columns are changed, then lastClassOdd should be changed accordingly
 		// according to the class of the last column of the default columns
@@ -356,7 +356,7 @@ function addTaggedItemDataCells(rowObj, isExcluded, isMissingLink) {
 			}
 			lastClassOdd = !lastClassOdd;
 		} /* end for loop to print attributes */
-		
+
 	} else {
 		var colorIsGray = rowObj.getAttribute('cl');
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(0, '', 0, 0,colorIsGray)/*'tgTdE'*/);                              /* Linked Items */
@@ -369,7 +369,7 @@ function addTaggedItemDataCells(rowObj, isExcluded, isMissingLink) {
 		addDataCell(rowObj, rowObj.getAttribute('q'), getTaggedItemDataCellClass(1, 'Cntr', 0, 0,colorIsGray)/*'tgTdCntrO'*/);  /* % Hit */
 		addDataCell(rowObj, '--', getTaggedItemDataCellClass(0, 'Cntr', 0, 0,colorIsGray)/*'tgTdCntrE'*/);                          /* Link Status */
 		addDataCell(rowObj, '', getTaggedItemDataCellClass(1, 'Cntr', 0, 0,colorIsGray)/*'tgTdCntrO'*/);                            /* Description */
-		
+
 		// attributes
 		// NOTE: if the default columns are changed, then lastClassOdd should be changed accordingly
 		// according to the class of the last column of the default columns
@@ -383,14 +383,14 @@ function addTaggedItemDataCells(rowObj, isExcluded, isMissingLink) {
 			lastClassOdd = !lastClassOdd;
 		} /* end for loop to print attributes */
 	}
-	
-	
+
+
 }
 
 function addTaggedItemRow(rowObj, isExcluded, isMissingLink, rowNum) {
 	// tagged items rows are hidden initially
 	rowObj.style.display = "none";
-	
+
 	addTaggedItemNameCell(rowObj, isExcluded, isMissingLink, rowNum);
 	addTaggedItemDataCells(rowObj, isExcluded, isMissingLink);
 }
@@ -398,16 +398,16 @@ function addTaggedItemRow(rowObj, isExcluded, isMissingLink, rowNum) {
 function addFullPathRow(rowObj, isExcluded, isMissingLink, rowNum) {
 	// full path rows are hidden initially
 	rowObj.style.display = "none";
-	
+
 	var isExcluded = rowObj.getAttribute('excl');
 	var colorIsGray = rowObj.getAttribute('cl');
 	var isMissingLink = rowObj.getAttribute('ls');
 	var newCell = document.createElement('TD');
 	var tmp;
-	
+
 	rowObj.className = "fpTr";
 	newCell.className = getTaggedItemDataCellClass(1, '', isMissingLink, isExcluded,colorIsGray);
-	
+
 	tmp = rowObj.getAttribute('s');
 	if (tmp > 1) {
 		newCell.setAttribute("colSpan", tmp);
@@ -416,7 +416,7 @@ function addFullPathRow(rowObj, isExcluded, isMissingLink, rowNum) {
 	}
 	newCell.innerHTML = rowObj.getAttribute('z');
 	rowObj.appendChild(newCell);
-	
+
 	// initialize the member fullPathRowDomObj of the tree node object of the previous row (tagged item row)
 	globalTpTreeNodesArray[rowNum-1].fullPathRowDomObj = rowObj;
 }
@@ -425,7 +425,7 @@ function addTestplanSectionNameCell(rowObj, rowNum) {
 	var newCell = document.createElement('TD');
 	var colorIsGray = rowObj.getAttribute('cl');
 	newCell.className = getTestplanSectionDataCellClass(1, '', 0, 'Td',colorIsGray)/*'OddTd'*/;
-	
+
 	var tmp = rowObj.getAttribute('s');
 	if (tmp > 1) {
 		newCell.setAttribute("colSpan", tmp);
@@ -442,12 +442,12 @@ function addTestplanSectionNameCell(rowObj, rowNum) {
 		expandCollapseButton.id = 't' + rowObj.getAttribute('i') + "IdB" ;
 		expandCollapseButton.className = "btnD";
 		expandCollapseButton.setAttribute("onclick", "toggleContentsDisplay(globalTpTreeNodesArray[" + rowNum + '])');
-		
+
 		var expandCollapseButtonImage = document.createElement('IMG');
 		expandCollapseButtonImage.src = "images/rtr.png";
 		expandCollapseButton.appendChild(expandCollapseButtonImage);
 		newCell.appendChild(expandCollapseButton);
-		
+
 		// initialize the expand/collapse button object in the tree node object
 		globalTpTreeNodesArray[rowNum].divButtonDomObj = expandCollapseButton;
 	} else {
@@ -458,7 +458,7 @@ function addTestplanSectionNameCell(rowObj, rowNum) {
 		newElement.appendChild(newElement2);
 		newCell.appendChild(newElement);
 	}
-	
+
 	newElement = document.createElement('DIV');
 	newElement.className = "tpD";
 	tmp = rowObj.getAttribute('n');
@@ -477,7 +477,7 @@ function addTestplanSectionNameCell(rowObj, rowNum) {
 function addTestplanSectionRow(rowObj, isExcluded, linkStatusValue, rowNum) {
 	addTestplanSectionNameCell(rowObj, rowNum);
 	addTestplanSectionDataCells(rowObj, isExcluded, linkStatusValue);
-	
+
 	// we need to mark the parent's row (the row of the parent testplan section) as expanded
 	// notice that any testplan section are marked as not expanded till parsing its 1st child
 	tpTreeNodeObj = globalTpTreeNodesArray[rowNum];
@@ -486,7 +486,7 @@ function addTestplanSectionRow(rowObj, isExcluded, linkStatusValue, rowNum) {
 		parentTpTreeNodeObj.divButtonDomObj.innerHTML = "<img src=\"images/dtr.png\"/>";
 		parentTpTreeNodeObj.areContentsExpanded = 1;
 	}
-	
+
 }
 
 // The array globalTpTreeNodesArray will hold all tpTreeNode objects
@@ -513,7 +513,7 @@ var globalTopOfStack = 0;
 
 function createTreeNodeObjForRow(rowCount, rowObj, isTaggedItem) {
 	var newNode = globalTpTreeNodesArray[rowCount] = new TpTreeNode(rowObj, 0, isTaggedItem);
-	
+
 	newRowIndent = newNode.rowDomObj.getAttribute('l');
 	if (newRowIndent == 0) { // a top testplan section
 		// clear the stack and place it in the top
@@ -524,24 +524,24 @@ function createTreeNodeObjForRow(rowCount, rowObj, isTaggedItem) {
 		globalTopTpTreeNodesArraySize++;
 	} else {
 		// not a top testplan section, ie. there must be something in the stack
-		
+
 		parentRowIndent = globalParentNodesStack[globalTopOfStack].rowDomObj.getAttribute('l');
-		
+
 		if (parentRowIndent == newRowIndent) {
 			// the top of stack is a sister to the new node
 			globalTopOfStack--;											// pop
 			globalParentNodesStack[globalTopOfStack].addChild(newNode);
-			newNode.parent = globalParentNodesStack[globalTopOfStack]; 
+			newNode.parent = globalParentNodesStack[globalTopOfStack];
 			globalTopOfStack++;                        					// push
 			globalParentNodesStack[globalTopOfStack] = newNode;
-			
+
 		} else if (parentRowIndent < newRowIndent) {
 			// the new node is a child to the top of stack
 			globalParentNodesStack[globalTopOfStack].addChild(newNode);
 			newNode.parent = globalParentNodesStack[globalTopOfStack];
 			globalTopOfStack++;                        					// push
 			globalParentNodesStack[globalTopOfStack] = newNode;
-			
+
 		} else /* if (parentRowIndent > newRowIndent) */ {
 			// The new node is not a child to the top of stack, we will keep pop from stack till
 			// reaching the 1st sister to the new node, then put the new node instead of its sister.
@@ -566,21 +566,21 @@ function buildPage() {
 
 	var table = tables[t];
 	var newRow = table.rows[0];
-	
+
 	buildHeaderRow(newRow);
-	
+
 	/* build data rows */
 	var isExcluded;
 	var linkStatus;
 	globalTpTreeNodesArray = new Array(table.rows.length);
 	for (var r = 1; r < table.rows.length; r++) {
 		newRow = table.rows[r];
-		
+
 		addIndentationCellsToDataRow(newRow);
-		
+
 		isExcluded = newRow.getAttribute('excl');
 		linkStatus = newRow.getAttribute('ls');
-		
+
 		if (newRow.id.match(/^t\d+_\d+_\d+L\d+Id$/)) {							// link (tagged item) row
 			createTreeNodeObjForRow(r, newRow, 1);
 			addTaggedItemRow(newRow, isExcluded, linkStatus, r);
@@ -592,7 +592,7 @@ function buildPage() {
 			addTestplanSectionRow(newRow, isExcluded, linkStatus, r);
 		}
 	}
-	
+
 	//dumpTree(); // commented, it is for debugging purposes only
 }
 
@@ -600,7 +600,7 @@ function dumpTree() {
 	var preElement = document.createElement("pre");
 	preElement.setAttribute("id", "hh");
 	document.getElementsByTagName("body")[0].appendChild(preElement);
-	
+
 	var nodeObj = globalTpTreeNodesArray[1];
 	dumpNode(nodeObj, 0);
 }
@@ -616,7 +616,7 @@ function dumpNode(nodeObj, level) {
 		}
 		level--;
 	}
-	
+
 }
 
 buildPage();

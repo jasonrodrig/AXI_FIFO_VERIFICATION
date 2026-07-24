@@ -16,7 +16,8 @@ all: clean compile compile_log_err sim simulate_log_err
 AXI_VIP_DIR = ./axi_avip
 RTL_DIR     = ../rtl
 
-VLOG = vlog
+VLOG = vlog:WQ
+
 VSIM = vsim
 COMPILE_LOG = compile.log
 
@@ -218,6 +219,4 @@ simulate_log_err:
 	echo ""
 	echo "Waveform : vsim -view waveform.wlf"
 	echo "Coverage : covReport/index.html"
-
-
 

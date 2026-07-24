@@ -64,7 +64,7 @@ function createCell(row, type, classt, span, txt, lnk, filterLabel, c_align) {
 		newElement.innerHTML = "(Filtering Active)";
 		newCell.appendChild(newElement);
 	}
-	
+
 	row.appendChild(newCell);
 	return;
 };
@@ -454,11 +454,11 @@ function createCoverageTypeRow(table, cov, covTypeIndex) {
 	var colspan = 2;
 
 	var classOfTableCell = 0;
-	
+
 	var newCvgRow = document.createElement('tr');
 	ColName = covTypesNames[covTypeIndex];
 	colspan = 2;
-	
+
 	if (thereIsFSM > 0) {
 		thereIsFSM--;
 		colspan = 1;
@@ -468,7 +468,7 @@ function createCoverageTypeRow(table, cov, covTypeIndex) {
 		colspan = 1;
 		createCell(newCvgRow, "TD", 'invisible', 0, '&nbsp;', 0, 0, 0);
 		if (covTypesNames[covTypeIndex].match ("FEC Conditions") ) {
-			ColName = "FEC";		    
+			ColName = "FEC";
 		} else { /* covTypesNames[covTypeIndex].match ("FEC Conditions") */
 			ColName = "UDP";
 		}
@@ -477,23 +477,23 @@ function createCoverageTypeRow(table, cov, covTypeIndex) {
 		colspan = 1;
 		createCell(newCvgRow, "TD", 'invisible', 0, '&nbsp;', 0, 0, 0);
 		if (covTypesNames[covTypeIndex].match ("FEC Expressions") ) {
-			ColName = "FEC";		    
+			ColName = "FEC";
 		} else { /* covTypesNames[covTypeIndex].match ("FEC Expressions") */
 			ColName = "UDP";
 		}
 	}
 
-	
+
 	if (covTypesNames[covTypeIndex] == "Conditions" ) {
 		MakeThreeRowsCond = 2;
 	}
 	else if (covTypesNames[covTypeIndex] == "Expressions" ) {
 		MakeThreeRowsExp = 2;
-	}	
+	}
 	else if (covTypesNames[covTypeIndex] == "FSM" ) {
 		thereIsFSM = 2;
 	}
-	
+
 	createCell(newCvgRow, "TD", g_dynamic_z_cellClasses[g_dynamic_z_lastRowOdd],  colspan, ColName, 0, 0, 0);
 	createCell(newCvgRow, "TD", g_dynamic_z_cellClassesRight[g_dynamic_z_lastRowOdd], 0, cov[0], 0, 0, 0);
 	createCell(newCvgRow, "TD", g_dynamic_z_cellClassesRight[g_dynamic_z_lastRowOdd],  0, cov[1], 0, 0, 0);
@@ -508,86 +508,86 @@ function createCoverageTypeRow(table, cov, covTypeIndex) {
 	createCell(newCvgRow, "TD", g_dynamic_z_cellClassesRight[g_dynamic_z_lastRowOdd], 0, cov[2], 0, 0, 0);
 	createCell(newCvgRow, "TD", g_dynamic_z_cellClassesRight[g_dynamic_z_lastRowOdd], 0, cov[4]+"%", 0, 0, 0);
 	createCell(newCvgRow, "TD", classOfTableCell, 0, cov[3]+"%", 0, 0, 0);
-		
+
 	table.appendChild(newCvgRow);
 	g_dynamic_z_lastRowOdd = g_dynamic_z_lastRowOdd ? 0 : 1;
 };
 function FillColsList(table, rowName, link, firstCellSpan, listColsArr) {
 	try {
 		if (typeof g == "undefined")
-			listColsArr[0] = 1;		
+			listColsArr[0] = 1;
 	} catch (err) {
 		listColsArr[0] = 1;
 	}
 	try {
-		if (typeof d == "undefined") 
-			listColsArr[1] = 1;		
+		if (typeof d == "undefined")
+			listColsArr[1] = 1;
 	} catch (err) {
 		listColsArr[1] = 1;
 	}
 	try {
 		if (typeof s == "undefined")
-			listColsArr[2] = 1;		
+			listColsArr[2] = 1;
 	} catch (err) {
 		listColsArr[2] = 1;
 	}
 	try {
 		if (typeof b == "undefined")
-			listColsArr[3] = 1;		
+			listColsArr[3] = 1;
 	} catch (err) {
 		listColsArr[3] = 1;
 	}
 	try {
 		if (typeof ue == "undefined")
-			listColsArr[4] = 1;		
+			listColsArr[4] = 1;
 	} catch (err) {
 		listColsArr[4] = 1;
 	}
 	try {
 		if (typeof uc == "undefined")
-			listColsArr[5] = 1;	
+			listColsArr[5] = 1;
 	} catch (err) {
 		listColsArr[5] = 1;
 	}
 	try {
 		if (typeof fe == "undefined")
-			listColsArr[6] = 1;		
+			listColsArr[6] = 1;
 	} catch (err) {
 		listColsArr[6] = 1;
 	}
 	try {
 		if (typeof fc == "undefined")
-			listColsArr[7] = 1;		
+			listColsArr[7] = 1;
 	} catch (err) {
 		listColsArr[7] = 1;
 	}
 	try {
 		if (typeof t == "undefined")
-			listColsArr[8] = 1;		
+			listColsArr[8] = 1;
 	} catch (err) {
 		listColsArr[8] = 1;
 	}
 	try {
 		if (typeof fs == "undefined")
-			listColsArr[9] = 1;		
+			listColsArr[9] = 1;
 	} catch (err) {
 		listColsArr[9] = 1;
 	}
 	try {
 		if (typeof ft == "undefined")
-			listColsArr[10] = 1;		
+			listColsArr[10] = 1;
 	} catch (err) {
 		listColsArr[10] = 1;
 	}
 	try {
 		if (typeof aa == "undefined")
-			listColsArr[11] = 1;	
+			listColsArr[11] = 1;
 	} catch (err) {
 		listColsArr[11] = 1;
 	}
 	try {
 		if (typeof ap == "undefined")
-			listColsArr[12] = 1;		
+			listColsArr[12] = 1;
 	} catch (err) {
 		listColsArr[12] = 1;
 	}
@@ -599,10 +599,10 @@ function FillColsList(table, rowName, link, firstCellSpan, listColsArr) {
 	}
 	try {
 		if (typeof as == "undefined")
-			listColsArr[14] = 1;	
+			listColsArr[14] = 1;
 	} catch (err) {
 		listColsArr[14] = 1;
-	}	
+	}
 };
 //////////////////////////  End Functions  //////////////////////////////////
 /* read the json file for this scope and process its data */
@@ -612,7 +612,7 @@ function dynamichtmlBuildSummaryTable() {
 	var newElement;
 	var newlook = 1;
 	var ListCols = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-	
+
 	$.ajax({
 		type: "GET",
 		url: "h" + id +".json",
@@ -621,7 +621,7 @@ function dynamichtmlBuildSummaryTable() {
 		data: {},
 		dataType: "json",
 		success: function(data,y,z) {
-	
+
 		$.each(data, function(key, val) {
 			if (key == "children")
 				eval(key+"=\""+val+"\";");
@@ -630,18 +630,18 @@ function dynamichtmlBuildSummaryTable() {
 			else
 				eval(key+"="+val+";");
 		});
-	
+
 		}
 	});
-	
+
 	var childrenScopes = children; // Comma separated list of children scope IDs and names.
 	                               // This variable comes from the db and evaluated in the JS
 	                               // interpreter to be a normal JS variable
-	
+
 	/* if childrenScopes, then means that this scope has child scopes and hier tables should be created */
 	if (childrenScopes) {
 		childrenScopes = childrenScopes.split(","); // split the children string into array
-		
+
 		var div1 = document.getElementById("coverage_summary_by_instance");
 		if (div1) {
 			newElement = document.createElement('HR');
@@ -649,17 +649,17 @@ function dynamichtmlBuildSummaryTable() {
 			newElement = document.createElement('H3');
 			newElement.innerHTML = "Coverage Summary By Instance:";
 			div1.appendChild(newElement);
-	
+
 			// create the coverage_summary_by_instance table and its header
 			newTable = document.createElement('TABLE');
 			newTable.cellspacing = "2";
 			newTable.cellpadding = "2";
 			var tblBody = document.createElement("tbody");
-	
+
 			newRow = document.createElement('tr');
-			
-			FillColsList(tblBody, 'TOTAL', 0, 2, ListCols);	
-			createCell(newRow, "TH", 'even',  2, 'Scope', 0, 0, 0);		
+
+			FillColsList(tblBody, 'TOTAL', 0, 2, ListCols);
+			createCell(newRow, "TH", 'even',  2, 'Scope', 0, 0, 0);
 			createCell(newRow, "TH", 'even', 0, 'TOTAL', 0, 0, 0);
 			if (ListCols[0] == 0)
 			createCell(newRow, "TH", 'even',  0, 'Cvg', 0, 0, 0);
@@ -691,22 +691,22 @@ function dynamichtmlBuildSummaryTable() {
 			createCell_2txt(newRow, "TH", 'even', 0, 'Assertion', 'Failures');
 			if (ListCols[14] == 0)
 			createCell_2txt(newRow, "TH", 'even', 0, 'Assertion', 'Successes');
-	
-			tblBody.appendChild(newRow);		
-			g_dynamic_z_lastRowOdd = 0;	
-	
+
+			tblBody.appendChild(newRow);
+			g_dynamic_z_lastRowOdd = 0;
+
 			// first row, its data is gotten from the prev call of ajax.
 			createRow(tblBody, 'TOTAL', 0, 2, ListCols, 0/*filtering_active*/);
-	
+
 			var scopeName = div1.getAttribute('scopeName');
 			var localTable = document.getElementById("local_data_table");
 			if (scopeName && localTable) {
 				removeAllDataVariables();
-	
+
 				// adjust the values of the local coverage data. w, g, d, s, b, etc...
 				w = localTable.rows[0].cells[1].innerHTML;
 				w = w.substring(0, w.length - 1);
-	
+
 				for (var i=2; i< localTable.rows.length; i++) {
 					switch (localTable.rows[i].cells[0].childNodes[0].innerHTML?localTable.rows[i].cells[0].childNodes[0].innerHTML:localTable.rows[i].cells[0].innerHTML) {
 						case "Covergroup": {
@@ -730,8 +730,8 @@ function dynamichtmlBuildSummaryTable() {
 								case "FEC": {
 									fe = [localTable.rows[i].cells[2].innerHTML, localTable.rows[i].cells[3].innerHTML]; i=i+1; break;
 								}
-							}						
-						}					
+							}
+						}
 						case "FEC Expression": {
 							fe = [localTable.rows[i].cells[1].innerHTML, localTable.rows[i].cells[2].innerHTML]; break;
 						}
@@ -744,14 +744,14 @@ function dynamichtmlBuildSummaryTable() {
 								case "FEC": {
 									fc = [localTable.rows[i].cells[2].innerHTML, localTable.rows[i].cells[3].innerHTML]; i=i+1; break;
 								}
-							}	
+							}
 						}
 						case "FEC Condition": {
 							fc = [localTable.rows[i].cells[1].innerHTML, localTable.rows[i].cells[2].innerHTML]; break;
 						}
 						case "Toggle": {
 							t = [localTable.rows[i].cells[1].innerHTML, localTable.rows[i].cells[2].innerHTML]; break;
-						}					
+						}
 						case "FSM": {
 							i=i+1;
 							switch (localTable.rows[i].cells[0].childNodes[0].innerHTML?localTable.rows[i].cells[0].childNodes[0].innerHTML:localTable.rows[i].cells[0].innerHTML) {
@@ -762,10 +762,10 @@ function dynamichtmlBuildSummaryTable() {
 									ft = [localTable.rows[i].cells[2].innerHTML, localTable.rows[i].cells[3].innerHTML]; i=i+1; break;
 								}
 							}
-						}					
+						}
 						case "Assertion": {
 							as = [localTable.rows[i].cells[1].innerHTML, localTable.rows[i].cells[2].innerHTML]; break;
-						}					
+						}
 						default: {
 							break;
 						}
@@ -776,7 +776,7 @@ function dynamichtmlBuildSummaryTable() {
 			var j;
 			for(j=0; j < childrenScopes.length -1; j+=2) { // loop on each child id , childrenScopes
 				removeAllDataVariables();
-	
+
 				if (childrenScopes[j]) {
 					/* read the json file for this child and process its data */
 					$.ajax({
@@ -787,7 +787,7 @@ function dynamichtmlBuildSummaryTable() {
 						data: {},
 						dataType: "json",
 						success: function(data,y,z) {
-	
+
 						$.each(data, function(key, val) {
 							if (key == "children")
 								eval(key+"=\""+val+"\";");
@@ -796,10 +796,10 @@ function dynamichtmlBuildSummaryTable() {
 							else
 								eval(key+"="+val+";");
 						});
-	
+
 						}
 					});
-	
+
 					createRow(tblBody, childrenScopes[j+1], "z"+childrenScopes[j]+".htm", 1, ListCols, 0);
 				} else {
 					// this case means that there is a child, but it doesn't have a page crated for it. so there is no link or data for it
@@ -809,7 +809,7 @@ function dynamichtmlBuildSummaryTable() {
 			newTable.appendChild(tblBody);
 			div1.appendChild(newTable);
 		}
-	
+
 		removeAllDataVariables();
 		/* read the json file for this scope again for the recursive_hier_coverage_details table */
 		$.ajax({
@@ -820,7 +820,7 @@ function dynamichtmlBuildSummaryTable() {
 			data: {},
 			dataType: "json",
 			success: function(data,y,z) {
-	
+
 			$.each(data, function(key, val) {
 				if (key == "children")
 					eval(key+"=\""+val+"\";");
@@ -829,18 +829,18 @@ function dynamichtmlBuildSummaryTable() {
 				else
 					eval(key+"="+val+";");
 			});
-	
+
 			}
 		});
-	
+
 		var loc_rec_table = document.getElementById("loc_rec_tables");
 		var addTable = 0;
 		if (loc_rec_table) {
 			addTable = 1;
 			newCellTable = document.createElement('TD');
 			loc_rec_table.rows[0].appendChild(newCellTable);
-		}	
-		
+		}
+
 		if (addTable) {
 			newElement = document.createElement('H3');
 			newElement.innerHTML = "Recursive Hierarchical Coverage Details:";
@@ -849,31 +849,31 @@ function dynamichtmlBuildSummaryTable() {
 			} else {
 				div1.appendChild(newElement);
 			}
-			
+
 			//create the recursive_hier_coverage_details table and its header
 			newTable = document.createElement('TABLE');
 			var tblBody = document.createElement("tbody");
 			newTable.cellspacing = "2";
 			newTable.cellpadding = "2";
-	
+
 			if (newlook) {
 				g_dynamic_z_lastRowOdd = 0;
 			}
 			newRow = document.createElement('tr');
 			createCell(newRow, "TD", 'odd', 6, 'Total Coverage:' , 0, 0, 0);
-			
+
 			var cellClass = coverageToStyle(q);
 			createCell(newRow, "TD", cellClass, 0, q+"%", 0, 0, 0);
-			
+
 			cellClass = coverageToStyle(w);
 			createCell(newRow, "TD", cellClass, 0, w+"%", 0, 0, 0);
-			
+
 			tblBody.appendChild(newRow);
-			
+
 			if (newlook) {
 				g_dynamic_z_lastRowOdd = g_dynamic_z_lastRowOdd ? 0 : 1;
 			}
-	
+
 			newRow = document.createElement('tr');
 			createCell(newRow, "TH", 'even',   2, 'Coverage Type', 0, 0, 'left');
 			createCell(newRow, "TH", 'even',  0, 'Bins' , 0, 0, 0);
@@ -883,11 +883,11 @@ function dynamichtmlBuildSummaryTable() {
 			createCell(newRow, "TH", 'even',   0, '% Hit'   , 0, 0, 0);
 			createCell(newRow, "TH", 'even',  0, 'Coverage' , 0, 0, 0);
 			tblBody.appendChild(newRow);
-			
+
 			if (newlook) {
 				g_dynamic_z_lastRowOdd = g_dynamic_z_lastRowOdd ? 0 : 1;
 			}
-	
+
 			var types = ["g", "d", "s", "b", "e", "ue", "fe", "c", "uc", "fc", "t", "f", "fs", "ft", "as"];
 			for(var i=0; i<types.length; i++) {
 				try {
@@ -898,9 +898,9 @@ function dynamichtmlBuildSummaryTable() {
 					;
 				}
 			}
-	
+
 			newTable.appendChild(tblBody);
-	
+
 			if (newlook) {
 				newCellTable.appendChild(newTable);
 			} else {

@@ -1,14 +1,10 @@
 # vsim -c -voptargs="+acc" -assertdebug -sva -coverage -l simulation.log -do "log -r /*; coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb; run -all; exit" -wlf waveform.wlf -L work "+UVM_TESTNAME=axi_fifo_base_test" work.top 
-# Start time: 15:14:11 on Jul 20,2026
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Note: (vopt-143) Recognized 1 FSM in module "AXI_MASTER_WRITE_CONTROL(fast)".
-# ** Note: (vopt-143) Recognized 1 FSM in module "my_decoder(fast)".
-# ** Note: (vopt-143) Recognized 1 FSM in module "AXI_MASTER_READ_Control(fast)".
-# ** Note: (vopt-143) Recognized 1 FSM in module "write_response_handler(fast)".
-# //  Questa Sim
-# //  Version 10.6c linux Jul 25 2017
+# Start time: 09:43:30 on Jul 24,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# //  Questa Sim-64
+# //  Version 10.7c win64 Aug 18 2018
 # //
-# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  Copyright 1991-2018 Mentor Graphics Corporation
 # //  All Rights Reserved.
 # //
 # //  QuestaSim and its associated documentation contain trade
@@ -63,127 +59,121 @@
 # Loading work.AXI_MASTER_READ_Control(fast)
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.axi4_if(fast)
-# ** Warning: (vsim-3015) ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19): [PCDPC] - Port size (4) does not match connection size (2) for port 'awcache'. The port definition is at: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_driver_bfm.sv(23).
-#    Time: 0 ps  Iteration: 0  Instance: /top/axi_bfm_master_wrapper/axi4_master_drv_bfm_h File: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_driver_bfm.sv
-# ** Warning: (vsim-3015) ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19): [PCDPC] - Port size (8) does not match connection size (4) for port 'arlen'. The port definition is at: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_driver_bfm.sv(46).
-#    Time: 0 ps  Iteration: 0  Instance: /top/axi_bfm_master_wrapper/axi4_master_drv_bfm_h File: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_driver_bfm.sv
-# ** Warning: (vsim-3015) ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19): [PCDPC] - Port size (4) does not match connection size (2) for port 'arcache'. The port definition is at: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_driver_bfm.sv(50).
-#    Time: 0 ps  Iteration: 0  Instance: /top/axi_bfm_master_wrapper/axi4_master_drv_bfm_h File: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_driver_bfm.sv
-# ** Warning: (vsim-3015) ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(70): [PCDPC] - Port size (4) does not match connection size (2) for port 'awcache'. The port definition is at: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_monitor_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/axi_bfm_master_wrapper/axi4_master_mon_bfm_h File: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_monitor_bfm.sv
-# ** Warning: (vsim-3015) ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(70): [PCDPC] - Port size (8) does not match connection size (4) for port 'arlen'. The port definition is at: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_monitor_bfm.sv(42).
-#    Time: 0 ps  Iteration: 0  Instance: /top/axi_bfm_master_wrapper/axi4_master_mon_bfm_h File: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_monitor_bfm.sv
-# ** Warning: (vsim-3015) ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(70): [PCDPC] - Port size (4) does not match connection size (2) for port 'arcache'. The port definition is at: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_monitor_bfm.sv(46).
-#    Time: 0 ps  Iteration: 0  Instance: /top/axi_bfm_master_wrapper/axi4_master_mon_bfm_h File: ./axi_avip/hdl_top/master_agent_bfm/axi4_master_monitor_bfm.sv
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awaddr', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awlen', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awsize', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awburst', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awlock', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3015) ./axi_fifo_top.sv(280): [PCDPC] - Port size (4) does not match connection size (2) for port 'AWCACHE_a'. The port definition is at: ../rtl/axi_fifo_design.v(48).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awcache', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awprot', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/awvalid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/arid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/araddr', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/arlen', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/arsize', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/arburst', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/arlock', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3015) ./axi_fifo_top.sv(280): [PCDPC] - Port size (4) does not match connection size (2) for port 'ARCACHE_a'. The port definition is at: ../rtl/axi_fifo_design.v(57).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/arcache', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/arprot', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/arvalid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/wdata', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/wstrb', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/wlast', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/wvalid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/rready', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3839) ./axi_fifo_top.sv(280): Variable '/top/axi_vif/bready', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(19).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ../rtl/axi_fifo_design.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(131): [PCDPC] - Port size (128) does not match connection size (1) for port 'write_data'. The port definition is at: ../rtl/decoder.v(27).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/decoder.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(131): [PCDPC] - Port size (2) does not match connection size (4) for port 'awcache'. The port definition is at: ../rtl/decoder.v(40).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/decoder.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(131): [PCDPC] - Port size (10) does not match connection size (2) for port 'arlock'. The port definition is at: ../rtl/decoder.v(49).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/decoder.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(131): [PCDPC] - Port size (2) does not match connection size (4) for port 'arcache'. The port definition is at: ../rtl/decoder.v(50).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/decoder.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(131): [PCDPC] - Port size (4) does not match connection size (2) for port 'rresp'. The port definition is at: ../rtl/decoder.v(61).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/decoder.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(131): [PCDPC] - Port size (4) does not match connection size (2) for port 'bresp'. The port definition is at: ../rtl/decoder.v(66).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/decoder.v
-# ** Warning: (vsim-3015) ../rtl/decoder.v(372): [PCDPC] - Port size (2) does not match connection size (4) for port 'bresp'. The port definition is at: ../rtl/write_response_handler.v(8).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder/wresp File: ../rtl/write_response_handler.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (8) does not match connection size (4) for port 'AWID'. The port definition is at: ../rtl/AXI_Master.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (8) does not match connection size (4) for port 'AWLEN'. The port definition is at: ../rtl/AXI_Master.v(34).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (2) does not match connection size (4) for port 'AWCACHE'. The port definition is at: ../rtl/AXI_Master.v(40).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (64) does not match connection size (32) for port 'WDATA'. The port definition is at: ../rtl/AXI_Master.v(46).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (8) does not match connection size (4) for port 'ARLEN'. The port definition is at: ../rtl/AXI_Master.v(60).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (2) does not match connection size (4) for port 'ARCACHE'. The port definition is at: ../rtl/AXI_Master.v(65).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (64) does not match connection size (32) for port 'RDATA'. The port definition is at: ../rtl/AXI_Master.v(71).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (8) does not match connection size (4) for port 'awlen_d'. The port definition is at: ../rtl/AXI_Master.v(81).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (2) does not match connection size (4) for port 'awcache_d'. The port definition is at: ../rtl/AXI_Master.v(85).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (64) does not match connection size (32) for port 'wdata_d'. The port definition is at: ../rtl/AXI_Master.v(88).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (2) does not match connection size (4) for port 'arcache_d'. The port definition is at: ../rtl/AXI_Master.v(106).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (64) does not match connection size (32) for port 'rdata_d'. The port definition is at: ../rtl/AXI_Master.v(109).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/axi_fifo_design.v(175): [PCDPC] - Port size (8) does not match connection size (4) for port 'rid_d'. The port definition is at: ../rtl/AXI_Master.v(111).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/AXI_Master.v
-# ** Warning: (vsim-3015) ../rtl/AXI_Master.v(119): [PCDPC] - Port size (4) does not match connection size (8) for port 'AWID'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_MASTER_WRITE_CONTROL.v
-# ** Warning: (vsim-3015) ../rtl/AXI_Master.v(119): [PCDPC] - Port size (32) does not match connection size (64) for port 'WDATA'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(47).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_MASTER_WRITE_CONTROL.v
-# ** Warning: (vsim-3015) ../rtl/AXI_Master.v(119): [PCDPC] - Port size (4) does not match connection size (8) for port 'awlen_d'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(63).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_MASTER_WRITE_CONTROL.v
-# ** Warning: (vsim-3015) ../rtl/AXI_Master.v(119): [PCDPC] - Port size (32) does not match connection size (64) for port 'wdata_d'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(70).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_MASTER_WRITE_CONTROL.v
-# ** Warning: (vsim-3015) ../rtl/AXI_Master.v(174): [PCDPC] - Port size (4) does not match connection size (8) for port 'ARLEN'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_MASTER_READ_CONTROL.v
-# ** Warning: (vsim-3015) ../rtl/AXI_Master.v(174): [PCDPC] - Port size (32) does not match connection size (64) for port 'RDATA'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(42).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_MASTER_READ_CONTROL.v
-# ** Warning: (vsim-3015) ../rtl/AXI_Master.v(174): [PCDPC] - Port size (32) does not match connection size (64) for port 'rdata_d'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(62).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_MASTER_READ_CONTROL.v
-# ** Warning: (vsim-3015) ../rtl/AXI_Master.v(174): [PCDPC] - Port size (4) does not match connection size (8) for port 'rid_d'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(64).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_MASTER_READ_CONTROL.v
-# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (512) for port 'RDATA_a'. The port definition is at: ../rtl/axi_fifo_design.v(32).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awaddr', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'AWLEN_a'. The port definition is at: ../rtl/axi_fifo_design.v(44).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awlen', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awsize', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awburst', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awlock', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awcache', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awprot', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/awvalid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/arid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/araddr', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'ARLEN_a'. The port definition is at: ../rtl/axi_fifo_design.v(53).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/arlen', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/arsize', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/arburst', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/arlock', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/arcache', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/arprot', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/arvalid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (512) for port 'WDATA_a'. The port definition is at: ../rtl/axi_fifo_design.v(61).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/wdata', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (64) for port 'WSTRB_a'. The port definition is at: ../rtl/axi_fifo_design.v(62).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/wstrb', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/wlast', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/wvalid', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/rready', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3839) Variable '/top/axi_vif/bready', driven via a port connection, is multiply driven. See ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(18).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT File: ./axi_fifo_top.sv Line: 282
+# ** Warning: (vsim-3015) [PCDPC] - Port size (128) does not match connection size (1) for port 'write_data'. The port definition is at: ../rtl/decoder.v(27).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (4) for port 'awcache'. The port definition is at: ../rtl/decoder.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
+# ** Warning: (vsim-3015) [PCDPC] - Port size (10) does not match connection size (2) for port 'arlock'. The port definition is at: ../rtl/decoder.v(49).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (4) for port 'arcache'. The port definition is at: ../rtl/decoder.v(50).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (2) for port 'rresp'. The port definition is at: ../rtl/decoder.v(61).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (2) for port 'bresp'. The port definition is at: ../rtl/decoder.v(66).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (4) for port 'bresp'. The port definition is at: ../rtl/write_response_handler.v(8).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder/wresp File: ../rtl/decoder.v Line: 372
+# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'AWID'. The port definition is at: ../rtl/AXI_Master.v(32).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'AWLEN'. The port definition is at: ../rtl/AXI_Master.v(34).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (4) for port 'AWCACHE'. The port definition is at: ../rtl/AXI_Master.v(40).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (32) for port 'WDATA'. The port definition is at: ../rtl/AXI_Master.v(46).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'ARLEN'. The port definition is at: ../rtl/AXI_Master.v(60).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (4) for port 'ARCACHE'. The port definition is at: ../rtl/AXI_Master.v(65).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (32) for port 'RDATA'. The port definition is at: ../rtl/AXI_Master.v(71).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'awlen_d'. The port definition is at: ../rtl/AXI_Master.v(81).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (4) for port 'awcache_d'. The port definition is at: ../rtl/AXI_Master.v(85).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (32) for port 'wdata_d'. The port definition is at: ../rtl/AXI_Master.v(88).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (4) for port 'arcache_d'. The port definition is at: ../rtl/AXI_Master.v(106).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (32) for port 'rdata_d'. The port definition is at: ../rtl/AXI_Master.v(109).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'rid_d'. The port definition is at: ../rtl/AXI_Master.v(111).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'AWID'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(32).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_Master.v Line: 119
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (64) for port 'WDATA'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(47).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_Master.v Line: 119
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'awlen_d'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(63).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_Master.v Line: 119
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (64) for port 'wdata_d'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(70).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_Master.v Line: 119
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'ARLEN'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(32).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_Master.v Line: 174
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (64) for port 'RDATA'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(42).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_Master.v Line: 174
+# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (64) for port 'rdata_d'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(62).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_Master.v Line: 174
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'rid_d'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(64).
+#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_Master.v Line: 174
+# Loading C:/questasim64_10.7c/uvm-1.1d\win64\uvm_dpi.dll
 # log -r /*
 #  coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb
 #  run -all
@@ -208,96 +198,16 @@
 #       (Specify +UVM_NO_RELNOTES to turn off this notice)
 # 
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
-# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(216) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
 # UVM_INFO ./axi_avip/hdl_top/master_agent_bfm/axi4_master_driver_bfm.sv(87) @ 0: reporter [AXI4_MASTER_DRIVER_BFM] AXI4_MASTER_DRIVER_BFM
-# UVM_INFO ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(171) @ 0: reporter [axi4 master agent bfm] AXI4 MASTER AGENT BFM
-# UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(84) @ 0: reporter [axi4 slave driver bfm] AXI4 SLAVE DRIVER BFM
+# UVM_INFO ./axi_avip/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv(167) @ 0: reporter [axi4 master agent bfm] AXI4 MASTER AGENT BFM
+# UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(94) @ 0: reporter [axi4 slave driver bfm] AXI4 SLAVE DRIVER BFM
 # UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_monitor_bfm.sv(82) @ 0: reporter [axi4 slave monitor bfm] AXI4 SLAVE MONITOR BFM
-# UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_agent_bfm.sv(174) @ 0: reporter [axi4 slave agent bfm] AXI4 SLAVE AGENT BFM
+# UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_agent_bfm.sv(175) @ 0: reporter [axi4 slave agent bfm] AXI4 SLAVE AGENT BFM
 # UVM_INFO @ 0: reporter [RNTST] Running test axi_fifo_base_test...
 # ** Warning: (vsim-8522) The number of coverpoint bins is zero for the coverpoint 'W_CHANNEL' of covergroup instance '\/cpu_pkg::cpu_subscriber::act_cov '. All the user defined bins in the coverpoint are empty bins and hence it would not contribute towards the overall coverage result.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8522) The number of coverpoint bins is zero for the coverpoint 'R_CHANNEL' of covergroup instance '\/cpu_pkg::cpu_subscriber::pas_cov '. All the user defined bins in the coverpoint are empty bins and hence it would not contribute towards the overall coverage result.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(33): A higher value '15' is found in bin 'AWLEN_16' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_16' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(34): A higher value '31' is found in bin 'AWLEN_32' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_32' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(35): A higher value '63' is found in bin 'AWLEN_64' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_64' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(36): A higher value '127' is found in bin 'AWLEN_128' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_128' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(37): A higher value '255' is found in bin 'AWLEN_256' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_256' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(102): A higher value '15' is found in bin 'ARLEN_16' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_16' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(103): A higher value '31' is found in bin 'ARLEN_32' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_32' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(104): A higher value '63' is found in bin 'ARLEN_64' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_64' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(105): A higher value '127' is found in bin 'ARLEN_128' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_128' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/master/axi4_master_coverage.sv(106): A higher value '255' is found in bin 'ARLEN_256' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_256' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_master_pkg::axi4_master_coverage::axi4_master_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(33): A higher value '15' is found in bin 'AWLEN_16' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_16' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(34): A higher value '31' is found in bin 'AWLEN_32' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_32' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(35): A higher value '63' is found in bin 'AWLEN_64' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_64' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(36): A higher value '127' is found in bin 'AWLEN_128' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_128' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(37): A higher value '255' is found in bin 'AWLEN_256' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_256' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(102): A higher value '15' is found in bin 'ARLEN_16' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_16' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(103): A higher value '31' is found in bin 'ARLEN_32' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_32' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(104): A higher value '63' is found in bin 'ARLEN_64' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_64' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(105): A higher value '127' is found in bin 'ARLEN_128' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_128' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(106): A higher value '255' is found in bin 'ARLEN_256' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_256' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # [1;32m[INFO][0m [1;36m(ID=UVMTOP            )[0m [1;34m[time = 0][0m UVM testbench topology:
 # ------------------------------------------------------------------------------------------
@@ -333,99 +243,99 @@
 #           put_export                              uvm_put_imp                  -     @787 
 #         axi4_master_write_response_analysis_port  uvm_analysis_port            -     @725 
 #     axi_sagt                                      axi4_slave_agent             -     @520 
-#       axi4_slave_cov_h                            axi4_slave_coverage          -     @1588
-#         analysis_imp                              uvm_analysis_imp             -     @1595
-#       axi4_slave_drv_proxy_h                      axi4_slave_driver_proxy      -     @893 
-#         axi4_slave_read_addr_fifo_h               uvm_tlm_fifo #(T)            -     @1104
-#           get_ap                                  uvm_analysis_port            -     @1135
-#           get_peek_export                         uvm_get_peek_imp             -     @1119
-#           put_ap                                  uvm_analysis_port            -     @1127
-#           put_export                              uvm_put_imp                  -     @1111
-#         axi4_slave_read_data_in_fifo_h            uvm_tlm_fifo #(T)            -     @1143
-#           get_ap                                  uvm_analysis_port            -     @1174
-#           get_peek_export                         uvm_get_peek_imp             -     @1158
-#           put_ap                                  uvm_analysis_port            -     @1166
-#           put_export                              uvm_put_imp                  -     @1150
-#         axi4_slave_write_addr_fifo_h              uvm_tlm_fifo #(T)            -     @948 
-#           get_ap                                  uvm_analysis_port            -     @979 
-#           get_peek_export                         uvm_get_peek_imp             -     @963 
-#           put_ap                                  uvm_analysis_port            -     @971 
-#           put_export                              uvm_put_imp                  -     @955 
-#         axi4_slave_write_data_in_fifo_h           uvm_tlm_fifo #(T)            -     @987 
-#           get_ap                                  uvm_analysis_port            -     @1018
-#           get_peek_export                         uvm_get_peek_imp             -     @1002
-#           put_ap                                  uvm_analysis_port            -     @1010
-#           put_export                              uvm_put_imp                  -     @994 
-#         axi4_slave_write_data_out_fifo_h          uvm_tlm_fifo #(T)            -     @1065
-#           get_ap                                  uvm_analysis_port            -     @1096
-#           get_peek_export                         uvm_get_peek_imp             -     @1080
-#           put_ap                                  uvm_analysis_port            -     @1088
-#           put_export                              uvm_put_imp                  -     @1072
-#         axi4_slave_write_response_fifo_h          uvm_tlm_fifo #(T)            -     @1026
-#           get_ap                                  uvm_analysis_port            -     @1057
-#           get_peek_export                         uvm_get_peek_imp             -     @1041
-#           put_ap                                  uvm_analysis_port            -     @1049
-#           put_export                              uvm_put_imp                  -     @1033
-#         axi_read_rsp_port                         uvm_analysis_port            -     @940 
-#         axi_read_seq_item_port                    uvm_seq_item_pull_port       -     @924 
-#         axi_write_rsp_port                        uvm_analysis_port            -     @932 
-#         axi_write_seq_item_port                   uvm_seq_item_pull_port       -     @916 
-#         rsp_port                                  uvm_analysis_port            -     @908 
-#         seq_item_port                             uvm_seq_item_pull_port       -     @900 
-#       axi4_slave_mon_proxy_h                      axi4_slave_monitor_proxy     -     @1400
-#         axi4_slave_read_address_analysis_port     uvm_analysis_port            -     @1407
-#         axi4_slave_read_data_analysis_port        uvm_analysis_port            -     @1415
-#         axi4_slave_read_fifo_h                    uvm_tlm_analysis_fifo #(T)   -     @1541
-#           analysis_export                         uvm_analysis_imp             -     @1580
-#           get_ap                                  uvm_analysis_port            -     @1572
-#           get_peek_export                         uvm_get_peek_imp             -     @1556
-#           put_ap                                  uvm_analysis_port            -     @1564
-#           put_export                              uvm_put_imp                  -     @1548
-#         axi4_slave_write_address_analysis_port    uvm_analysis_port            -     @1423
-#         axi4_slave_write_address_fifo_h           uvm_tlm_analysis_fifo #(T)   -     @1447
-#           analysis_export                         uvm_analysis_imp             -     @1486
-#           get_ap                                  uvm_analysis_port            -     @1478
-#           get_peek_export                         uvm_get_peek_imp             -     @1462
-#           put_ap                                  uvm_analysis_port            -     @1470
-#           put_export                              uvm_put_imp                  -     @1454
-#         axi4_slave_write_data_analysis_port       uvm_analysis_port            -     @1431
-#         axi4_slave_write_data_fifo_h              uvm_tlm_analysis_fifo #(T)   -     @1494
-#           analysis_export                         uvm_analysis_imp             -     @1533
-#           get_ap                                  uvm_analysis_port            -     @1525
-#           get_peek_export                         uvm_get_peek_imp             -     @1509
-#           put_ap                                  uvm_analysis_port            -     @1517
-#           put_export                              uvm_put_imp                  -     @1501
-#         axi4_slave_write_response_analysis_port   uvm_analysis_port            -     @1439
-#       axi4_slave_read_seqr_h                      axi4_slave_read_sequencer    -     @1291
-#         rsp_export                                uvm_analysis_export          -     @1298
-#         seq_item_export                           uvm_seq_item_pull_imp        -     @1392
+#       axi4_slave_cov_h                            axi4_slave_coverage          -     @1586
+#         analysis_imp                              uvm_analysis_imp             -     @1593
+#       axi4_slave_drv_proxy_h                      axi4_slave_driver_proxy      -     @891 
+#         axi4_slave_read_addr_fifo_h               uvm_tlm_fifo #(T)            -     @1102
+#           get_ap                                  uvm_analysis_port            -     @1133
+#           get_peek_export                         uvm_get_peek_imp             -     @1117
+#           put_ap                                  uvm_analysis_port            -     @1125
+#           put_export                              uvm_put_imp                  -     @1109
+#         axi4_slave_read_data_in_fifo_h            uvm_tlm_fifo #(T)            -     @1141
+#           get_ap                                  uvm_analysis_port            -     @1172
+#           get_peek_export                         uvm_get_peek_imp             -     @1156
+#           put_ap                                  uvm_analysis_port            -     @1164
+#           put_export                              uvm_put_imp                  -     @1148
+#         axi4_slave_write_addr_fifo_h              uvm_tlm_fifo #(T)            -     @946 
+#           get_ap                                  uvm_analysis_port            -     @977 
+#           get_peek_export                         uvm_get_peek_imp             -     @961 
+#           put_ap                                  uvm_analysis_port            -     @969 
+#           put_export                              uvm_put_imp                  -     @953 
+#         axi4_slave_write_data_in_fifo_h           uvm_tlm_fifo #(T)            -     @985 
+#           get_ap                                  uvm_analysis_port            -     @1016
+#           get_peek_export                         uvm_get_peek_imp             -     @1000
+#           put_ap                                  uvm_analysis_port            -     @1008
+#           put_export                              uvm_put_imp                  -     @992 
+#         axi4_slave_write_data_out_fifo_h          uvm_tlm_fifo #(T)            -     @1063
+#           get_ap                                  uvm_analysis_port            -     @1094
+#           get_peek_export                         uvm_get_peek_imp             -     @1078
+#           put_ap                                  uvm_analysis_port            -     @1086
+#           put_export                              uvm_put_imp                  -     @1070
+#         axi4_slave_write_response_fifo_h          uvm_tlm_fifo #(T)            -     @1024
+#           get_ap                                  uvm_analysis_port            -     @1055
+#           get_peek_export                         uvm_get_peek_imp             -     @1039
+#           put_ap                                  uvm_analysis_port            -     @1047
+#           put_export                              uvm_put_imp                  -     @1031
+#         axi_read_rsp_port                         uvm_analysis_port            -     @938 
+#         axi_read_seq_item_port                    uvm_seq_item_pull_port       -     @922 
+#         axi_write_rsp_port                        uvm_analysis_port            -     @930 
+#         axi_write_seq_item_port                   uvm_seq_item_pull_port       -     @914 
+#         rsp_port                                  uvm_analysis_port            -     @906 
+#         seq_item_port                             uvm_seq_item_pull_port       -     @898 
+#       axi4_slave_mon_proxy_h                      axi4_slave_monitor_proxy     -     @1398
+#         axi4_slave_read_address_analysis_port     uvm_analysis_port            -     @1405
+#         axi4_slave_read_data_analysis_port        uvm_analysis_port            -     @1413
+#         axi4_slave_read_fifo_h                    uvm_tlm_analysis_fifo #(T)   -     @1539
+#           analysis_export                         uvm_analysis_imp             -     @1578
+#           get_ap                                  uvm_analysis_port            -     @1570
+#           get_peek_export                         uvm_get_peek_imp             -     @1554
+#           put_ap                                  uvm_analysis_port            -     @1562
+#           put_export                              uvm_put_imp                  -     @1546
+#         axi4_slave_write_address_analysis_port    uvm_analysis_port            -     @1421
+#         axi4_slave_write_address_fifo_h           uvm_tlm_analysis_fifo #(T)   -     @1445
+#           analysis_export                         uvm_analysis_imp             -     @1484
+#           get_ap                                  uvm_analysis_port            -     @1476
+#           get_peek_export                         uvm_get_peek_imp             -     @1460
+#           put_ap                                  uvm_analysis_port            -     @1468
+#           put_export                              uvm_put_imp                  -     @1452
+#         axi4_slave_write_data_analysis_port       uvm_analysis_port            -     @1429
+#         axi4_slave_write_data_fifo_h              uvm_tlm_analysis_fifo #(T)   -     @1492
+#           analysis_export                         uvm_analysis_imp             -     @1531
+#           get_ap                                  uvm_analysis_port            -     @1523
+#           get_peek_export                         uvm_get_peek_imp             -     @1507
+#           put_ap                                  uvm_analysis_port            -     @1515
+#           put_export                              uvm_put_imp                  -     @1499
+#         axi4_slave_write_response_analysis_port   uvm_analysis_port            -     @1437
+#       axi4_slave_read_seqr_h                      axi4_slave_read_sequencer    -     @1289
+#         rsp_export                                uvm_analysis_export          -     @1296
+#         seq_item_export                           uvm_seq_item_pull_imp        -     @1390
 #         arbitration_queue                         array                        0     -    
 #         lock_queue                                array                        0     -    
 #         num_last_reqs                             integral                     32    'd1  
 #         num_last_rsps                             integral                     32    'd1  
-#       axi4_slave_write_seqr_h                     axi4_slave_write_sequencer   -     @1182
-#         rsp_export                                uvm_analysis_export          -     @1189
-#         seq_item_export                           uvm_seq_item_pull_imp        -     @1283
+#       axi4_slave_write_seqr_h                     axi4_slave_write_sequencer   -     @1180
+#         rsp_export                                uvm_analysis_export          -     @1187
+#         seq_item_export                           uvm_seq_item_pull_imp        -     @1281
 #         arbitration_queue                         array                        0     -    
 #         lock_queue                                array                        0     -    
 #         num_last_reqs                             integral                     32    'd1  
 #         num_last_rsps                             integral                     32    'd1  
 #     cpu_active_agt                                cpu_active_agent             -     @527 
-#       a_mon_h                                     cpu_active_monitor           -     @1748
-#         a_mon_port                                uvm_analysis_port            -     @1755
-#       drv_h                                       cpu_driver                   -     @1616
-#         rsp_port                                  uvm_analysis_port            -     @1631
-#         seq_item_port                             uvm_seq_item_pull_port       -     @1623
-#       sqr_h                                       cpu_sequencer                -     @1639
-#         rsp_export                                uvm_analysis_export          -     @1646
-#         seq_item_export                           uvm_seq_item_pull_imp        -     @1740
+#       a_mon_h                                     cpu_active_monitor           -     @1746
+#         a_mon_port                                uvm_analysis_port            -     @1753
+#       drv_h                                       cpu_driver                   -     @1614
+#         rsp_port                                  uvm_analysis_port            -     @1629
+#         seq_item_port                             uvm_seq_item_pull_port       -     @1621
+#       sqr_h                                       cpu_sequencer                -     @1637
+#         rsp_export                                uvm_analysis_export          -     @1644
+#         seq_item_export                           uvm_seq_item_pull_imp        -     @1738
 #         arbitration_queue                         array                        0     -    
 #         lock_queue                                array                        0     -    
 #         num_last_reqs                             integral                     32    'd1  
 #         num_last_rsps                             integral                     32    'd1  
 #     cpu_passive_agt                               cpu_passive_agent            -     @534 
-#       cpu_pass_mon                                cpu_passive_monitor          -     @1771
-#         passive_mon_port                          uvm_analysis_port            -     @1778
+#       cpu_pass_mon                                cpu_passive_monitor          -     @1769
+#         passive_mon_port                          uvm_analysis_port            -     @1776
 #     cpu_sub                                       cpu_subscriber               -     @541 
 #       analysis_imp                                uvm_analysis_imp             -     @548 
 #       subscriber_passive_monitor_port             uvm_analysis_imp_pas_mon_cg  -     @564 
@@ -438,24 +348,636 @@
 #       num_last_rsps                               integral                     32    'd1  
 # ------------------------------------------------------------------------------------------
 # 
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 0][0m SLAVE_DRIVER_PROXY
-# [1;32m[INFO][0m [1;36m(ID=TEST_DONE         )[0m [1;34m[time = 0][0m 'run' phase is ready to proceed to the 'extract' phase
-# [1;32m[INFO][0m [1;36m(ID=axi4_master_coverage)[0m [1;34m[time = 0][0m AXI4 Master Agent Coverage = 0.00 %
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_coverage)[0m [1;34m[time = 0][0m AXI4 Slave Agent Coverage = 0.00 %
-# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 0][0m Input Coverage = 0.00 %
-# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 0][0m Output Coverage = 0.00 %
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 0][0m Slave driver proxy started - waiting for system reset
+# [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 5000][0m SYSTEM RESET ACTIVATED
+# [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 15000][0m SYSTEM RESET DE-ACTIVATED
+# [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 15000][0m INSIDE WRITE DATA CHANNEL
+# [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 15000][0m INSIDE WRITE_ADDRESS_PHASE
+# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 15000][0m CPU sequence body started
+# [1;32m[INFO][0m [1;36m(ID=SLAVE_DRIVER_WADDR_PHASE)[0m [1;34m[time = 85000][0m outside of awvalid
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 115000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 115000][0m WRITE_ADDRESS_CHANNEL::Received write address packet, awid = 0
+# [1;32m[INFO][0m [1;36m(ID=SLAVE_STATUS_CHECK)[0m [1;34m[time = 115000][0m AFTER_FORK_JOIN_ANY:: SLAVE_ADDRESS_CHANNEL_STATUS =
+#  FINISHED
+# [1;32m[INFO][0m [1;36m(ID=SLAVE_STATUS_CHECK)[0m [1;34m[time = 115000][0m AFTER_FORK_JOIN_ANY:: SLAVE_WDATA_CHANNEL_STATUS = 
+#  WAITING
+# [1;32m[INFO][0m [1;36m(ID=SLAVE_STATUS_CHECK)[0m [1;34m[time = 115000][0m AFTER_FORK_JOIN_ANY:: SLAVE_WRESP_CHANNEL_STATUS = 
+# WAITING
+# -----------------------------------------------------------
+# Name          Type           Size  Value                   
+# -----------------------------------------------------------
+# req           axi4_slave_tx  -     @1822                   
+#   tx_type     string         5     WRITE                   
+#   awid        string         6     AWID_0                  
+#   awaddr      integral       32    'h0                     
+#   awlen       integral       8     'd0                     
+#   awsize      string         12    WRITE_1_BYTE            
+#   awburst     string         11    WRITE_FIXED             
+#   awlock      string         19    WRITE_NORMAL_ACCESS     
+#   awcache     string         16    WRITE_BUFFERABLE        
+#   awprot      string         24    WRITE_NORMAL_SECURE_DATA
+#   awqos       integral       4     'h0                     
+#   wdata[0]    integral       512   'h0                     
+#   wdata[1]    integral       512   'h0                     
+#   wdata[2]    integral       512   'h0                     
+#   wdata[3]    integral       512   'h0                     
+#   wdata[4]    integral       512   'h0                     
+#   wdata[5]    integral       512   'h0                     
+#   wdata[6]    integral       512   'h0                     
+#   wdata[7]    integral       512   'h0                     
+#   wdata[8]    integral       512   'h0                     
+#   wdata[9]    integral       512   'h0                     
+#   wdata[10]   integral       512   'h0                     
+#   wdata[11]   integral       512   'h0                     
+#   wdata[12]   integral       512   'h0                     
+#   wdata[13]   integral       512   'h0                     
+#   wdata[14]   integral       512   'h0                     
+#   wdata[15]   integral       512   'h0                     
+#   wdata[16]   integral       512   'h0                     
+#   wdata[17]   integral       512   'h0                     
+#   wdata[18]   integral       512   'h0                     
+#   wdata[19]   integral       512   'h0                     
+#   wdata[20]   integral       512   'h0                     
+#   wdata[21]   integral       512   'h0                     
+#   wdata[22]   integral       512   'h0                     
+#   wdata[23]   integral       512   'h0                     
+#   wdata[24]   integral       512   'h0                     
+#   wdata[25]   integral       512   'h0                     
+#   wdata[26]   integral       512   'h0                     
+#   wdata[27]   integral       512   'h0                     
+#   wdata[28]   integral       512   'h0                     
+#   wdata[29]   integral       512   'h0                     
+#   wdata[30]   integral       512   'h0                     
+#   wdata[31]   integral       512   'h0                     
+#   wdata[32]   integral       512   'h0                     
+#   wdata[33]   integral       512   'h0                     
+#   wdata[34]   integral       512   'h0                     
+#   wdata[35]   integral       512   'h0                     
+#   wdata[36]   integral       512   'h0                     
+#   wdata[37]   integral       512   'h0                     
+#   wdata[38]   integral       512   'h0                     
+#   wdata[39]   integral       512   'h0                     
+#   wdata[40]   integral       512   'h0                     
+#   wdata[41]   integral       512   'h0                     
+#   wdata[42]   integral       512   'h0                     
+#   wdata[43]   integral       512   'h0                     
+#   wdata[44]   integral       512   'h0                     
+#   wdata[45]   integral       512   'h0                     
+#   wdata[46]   integral       512   'h0                     
+#   wdata[47]   integral       512   'h0                     
+#   wdata[48]   integral       512   'h0                     
+#   wdata[49]   integral       512   'h0                     
+#   wdata[50]   integral       512   'h0                     
+#   wdata[51]   integral       512   'h0                     
+#   wdata[52]   integral       512   'h0                     
+#   wdata[53]   integral       512   'h0                     
+#   wdata[54]   integral       512   'h0                     
+#   wdata[55]   integral       512   'h0                     
+#   wdata[56]   integral       512   'h0                     
+#   wdata[57]   integral       512   'h0                     
+#   wdata[58]   integral       512   'h0                     
+#   wdata[59]   integral       512   'h0                     
+#   wdata[60]   integral       512   'h0                     
+#   wdata[61]   integral       512   'h0                     
+#   wdata[62]   integral       512   'h0                     
+#   wdata[63]   integral       512   'h0                     
+#   wdata[64]   integral       512   'h0                     
+#   wdata[65]   integral       512   'h0                     
+#   wdata[66]   integral       512   'h0                     
+#   wdata[67]   integral       512   'h0                     
+#   wdata[68]   integral       512   'h0                     
+#   wdata[69]   integral       512   'h0                     
+#   wdata[70]   integral       512   'h0                     
+#   wdata[71]   integral       512   'h0                     
+#   wdata[72]   integral       512   'h0                     
+#   wdata[73]   integral       512   'h0                     
+#   wdata[74]   integral       512   'h0                     
+#   wdata[75]   integral       512   'h0                     
+#   wdata[76]   integral       512   'h0                     
+#   wdata[77]   integral       512   'h0                     
+#   wdata[78]   integral       512   'h0                     
+#   wdata[79]   integral       512   'h0                     
+#   wdata[80]   integral       512   'h0                     
+#   wdata[81]   integral       512   'h0                     
+#   wdata[82]   integral       512   'h0                     
+#   wdata[83]   integral       512   'h0                     
+#   wdata[84]   integral       512   'h0                     
+#   wdata[85]   integral       512   'h0                     
+#   wdata[86]   integral       512   'h0                     
+#   wdata[87]   integral       512   'h0                     
+#   wdata[88]   integral       512   'h0                     
+#   wdata[89]   integral       512   'h0                     
+#   wdata[90]   integral       512   'h0                     
+#   wdata[91]   integral       512   'h0                     
+#   wdata[92]   integral       512   'h0                     
+#   wdata[93]   integral       512   'h0                     
+#   wdata[94]   integral       512   'h0                     
+#   wdata[95]   integral       512   'h0                     
+#   wdata[96]   integral       512   'h0                     
+#   wdata[97]   integral       512   'h0                     
+#   wdata[98]   integral       512   'h0                     
+#   wdata[99]   integral       512   'h0                     
+#   wdata[100]  integral       512   'h0                     
+#   wdata[101]  integral       512   'h0                     
+#   wdata[102]  integral       512   'h0                     
+#   wdata[103]  integral       512   'h0                     
+#   wdata[104]  integral       512   'h0                     
+#   wdata[105]  integral       512   'h0                     
+#   wdata[106]  integral       512   'h0                     
+#   wdata[107]  integral       512   'h0                     
+#   wdata[108]  integral       512   'h0                     
+#   wdata[109]  integral       512   'h0                     
+#   wdata[110]  integral       512   'h0                     
+#   wdata[111]  integral       512   'h0                     
+#   wdata[112]  integral       512   'h0                     
+#   wdata[113]  integral       512   'h0                     
+#   wdata[114]  integral       512   'h0                     
+#   wdata[115]  integral       512   'h0                     
+#   wdata[116]  integral       512   'h0                     
+#   wdata[117]  integral       512   'h0                     
+#   wdata[118]  integral       512   'h0                     
+#   wdata[119]  integral       512   'h0                     
+#   wdata[120]  integral       512   'h0                     
+#   wdata[121]  integral       512   'h0                     
+#   wdata[122]  integral       512   'h0                     
+#   wdata[123]  integral       512   'h0                     
+#   wdata[124]  integral       512   'h0                     
+#   wdata[125]  integral       512   'h0                     
+#   wdata[126]  integral       512   'h0                     
+#   wdata[127]  integral       512   'h0                     
+#   wdata[128]  integral       512   'h0                     
+#   wdata[129]  integral       512   'h0                     
+#   wdata[130]  integral       512   'h0                     
+#   wdata[131]  integral       512   'h0                     
+#   wdata[132]  integral       512   'h0                     
+#   wdata[133]  integral       512   'h0                     
+#   wdata[134]  integral       512   'h0                     
+#   wdata[135]  integral       512   'h0                     
+#   wdata[136]  integral       512   'h0                     
+#   wdata[137]  integral       512   'h0                     
+#   wdata[138]  integral       512   'h0                     
+#   wdata[139]  integral       512   'h0                     
+#   wdata[140]  integral       512   'h0                     
+#   wdata[141]  integral       512   'h0                     
+#   wdata[142]  integral       512   'h0                     
+#   wdata[143]  integral       512   'h0                     
+#   wdata[144]  integral       512   'h0                     
+#   wdata[145]  integral       512   'h0                     
+#   wdata[146]  integral       512   'h0                     
+#   wdata[147]  integral       512   'h0                     
+#   wdata[148]  integral       512   'h0                     
+#   wdata[149]  integral       512   'h0                     
+#   wdata[150]  integral       512   'h0                     
+#   wdata[151]  integral       512   'h0                     
+#   wdata[152]  integral       512   'h0                     
+#   wdata[153]  integral       512   'h0                     
+#   wdata[154]  integral       512   'h0                     
+#   wdata[155]  integral       512   'h0                     
+#   wdata[156]  integral       512   'h0                     
+#   wdata[157]  integral       512   'h0                     
+#   wdata[158]  integral       512   'h0                     
+#   wdata[159]  integral       512   'h0                     
+#   wdata[160]  integral       512   'h0                     
+#   wdata[161]  integral       512   'h0                     
+#   wdata[162]  integral       512   'h0                     
+#   wdata[163]  integral       512   'h0                     
+#   wdata[164]  integral       512   'h0                     
+#   wdata[165]  integral       512   'h0                     
+#   wdata[166]  integral       512   'h0                     
+#   wdata[167]  integral       512   'h0                     
+#   wdata[168]  integral       512   'h0                     
+#   wdata[169]  integral       512   'h0                     
+#   wdata[170]  integral       512   'h0                     
+#   wdata[171]  integral       512   'h0                     
+#   wdata[172]  integral       512   'h0                     
+#   wdata[173]  integral       512   'h0                     
+#   wdata[174]  integral       512   'h0                     
+#   wdata[175]  integral       512   'h0                     
+#   wdata[176]  integral       512   'h0                     
+#   wdata[177]  integral       512   'h0                     
+#   wdata[178]  integral       512   'h0                     
+#   wdata[179]  integral       512   'h0                     
+#   wdata[180]  integral       512   'h0                     
+#   wdata[181]  integral       512   'h0                     
+#   wdata[182]  integral       512   'h0                     
+#   wdata[183]  integral       512   'h0                     
+#   wdata[184]  integral       512   'h0                     
+#   wdata[185]  integral       512   'h0                     
+#   wdata[186]  integral       512   'h0                     
+#   wdata[187]  integral       512   'h0                     
+#   wdata[188]  integral       512   'h0                     
+#   wdata[189]  integral       512   'h0                     
+#   wdata[190]  integral       512   'h0                     
+#   wdata[191]  integral       512   'h0                     
+#   wdata[192]  integral       512   'h0                     
+#   wdata[193]  integral       512   'h0                     
+#   wdata[194]  integral       512   'h0                     
+#   wdata[195]  integral       512   'h0                     
+#   wdata[196]  integral       512   'h0                     
+#   wdata[197]  integral       512   'h0                     
+#   wdata[198]  integral       512   'h0                     
+#   wdata[199]  integral       512   'h0                     
+#   wdata[200]  integral       512   'h0                     
+#   wdata[201]  integral       512   'h0                     
+#   wdata[202]  integral       512   'h0                     
+#   wdata[203]  integral       512   'h0                     
+#   wdata[204]  integral       512   'h0                     
+#   wdata[205]  integral       512   'h0                     
+#   wdata[206]  integral       512   'h0                     
+#   wdata[207]  integral       512   'h0                     
+#   wdata[208]  integral       512   'h0                     
+#   wdata[209]  integral       512   'h0                     
+#   wdata[210]  integral       512   'h0                     
+#   wdata[211]  integral       512   'h0                     
+#   wdata[212]  integral       512   'h0                     
+#   wdata[213]  integral       512   'h0                     
+#   wdata[214]  integral       512   'h0                     
+#   wdata[215]  integral       512   'h0                     
+#   wdata[216]  integral       512   'h0                     
+#   wdata[217]  integral       512   'h0                     
+#   wdata[218]  integral       512   'h0                     
+#   wdata[219]  integral       512   'h0                     
+#   wdata[220]  integral       512   'h0                     
+#   wdata[221]  integral       512   'h0                     
+#   wdata[222]  integral       512   'h0                     
+#   wdata[223]  integral       512   'h0                     
+#   wdata[224]  integral       512   'h0                     
+#   wdata[225]  integral       512   'h0                     
+#   wdata[226]  integral       512   'h0                     
+#   wdata[227]  integral       512   'h0                     
+#   wdata[228]  integral       512   'h0                     
+#   wdata[229]  integral       512   'h0                     
+#   wdata[230]  integral       512   'h0                     
+#   wdata[231]  integral       512   'h0                     
+#   wdata[232]  integral       512   'h0                     
+#   wdata[233]  integral       512   'h0                     
+#   wdata[234]  integral       512   'h0                     
+#   wdata[235]  integral       512   'h0                     
+#   wdata[236]  integral       512   'h0                     
+#   wdata[237]  integral       512   'h0                     
+#   wdata[238]  integral       512   'h0                     
+#   wdata[239]  integral       512   'h0                     
+#   wdata[240]  integral       512   'h0                     
+#   wdata[241]  integral       512   'h0                     
+#   wdata[242]  integral       512   'h0                     
+#   wdata[243]  integral       512   'h0                     
+#   wdata[244]  integral       512   'h0                     
+#   wdata[245]  integral       512   'h0                     
+#   wdata[246]  integral       512   'h0                     
+#   wdata[247]  integral       512   'h0                     
+#   wdata[248]  integral       512   'h0                     
+#   wdata[249]  integral       512   'h0                     
+#   wdata[250]  integral       512   'h0                     
+#   wdata[251]  integral       512   'h0                     
+#   wdata[252]  integral       512   'h0                     
+#   wdata[253]  integral       512   'h0                     
+#   wdata[254]  integral       512   'h0                     
+#   wdata[255]  integral       512   'h0                     
+#   wdata[256]  integral       512   'h0                     
+#   wstrb[0]    integral       64    'h0                     
+#   wstrb[1]    integral       64    'h0                     
+#   wstrb[2]    integral       64    'h0                     
+#   wstrb[3]    integral       64    'h0                     
+#   wstrb[4]    integral       64    'h0                     
+#   wstrb[5]    integral       64    'h0                     
+#   wstrb[6]    integral       64    'h0                     
+#   wstrb[7]    integral       64    'h0                     
+#   wstrb[8]    integral       64    'h0                     
+#   wstrb[9]    integral       64    'h0                     
+#   wstrb[10]   integral       64    'h0                     
+#   wstrb[11]   integral       64    'h0                     
+#   wstrb[12]   integral       64    'h0                     
+#   wstrb[13]   integral       64    'h0                     
+#   wstrb[14]   integral       64    'h0                     
+#   wstrb[15]   integral       64    'h0                     
+#   wstrb[16]   integral       64    'h0                     
+#   wstrb[17]   integral       64    'h0                     
+#   wstrb[18]   integral       64    'h0                     
+#   wstrb[19]   integral       64    'h0                     
+#   wstrb[20]   integral       64    'h0                     
+#   wstrb[21]   integral       64    'h0                     
+#   wstrb[22]   integral       64    'h0                     
+#   wstrb[23]   integral       64    'h0                     
+#   wstrb[24]   integral       64    'h0                     
+#   wstrb[25]   integral       64    'h0                     
+#   wstrb[26]   integral       64    'h0                     
+#   wstrb[27]   integral       64    'h0                     
+#   wstrb[28]   integral       64    'h0                     
+#   wstrb[29]   integral       64    'h0                     
+#   wstrb[30]   integral       64    'h0                     
+#   wstrb[31]   integral       64    'h0                     
+#   wstrb[32]   integral       64    'h0                     
+#   wstrb[33]   integral       64    'h0                     
+#   wstrb[34]   integral       64    'h0                     
+#   wstrb[35]   integral       64    'h0                     
+#   wstrb[36]   integral       64    'h0                     
+#   wstrb[37]   integral       64    'h0                     
+#   wstrb[38]   integral       64    'h0                     
+#   wstrb[39]   integral       64    'h0                     
+#   wstrb[40]   integral       64    'h0                     
+#   wstrb[41]   integral       64    'h0                     
+#   wstrb[42]   integral       64    'h0                     
+#   wstrb[43]   integral       64    'h0                     
+#   wstrb[44]   integral       64    'h0                     
+#   wstrb[45]   integral       64    'h0                     
+#   wstrb[46]   integral       64    'h0                     
+#   wstrb[47]   integral       64    'h0                     
+#   wstrb[48]   integral       64    'h0                     
+#   wstrb[49]   integral       64    'h0                     
+#   wstrb[50]   integral       64    'h0                     
+#   wstrb[51]   integral       64    'h0                     
+#   wstrb[52]   integral       64    'h0                     
+#   wstrb[53]   integral       64    'h0                     
+#   wstrb[54]   integral       64    'h0                     
+#   wstrb[55]   integral       64    'h0                     
+#   wstrb[56]   integral       64    'h0                     
+#   wstrb[57]   integral       64    'h0                     
+#   wstrb[58]   integral       64    'h0                     
+#   wstrb[59]   integral       64    'h0                     
+#   wstrb[60]   integral       64    'h0                     
+#   wstrb[61]   integral       64    'h0                     
+#   wstrb[62]   integral       64    'h0                     
+#   wstrb[63]   integral       64    'h0                     
+#   wstrb[64]   integral       64    'h0                     
+#   wstrb[65]   integral       64    'h0                     
+#   wstrb[66]   integral       64    'h0                     
+#   wstrb[67]   integral       64    'h0                     
+#   wstrb[68]   integral       64    'h0                     
+#   wstrb[69]   integral       64    'h0                     
+#   wstrb[70]   integral       64    'h0                     
+#   wstrb[71]   integral       64    'h0                     
+#   wstrb[72]   integral       64    'h0                     
+#   wstrb[73]   integral       64    'h0                     
+#   wstrb[74]   integral       64    'h0                     
+#   wstrb[75]   integral       64    'h0                     
+#   wstrb[76]   integral       64    'h0                     
+#   wstrb[77]   integral       64    'h0                     
+#   wstrb[78]   integral       64    'h0                     
+#   wstrb[79]   integral       64    'h0                     
+#   wstrb[80]   integral       64    'h0                     
+#   wstrb[81]   integral       64    'h0                     
+#   wstrb[82]   integral       64    'h0                     
+#   wstrb[83]   integral       64    'h0                     
+#   wstrb[84]   integral       64    'h0                     
+#   wstrb[85]   integral       64    'h0                     
+#   wstrb[86]   integral       64    'h0                     
+#   wstrb[87]   integral       64    'h0                     
+#   wstrb[88]   integral       64    'h0                     
+#   wstrb[89]   integral       64    'h0                     
+#   wstrb[90]   integral       64    'h0                     
+#   wstrb[91]   integral       64    'h0                     
+#   wstrb[92]   integral       64    'h0                     
+#   wstrb[93]   integral       64    'h0                     
+#   wstrb[94]   integral       64    'h0                     
+#   wstrb[95]   integral       64    'h0                     
+#   wstrb[96]   integral       64    'h0                     
+#   wstrb[97]   integral       64    'h0                     
+#   wstrb[98]   integral       64    'h0                     
+#   wstrb[99]   integral       64    'h0                     
+#   wstrb[100]  integral       64    'h0                     
+#   wstrb[101]  integral       64    'h0                     
+#   wstrb[102]  integral       64    'h0                     
+#   wstrb[103]  integral       64    'h0                     
+#   wstrb[104]  integral       64    'h0                     
+#   wstrb[105]  integral       64    'h0                     
+#   wstrb[106]  integral       64    'h0                     
+#   wstrb[107]  integral       64    'h0                     
+#   wstrb[108]  integral       64    'h0                     
+#   wstrb[109]  integral       64    'h0                     
+#   wstrb[110]  integral       64    'h0                     
+#   wstrb[111]  integral       64    'h0                     
+#   wstrb[112]  integral       64    'h0                     
+#   wstrb[113]  integral       64    'h0                     
+#   wstrb[114]  integral       64    'h0                     
+#   wstrb[115]  integral       64    'h0                     
+#   wstrb[116]  integral       64    'h0                     
+#   wstrb[117]  integral       64    'h0                     
+#   wstrb[118]  integral       64    'h0                     
+#   wstrb[119]  integral       64    'h0                     
+#   wstrb[120]  integral       64    'h0                     
+#   wstrb[121]  integral       64    'h0                     
+#   wstrb[122]  integral       64    'h0                     
+#   wstrb[123]  integral       64    'h0                     
+#   wstrb[124]  integral       64    'h0                     
+#   wstrb[125]  integral       64    'h0                     
+#   wstrb[126]  integral       64    'h0                     
+#   wstrb[127]  integral       64    'h0                     
+#   wstrb[128]  integral       64    'h0                     
+#   wstrb[129]  integral       64    'h0                     
+#   wstrb[130]  integral       64    'h0                     
+#   wstrb[131]  integral       64    'h0                     
+#   wstrb[132]  integral       64    'h0                     
+#   wstrb[133]  integral       64    'h0                     
+#   wstrb[134]  integral       64    'h0                     
+#   wstrb[135]  integral       64    'h0                     
+#   wstrb[136]  integral       64    'h0                     
+#   wstrb[137]  integral       64    'h0                     
+#   wstrb[138]  integral       64    'h0                     
+#   wstrb[139]  integral       64    'h0                     
+#   wstrb[140]  integral       64    'h0                     
+#   wstrb[141]  integral       64    'h0                     
+#   wstrb[142]  integral       64    'h0                     
+#   wstrb[143]  integral       64    'h0                     
+#   wstrb[144]  integral       64    'h0                     
+#   wstrb[145]  integral       64    'h0                     
+#   wstrb[146]  integral       64    'h0                     
+#   wstrb[147]  integral       64    'h0                     
+#   wstrb[148]  integral       64    'h0                     
+#   wstrb[149]  integral       64    'h0                     
+#   wstrb[150]  integral       64    'h0                     
+#   wstrb[151]  integral       64    'h0                     
+#   wstrb[152]  integral       64    'h0                     
+#   wstrb[153]  integral       64    'h0                     
+#   wstrb[154]  integral       64    'h0                     
+#   wstrb[155]  integral       64    'h0                     
+#   wstrb[156]  integral       64    'h0                     
+#   wstrb[157]  integral       64    'h0                     
+#   wstrb[158]  integral       64    'h0                     
+#   wstrb[159]  integral       64    'h0                     
+#   wstrb[160]  integral       64    'h0                     
+#   wstrb[161]  integral       64    'h0                     
+#   wstrb[162]  integral       64    'h0                     
+#   wstrb[163]  integral       64    'h0                     
+#   wstrb[164]  integral       64    'h0                     
+#   wstrb[165]  integral       64    'h0                     
+#   wstrb[166]  integral       64    'h0                     
+#   wstrb[167]  integral       64    'h0                     
+#   wstrb[168]  integral       64    'h0                     
+#   wstrb[169]  integral       64    'h0                     
+#   wstrb[170]  integral       64    'h0                     
+#   wstrb[171]  integral       64    'h0                     
+#   wstrb[172]  integral       64    'h0                     
+#   wstrb[173]  integral       64    'h0                     
+#   wstrb[174]  integral       64    'h0                     
+#   wstrb[175]  integral       64    'h0                     
+#   wstrb[176]  integral       64    'h0                     
+#   wstrb[177]  integral       64    'h0                     
+#   wstrb[178]  integral       64    'h0                     
+#   wstrb[179]  integral       64    'h0                     
+#   wstrb[180]  integral       64    'h0                     
+#   wstrb[181]  integral       64    'h0                     
+#   wstrb[182]  integral       64    'h0                     
+#   wstrb[183]  integral       64    'h0                     
+#   wstrb[184]  integral       64    'h0                     
+#   wstrb[185]  integral       64    'h0                     
+#   wstrb[186]  integral       64    'h0                     
+#   wstrb[187]  integral       64    'h0                     
+#   wstrb[188]  integral       64    'h0                     
+#   wstrb[189]  integral       64    'h0                     
+#   wstrb[190]  integral       64    'h0                     
+#   wstrb[191]  integral       64    'h0                     
+#   wstrb[192]  integral       64    'h0                     
+#   wstrb[193]  integral       64    'h0                     
+#   wstrb[194]  integral       64    'h0                     
+#   wstrb[195]  integral       64    'h0                     
+#   wstrb[196]  integral       64    'h0                     
+#   wstrb[197]  integral       64    'h0                     
+#   wstrb[198]  integral       64    'h0                     
+#   wstrb[199]  integral       64    'h0                     
+#   wstrb[200]  integral       64    'h0                     
+#   wstrb[201]  integral       64    'h0                     
+#   wstrb[202]  integral       64    'h0                     
+#   wstrb[203]  integral       64    'h0                     
+#   wstrb[204]  integral       64    'h0                     
+#   wstrb[205]  integral       64    'h0                     
+#   wstrb[206]  integral       64    'h0                     
+#   wstrb[207]  integral       64    'h0                     
+#   wstrb[208]  integral       64    'h0                     
+#   wstrb[209]  integral       64    'h0                     
+#   wstrb[210]  integral       64    'h0                     
+#   wstrb[211]  integral       64    'h0                     
+#   wstrb[212]  integral       64    'h0                     
+#   wstrb[213]  integral       64    'h0                     
+#   wstrb[214]  integral       64    'h0                     
+#   wstrb[215]  integral       64    'h0                     
+#   wstrb[216]  integral       64    'h0                     
+#   wstrb[217]  integral       64    'h0                     
+#   wstrb[218]  integral       64    'h0                     
+#   wstrb[219]  integral       64    'h0                     
+#   wstrb[220]  integral       64    'h0                     
+#   wstrb[221]  integral       64    'h0                     
+#   wstrb[222]  integral       64    'h0                     
+#   wstrb[223]  integral       64    'h0                     
+#   wstrb[224]  integral       64    'h0                     
+#   wstrb[225]  integral       64    'h0                     
+#   wstrb[226]  integral       64    'h0                     
+#   wstrb[227]  integral       64    'h0                     
+#   wstrb[228]  integral       64    'h0                     
+#   wstrb[229]  integral       64    'h0                     
+#   wstrb[230]  integral       64    'h0                     
+#   wstrb[231]  integral       64    'h0                     
+#   wstrb[232]  integral       64    'h0                     
+#   wstrb[233]  integral       64    'h0                     
+#   wstrb[234]  integral       64    'h0                     
+#   wstrb[235]  integral       64    'h0                     
+#   wstrb[236]  integral       64    'h0                     
+#   wstrb[237]  integral       64    'h0                     
+#   wstrb[238]  integral       64    'h0                     
+#   wstrb[239]  integral       64    'h0                     
+#   wstrb[240]  integral       64    'h0                     
+#   wstrb[241]  integral       64    'h0                     
+#   wstrb[242]  integral       64    'h0                     
+#   wstrb[243]  integral       64    'h0                     
+#   wstrb[244]  integral       64    'h0                     
+#   wstrb[245]  integral       64    'h0                     
+#   wstrb[246]  integral       64    'h0                     
+#   wstrb[247]  integral       64    'h0                     
+#   wstrb[248]  integral       64    'h0                     
+#   wstrb[249]  integral       64    'h0                     
+#   wstrb[250]  integral       64    'h0                     
+#   wstrb[251]  integral       64    'h0                     
+#   wstrb[252]  integral       64    'h0                     
+#   wstrb[253]  integral       64    'h0                     
+#   wstrb[254]  integral       64    'h0                     
+#   wstrb[255]  integral       64    'h0                     
+#   wstrb[256]  integral       64    'h0                     
+#   wlast       integral       1     'd0                     
+#   wuser       integral       4     'd0                     
+#   bid         string         5     BID_0                   
+#   bresp       string         10    WRITE_OKAY              
+#   buser       integral       4     13                      
+# -----------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 115000][0m Print completed
+# -------------------------------------------------------------------------------------------------------
+# Name                           Type               Size  Value                                          
+# -------------------------------------------------------------------------------------------------------
+# req                            cpu_sequence_item  -     @1818                                          
+#   rstn                         integral           1     'h0                                            
+#   wr_en                        integral           1     'h1                                            
+#   rd_en                        integral           1     'h0                                            
+#   wstrb                        integral           4     'h0                                            
+#   addr                         integral           32    'h9e8d6468                                     
+#   wdata                        integral           1024  'h0                                            
+#   ch                           channel_e          2     AW_CH                                          
+#   txn_id                       txn_id_e           4     ID_0                                           
+#   len                          len_e              4     BURST_LEN1                                     
+#   size                         size_e             3     BYTE4                                          
+#   burst                        burst_e            2     FIXED                                          
+#   lock                         lock_e             2     NORMAL_ACCESS                                  
+#   cache                        cache_e            2     BUFFERABLE                                     
+#   prot                         prot_e             3     NORMAL_SECURE_DATA                             
+#   rd_data                      integral           128   'h0                                            
+#   full                         integral           1     'h0                                            
+#   empty                        integral           1     'h0                                            
+#   begin_time                   time               64    15000                                          
+#   end_time                     time               64    115000                                         
+#   depth                        int                32    'd2                                            
+#   parent sequence (name)       string             9     write_seq                                      
+#   parent sequence (full name)  string             47    uvm_test_top.env.cpu_active_agt.sqr_h.write_seq
+#   sequencer                    string             37    uvm_test_top.env.cpu_active_agt.sqr_h          
+# -------------------------------------------------------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 115000][0m CPU sequence body started
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 125000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 135000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 215000][0m Print completed
+# --------------------------------------------------------
+# Name                           Type               Size  Value                                                                                                                                                                                                                                                             
+# --------------------------------------------------------
+# req                            cpu_sequence_item  -     @2060                                                                                                                                                                                                                                                             
+#   rstn                         integral           1     'h0                                                                                                                                                                                                                                                               
+#   wr_en                        integral           1     'h1                                                                                                                                                                                                                                                               
+#   rd_en                        integral           1     'h0                                                                                                                                                                                                                                                               
+#   wstrb                        integral           4     'hf                                                                                                                                                                                                                                                               
+#   addr                         integral           32    'h0                                                                                                                                                                                                                                                               
+#   wdata                        integral           1024  'hac5dee26138f1e412b837f6cfc5ba55a32909646a7dcf2d82548e8617f7194e840c7c757a72ab2834aa8d6c81faa745bc33510649b942a7fce0e8a9dcf3bed4ab8618577efc46d44451941352e6c3ca44a4d7b5271fe41227226c99892148f191953d60522c82ea6856a0d5de35ed30fc478551171b6680e0b962608d5acfdeb
+#   ch                           channel_e          2     W_CH                                                                                                                                                                                                                                                              
+#   txn_id                       txn_id_e           4     ID_0                                                                                                                                                                                                                                                              
+#   len                          len_e              4     BURST_LEN1                                                                                                                                                                                                                                                        
+#   size                         size_e             3     BYTE4                                                                                                                                                                                                                                                             
+#   burst                        burst_e            2     FIXED                                                                                                                                                                                                                                                             
+#   lock                         lock_e             2     NORMAL_ACCESS                                                                                                                                                                                                                                                     
+#   cache                        cache_e            2     BUFFERABLE                                                                                                                                                                                                                                                        
+#   prot                         prot_e             3     NORMAL_SECURE_DATA                                                                                                                                                                                                                                                
+#   rd_data                      integral           128   'h0                                                                                                                                                                                                                                                               
+#   full                         integral           1     'h0                                                                                                                                                                                                                                                               
+#   empty                        integral           1     'h0                                                                                                                                                                                                                                                               
+#   begin_time                   time               64    115000                                                                                                                                                                                                                                                            
+#   end_time                     time               64    215000                                                                                                                                                                                                                                                            
+#   depth                        int                32    'd2                                                                                                                                                                                                                                                               
+#   parent sequence (name)       string             9     write_seq                                                                                                                                                                                                                                                         
+#   parent sequence (full name)  string             47    uvm_test_top.env.cpu_active_agt.sqr_h.write_seq                                                                                                                                                                                                                   
+#   sequencer                    string             37    uvm_test_top.env.cpu_active_agt.sqr_h                                                                                                                                                                                                                             
+# --------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=TEST_DONE         )[0m [1;34m[time = 215000][0m 'run' phase is ready to proceed to the 'extract' phase
+# [1;32m[INFO][0m [1;36m(ID=axi4_master_coverage)[0m [1;34m[time = 215000][0m AXI4 Master Agent Coverage = 17.43 %
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_coverage)[0m [1;34m[time = 215000][0m AXI4 Slave Agent Coverage = 17.43 %
+# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 215000][0m Input Coverage = 62.50 %
+# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 215000][0m Output Coverage = 50.00 %
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :   15
+# UVM_INFO :   31
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
 # [AXI4_MASTER_DRIVER_BFM]     1
+# [AXI4_SLAVE_DRIVER_BFM]     4
 # [Questa UVM]     2
 # [RNTST]     1
+# [SLAVE_DRIVER_WADDR_PHASE]     1
+# [SLAVE_STATUS_CHECK]     3
 # [TEST_DONE]     1
 # [UVMTOP]     1
 # [axi4 master agent bfm]     1
@@ -464,10 +986,12 @@
 # [axi4 slave monitor bfm]     1
 # [axi4_master_coverage]     1
 # [axi4_slave_coverage]     1
-# [axi4_slave_driver_proxy]     1
+# [axi4_slave_driver_proxy]     2
+# [axi4_slave_seq_item_conv_class]     3
+# [cpu_base_sequence]     4
 # [cpu_subscriber]     2
-# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 0 ps  Iteration: 227  Instance: /top
+# ** Note: $finish    : C:/questasim64_10.7c/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 215 ns  Iteration: 68  Instance: /top
 # Saving coverage database on exit...
-# End time: 15:14:15 on Jul 20,2026, Elapsed time: 0:00:04
-# Errors: 0, Warnings: 102
+# End time: 09:43:34 on Jul 24,2026, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 59

@@ -138,7 +138,7 @@ class cpu_sequence_item extends uvm_sequence_item;
 
   extern function new(string name = "cpu_sequence_item");
   extern function void build_fifo_packet();
-
+  
   // NEVER RANDOMIZING THE RESERVED
   constraint c1{
     ch    != RESERVED_CH;
@@ -162,6 +162,7 @@ class cpu_sequence_item extends uvm_sequence_item;
     else if(ch == AR_CH)
     {
       wstrb == 4'b0000;
+      wdata == 1024'b0;
     }
   }
 
@@ -177,9 +178,9 @@ endfunction
 function void cpu_sequence_item::build_fifo_packet();
   if( ch == AW_CH || ch == W_CH )
   begin
-
-    fifo_word = new[9];
     fifo_word.delete();
+    fifo_word = new[9];
+//    fifo_word.delete();
    
     // First FIFO word
     fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , wdata[1023:960] };
@@ -199,12 +200,14 @@ function void cpu_sequence_item::build_fifo_packet();
 
   else if(ch == AR_CH)
   begin
-
-    fifo_word = new[1];
     fifo_word.delete();
+    fifo_word = new[1];
+  //  fifo_word.delete();
     fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , rdata , eop , 48'h0 };
   
   end
+  
 endfunction
+
 
 

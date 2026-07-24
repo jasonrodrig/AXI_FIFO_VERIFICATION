@@ -5,7 +5,7 @@
 class axi_slave_bk_base_seq extends uvm_sequence #(axi4_slave_tx);
   //factory registration
   `uvm_object_utils(axi_slave_bk_base_seq)
-  
+
   //-------------------------------------------------------
   // Externally defined Function
   //-------------------------------------------------------
@@ -30,9 +30,13 @@ endfunction : new
 //-----------------------------------------------------------------------------
 task axi_slave_bk_base_seq::body();
   req = axi4_slave_tx::type_id::create("req");
-  
-  req.transfer_type=BLOCKING_WRITE;
-  req.transfer_type=BLOCKING_READ;
+
+//  req.transfer_type=BLOCKING_WRITE;
+//  req.no_of_wait_states = 0;
+   start_item(req); 
+   if(!req.randomize)`uvm_fatal("axi4","Rand failed") 
+   finish_item(req);
+  req.print();
 
 endtask : body
 

@@ -53,7 +53,7 @@ function drawDiv() {
 		span.style.right = 0;
 		div.appendChild(span);
 	}
-	
+
 	document.body.insertBefore(div, document.body.firstChild);
 
 };

@@ -49,28 +49,35 @@ task cpu_base_sequence::send_transaction(
 );
 
   req = cpu_sequence_item::type_id::create("req");
-
+  
   start_item(req);
+   `uvm_info(get_type_name(),"CPU sequence body started",UVM_NONE)
+
   if(!req.randomize() with {
-    this.wr_en  == wr_en;
-    this.rd_en  == rd_en;
-    this.ch     == ch;
-    this.txn_id == txn_id;
-    this.len    == len;
-    this.size   == size;
-    this.burst  == burst;
-    this.lock   == lock;
-    this.cache  == cache;
-    this.prot   == prot;
-    this.wstrb  == wstrb;
+    this.wr_en  == local::wr_en;
+    this.rd_en  == local::rd_en;
+    this.ch     == local::ch;
+    this.txn_id == local::txn_id;
+    this.len    == local::len;
+    this.size   == local::size;
+    this.burst  == local::burst;
+    this.lock   == local::lock;
+    this.cache  == local::cache;
+    this.prot   == local::prot;
+    this.wstrb  == local::wstrb;
   }) `uvm_fatal(get_type_name(),"Randomization Failed")
 
   req.build_fifo_packet();
   finish_item(req);
+ `uvm_info(get_type_name(),"Print completed",UVM_NONE)
 
 endtask
 
 task cpu_base_sequence::body();
-  send_transaction();
+  send_transaction(1,0,AW_CH);
+  req.print();
+  send_transaction(1,0,W_CH,ID_0,BURST_LEN1,BYTE4,FIXED,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,15);
+  req.print();
+ // foreach(req.fifo_word[i]) $display("%h",req.fifo_word[i]);
 endtask
 

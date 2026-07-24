@@ -58,7 +58,7 @@ function createPageTop(scopes, prod, report) {
 	span.className = "strip";
 	span.innerHTML = g_oCONST.prod;
 	head.appendChild(span);
-	
+
 	var h3;
 	if (report == "du") {
 		head.innerHTML += " Design Unit Coverage";
@@ -177,7 +177,10 @@ function infoPage(scopes, du, lang, src, report) {
 	dl.appendChild(dt3);
 
 	dd3 = document.createElement("dd");
-	dd3.innerHTML = lang;
+	if (lang)
+		dd3.innerHTML = lang;
+	else
+		dd3.innerHTML = "Not Available";
 	dl.appendChild(dd3);
 
 	b4.innerHTML = "Source File:";
@@ -186,9 +189,13 @@ function infoPage(scopes, du, lang, src, report) {
 
 	dd4 = document.createElement("dd");
 	var a = document.createElement("a");
-	a.innerHTML = src.z;
-	if (src.lnk)
-		a.href = src.lnk;
+	if (src) {
+		a.innerHTML = src.z;
+		if (src.lnk)
+			a.href = src.lnk;
+	} else {
+		a.innerHTML = "Not Available";
+	}
 	dd4.appendChild(a);
 	dl.appendChild(dd4);
 	document.body.insertBefore(dl, document.getElementById("content"));
@@ -212,7 +219,7 @@ function processScopesDbFile(g_db_data) {
 	headID.appendChild(jsonScript);
 }
 
-function createSummaryPage (){	
+function createSummaryPage (){
 	var data = g_data[g_z_divId];
 	if (data) {
 		if (data.reporttype != 'du') {
@@ -224,7 +231,7 @@ function createSummaryPage (){
 					data.reporttype);
 		}
 	}
-	if (data.summaryTables) {	
+	if (data.summaryTables) {
 		if (data.summaryTables.headers) {
 			covSummaryByInstance(data.summaryTables, data.reporttype);
 		}
