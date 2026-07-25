@@ -4,7 +4,6 @@ class cpu_base_sequence extends uvm_sequence #(cpu_sequence_item);
   cpu_sequence_item req;
 
   extern function new(string name = "cpu_base_sequence");
-//  extern task reset();
   extern task send_transaction( 
     bit       wr_en  = 1'b1,
     bit       rd_en  = 1'b0,
@@ -25,14 +24,6 @@ endclass
 function cpu_base_sequence::new(string name = "cpu_base_sequence");
   super.new(name);
 endfunction
-
-/* task cpu_base_sequence::reset(); */
-/*   req = cpu_sequence_item::type_id::create("req"); */
-/*   start_item(req); */
-/*   if(!req.randomize() with {rstn == 0;}) */ 
-/*    `uvm_fatal(get_type_name(),"Randomization Failed") */
-/*   finish_item(req); */
-/* endtask */
 
 task cpu_base_sequence::send_transaction(
   bit       wr_en  = 1'b1,
@@ -74,10 +65,9 @@ task cpu_base_sequence::send_transaction(
 endtask
 
 task cpu_base_sequence::body();
-  send_transaction(1,0,AW_CH);
+  send_transaction(1,0,AW_CH,ID_0,BURST_LEN4,BYTE2,INCR);
   req.print();
-  send_transaction(1,0,W_CH,ID_0,BURST_LEN1,BYTE4,FIXED,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,15);
+  send_transaction(1,0,W_CH,ID_0,BURST_LEN4,BYTE2,INCR,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
   req.print();
- // foreach(req.fifo_word[i]) $display("%h",req.fifo_word[i]);
 endtask
 

@@ -11,11 +11,11 @@ class axi4_env_config extends uvm_object;
 
   // Variable: has_scoreboard
   // Enables the scoreboard. Default value is 1
-  bit has_scoreboard = 1;
+  bit has_scoreboard = 0;
 
   // Variable: has_virtual_sqr
   // Enables the virtual sequencer. Default value is 1
-  bit has_virtual_seqr = 1;
+  bit has_virtual_seqr = 0;
 
   // Variable: no_of_slaves
   // Number of slaves connected to the AXI interface

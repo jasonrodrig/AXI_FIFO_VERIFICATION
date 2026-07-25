@@ -13,17 +13,17 @@ interface axi4_if(input aclk, input aresetn);
   //Write_address_channel
   logic     [3: 0] awid     ;
   logic     [ADDRESS_WIDTH-1: 0] awaddr ;
-  logic     [7: 0] awlen     ;
+  logic     [3: 0] awlen     ;
   logic     [2: 0] awsize    ;
   logic     [1: 0] awburst   ;
   logic     [1: 0] awlock    ;
-  logic     [3: 0] awcache   ;
+  logic     [1: 0] awcache   ;
   logic     [2: 0] awprot    ;
   logic     [3:0] awqos      ;
   logic     [3:0] awregion   ;
-  logic           awuser     ;
-  logic            awvalid   ;
-  logic           awready   ;
+  logic     [3:0] awuser     ;
+  logic           awvalid    ;
+  logic           awready    ;
   //Write_data_channel
   logic     [DATA_WIDTH-1: 0] wdata     ;
   logic     [(DATA_WIDTH/8)-1: 0] wstrb ;
@@ -40,11 +40,11 @@ interface axi4_if(input aclk, input aresetn);
   //Read Address Channel
   logic     [3: 0] arid     ;
   logic     [ADDRESS_WIDTH-1:0] araddr  ;
-  logic     [7:0] arlen      ;
+  logic     [3:0] arlen      ;
   logic     [2:0] arsize     ;
   logic     [1:0] arburst    ;
   logic     [1:0] arlock     ;
-  logic     [3:0] arcache    ;
+  logic     [1:0] arcache    ;
   logic     [2:0] arprot     ;
   logic     [3:0] arqos      ;
   logic     [3:0] arregion   ;

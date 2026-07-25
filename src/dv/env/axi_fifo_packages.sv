@@ -7,7 +7,6 @@ package axi_fifo_pkg;
   // AXI VIP Packages
 
   import axi4_globals_pkg::*;
-  import axi4_master_pkg::*;
   import axi4_slave_pkg::*;
 
   // CPU Package

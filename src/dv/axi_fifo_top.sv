@@ -7,7 +7,6 @@
 
 import uvm_pkg::*;
 import axi4_globals_pkg::*; 
-import axi4_master_pkg::*;
 import axi4_slave_pkg::*;
 import axi_fifo_test_pkg::*;
 
@@ -44,227 +43,8 @@ module top;
   // fifo_interface declaration
   fifo_interface#( .FIFO_DATA_WIDTH(`FIFO_DATA_WIDTH) ) fifo_vif ( clk , rstn );
   
-  // Instantiate the VIP's Master and slave BFM Module
-  axi4_master_agent_bfm axi_bfm_master_wrapper( axi_vif );
-
+  // Instantiate the VIP's slave BFM Module
   axi4_slave_agent_bfm axi_bfm_slave_wrapper( axi_vif );
-  /* axi4_master_driver_bfm  axi_master_driver_bfm_h( */
-
-  /* .aclk(axi_vif.ACK), */
-  /* .aresetn(axi_vif.ARESETn), */
-  
-  /* .awid(axi_vif.awid), */
-  /* .awaddr(axi_vif.awaddr), */
-  /* .awlen(axi_vif.awlen), */
-  /* .awsize(axi_vif.awsize), */
-  /* .awbusrt(axi_vif.awburst), */
-  /* .awlock(axi_vif.awlock), */
-  /* .awcache(axi_vif.awcache), */
-  /* .awprot(axi_vif.awprot), */ 
-  /* .awqos('b0), */
-  /* .awregion('b0), */
-  /* .awuser('b0), */
-  /* .awvalid(axi_vif.awvalid), */
-  /* .awready(axi_vif.awready), */
-  
-  /* .wdata(axi_vif.wdata), */
-  /* .wstrb(axi_vif.wstrb), */
-  /* .wlast(axi_vif.wlast), */
-  /* .wuser('b0), */ 
-  /* .wvalid(axi_vif.wvalid), */
-  /* .wready(axi_vif.wready), */
-
-  /* .bid(axi_vif.bid), */
-  /* .bresp(axi_vif.bresp), */
-  /* .buser('b0), */
-  /* .bvalid(axi_vif.bvalid), */
-  /* .bready(axi_vif.bready), */ 
-
-  /* .arid(axi_vif.arid), */
-  /* .araddr(axi_vif.araddr), */
-  /* .arlen(axi_vif.arlen), */
-  /* .arsize(axi_vif.arsize), */
-  /* .arbusrt(axi_vif.arburst), */
-  /* .arlock(axi_vif.arlock), */
-  /* .arcache(axi_vif.arcache), */
-  /* .arprot(axi_vif.arprot), */ 
-  /* .arqos('b0), */
-  /* .arregion('b0), */
-  /* .aruser('b0), */
-  /* .arvalid(axi_vif.arvalid), */
-  /* .arready(axi_vif.arready), */
-  
-  /* .rid(axi_vif.rid), */
-  /* .rdata(axi_vif.rdata), */
-  /* .rresp(axi_vif.rresp), */
-  /* .rlast(axi_vif.rlast), */
-  /* .ruser('b0), */ 
-  /* .rvalid(axi_vif.rvalid), */
-  /* .rready(axi_vif.rready) */
-
-  /* ); */
-
-  /* axi4_master_monitor_bfm axi_master_monitor_bfm_h( */
-
-  /* .aclk(axi_vif.ACK), */
-  /* .aresetn(axi_vif.ARESETn), */
-  
-  /* .awid(axi_vif.awid), */
-  /* .awaddr(axi_vif.awaddr), */
-  /* .awlen(axi_vif.awlen), */
-  /* .awsize(axi_vif.awsize), */
-  /* .awbusrt(axi_vif.awburst), */
-  /* .awlock(axi_vif.awlock), */
-  /* .awcache(axi_vif.awcache), */
-  /* .awprot(axi_vif.awprot), */ 
-  /* .awqos('b0), */
-  /* .awregion('b0), */
-  /* .awuser('b0), */
-  /* .awvalid(axi_vif.awvalid), */
-  /* .awready(axi_vif.awready), */
-  
-  /* .wdata(axi_vif.wdata), */
-  /* .wstrb(axi_vif.wstrb), */
-  /* .wlast(axi_vif.wlast), */
-  /* .wuser('b0), */ 
-  /* .wvalid(axi_vif.wvalid), */
-  /* .wready(axi_vif.wready), */
-
-  /* .bid(axi_vif.bid), */
-  /* .bresp(axi_vif.bresp), */
-  /* .buser('b0), */
-  /* .bvalid(axi_vif.bvalid), */
-  /* .bready(axi_vif.bready), */ 
-
-  /* .arid(axi_vif.arid), */
-  /* .araddr(axi_vif.araddr), */
-  /* .arlen(axi_vif.arlen), */
-  /* .arsize(axi_vif.arsize), */
-  /* .arbusrt(axi_vif.arburst), */
-  /* .arlock(axi_vif.arlock), */
-  /* .arcache(axi_vif.arcache), */
-  /* .arprot(axi_vif.arprot), */ 
-  /* .arqos('b0), */
-  /* .arregion('b0), */
-  /* .aruser('b0), */
-  /* .arvalid(axi_vif.arvalid), */
-  /* .arready(axi_vif.arready), */
-  
-  /* .rid(axi_vif.rid), */
-  /* .rdata(axi_vif.rdata), */
-  /* .rresp(axi_vif.rresp), */
-  /* .rlast(axi_vif.rlast), */
-  /* .ruser('b0), */ 
-  /* .rvalid(axi_vif.rvalid), */
-  /* .rready(axi_vif.rready) */
-
-  /* ); */
-
-  /* axi4_slave_driver_bfm  axi_slave_driver_bfm_h( */
- 
-  /* .aclk(axi_vif.ACK), */
-  /* .aresetn(axi_vif.ARESETn), */
-  
-  /* .awid(axi_vif.awid), */
-  /* .awaddr(axi_vif.awaddr), */
-  /* .awlen(axi_vif.awlen), */
-  /* .awsize(axi_vif.awsize), */
-  /* .awbusrt(axi_vif.awburst), */
-  /* .awlock(axi_vif.awlock), */
-  /* .awcache(axi_vif.awcache), */
-  /* .awprot(axi_vif.awprot), */ 
-  /* .awvalid(axi_vif.awvalid), */
-  /* .awready(axi_vif.awready), */
-  
-  /* .wdata(axi_vif.wdata), */
-  /* .wstrb(axi_vif.wstrb), */
-  /* .wlast(axi_vif.wlast), */
-  /* .wuser('b0), */
-  /* .wvalid(axi_vif.wvalid), */
-  /* .wready(axi_vif.wready), */
-
-  /* .bid(axi_vif.bid), */
-  /* .bresp(axi_vif.bresp), */
-  /* .buser('b0), */
-  /* .bvalid(axi_vif.bvalid), */
-  /* .bready(axi_vif.bready), */ 
-
-  /* .arid(axi_vif.arid), */
-  /* .araddr(axi_vif.araddr), */
-  /* .arlen(axi_vif.arlen), */
-  /* .arsize(axi_vif.arsize), */
-  /* .arbusrt(axi_vif.arburst), */
-  /* .arlock(axi_vif.arlock), */
-  /* .arcache(axi_vif.arcache), */
-  /* .arprot(axi_vif.arprot), */ 
-  /* .arqos('b0), */
-  /* .arregion('b0), */
-  /* .aruser('b0), */
-  /* .arvalid(axi_vif.arvalid), */
-  /* .arready(axi_vif.arready), */
-  
-  /* .rid(axi_vif.rid), */
-  /* .rdata(axi_vif.rdata), */
-  /* .rresp(axi_vif.rresp), */
-  /* .rlast(axi_vif.rlast), */
-  /* .ruser('b0), */ 
-  /* .rvalid(axi_vif.rvalid), */
-  /* .rready(axi_vif.rready) */
-
-  /* ); */
-  
-  /* axi4_slave_monitor_bfm axi_slave_monitor_bfm_h( */
-
-  /* .aclk(axi_vif.ACK), */
-  /* .aresetn(axi_vif.ARESETn), */
-  
-  /* .awid(axi_vif.awid), */
-  /* .awaddr(axi_vif.awaddr), */
-  /* .awlen(axi_vif.awlen), */
-  /* .awsize(axi_vif.awsize), */
-  /* .awbusrt(axi_vif.awburst), */
-  /* .awlock(axi_vif.awlock), */
-  /* .awcache(axi_vif.awcache), */
-  /* .awprot(axi_vif.awprot), */ 
-  /* .awvalid(axi_vif.awvalid), */
-  /* .awready(axi_vif.awready), */
-  
-  /* .wdata(axi_vif.wdata), */
-  /* .wstrb(axi_vif.wstrb), */
-  /* .wlast(axi_vif.wlast), */
-  /* .wuser('b0), */ 
-  /* .wvalid(axi_vif.wvalid), */
-  /* .wready(axi_vif.wready), */
-
-  /* .bid(axi_vif.bid), */
-  /* .bresp(axi_vif.bresp), */
-  /* .buser('b0), */
-  /* .bvalid(axi_vif.bvalid), */
-  /* .bready(axi_vif.bready), */ 
-
-  /* .arid(axi_vif.arid), */
-  /* .araddr(axi_vif.araddr), */
-  /* .arlen(axi_vif.arlen), */
-  /* .arsize(axi_vif.arsize), */
-  /* .arbusrt(axi_vif.arburst), */
-  /* .arlock(axi_vif.arlock), */
-  /* .arcache(axi_vif.arcache), */
-  /* .arprot(axi_vif.arprot), */ 
-  /* .arqos('b0), */
-  /* .arregion('b0), */
-  /* .aruser('b0), */
-  /* .arvalid(axi_vif.arvalid), */
-  /* .arready(axi_vif.arready), */
-  
-  /* .rid(axi_vif.rid), */
-  /* .rdata(axi_vif.rdata), */
-  /* .rresp(axi_vif.rresp), */
-  /* .rlast(axi_vif.rlast), */
-  /* .ruser('b0), */ 
-  /* .rvalid(axi_vif.rvalid), */
-  /* .rready(axi_vif.rready) */
-
-  /* ); */
 
   // dut instance 
   Top_Module_AXI4#(
@@ -446,23 +226,10 @@ module top;
 
   );
 */
+
   initial begin 
     uvm_config_db#(virtual fifo_interface)::set(null,"*","fifo_vif",fifo_vif);
-
-    uvm_config_db#(virtual axi4_if)::set(null,"*","axi4_if",axi_vif);
-
-    /* uvm_config_db#(virtual axi4_slave_driver_bfm)::set( */
-    /* null,"*", "axi_slave_driver_bfm_0", axi_slave_drv_bfm_h); */ 
-    
-    /* uvm_config_db#(virtual axi4_slave_monitor_bfm)::set( */
-    /* null,"*", "axi_slave_monitor_bfm_0", axi_slave_mon_bfm_h); */
-    
-    /* uvm_config_db#(virtual axi4_master_driver_bfm)::set( */
-    /* null,"*", "axi_master_driver_bfm_0", axi_master_drv_bfm_h);*/ 
-    /* uvm_config_db#(virtual axi4_master_monitor_bfm)::set( */
-    /* null,"*", "axi_master_monitor_bfm_0", axi_master_mon_bfm_h);
-     * */
-    
+    uvm_config_db#(virtual axi4_if)::set(null,"*","axi4_if",axi_vif);   
     $dumpfile("wave.vcd");
     $dumpvars;
   end

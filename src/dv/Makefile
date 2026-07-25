@@ -15,9 +15,7 @@ all: clean compile compile_log_err sim simulate_log_err
 #===============================================================================
 AXI_VIP_DIR = ./axi_avip
 RTL_DIR     = ../rtl
-
-VLOG = vlog:WQ
-
+VLOG = vlog
 VSIM = vsim
 COMPILE_LOG = compile.log
 
@@ -64,31 +62,24 @@ compile:
 	echo ""
 	
 	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/globals/axi4_globals_pkg.sv >>& $(COMPILE_LOG)
-	$(CHECK_VLOG)
-	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hvl_top/master/axi4_master_pkg.sv >>& $(COMPILE_LOG)
-	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hvl_top/slave/axi4_slave_pkg.sv >>& $(COMPILE_LOG) 
+	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hvl_top/slave/axi4_slave_pkg.sv >>& $(COMPILE_LOG)
 	
 	echo "------------------------------------------------------------"
 	echo "Compiling AXI BFMs"
 	echo "------------------------------------------------------------"
 	echo ""
 	
-	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/master_agent_bfm/axi4_master_agent_bfm.sv >>& $(COMPILE_LOG)
-	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/master_agent_bfm/axi4_master_driver_bfm.sv >>& $(COMPILE_LOG) 
-	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/master_agent_bfm/axi4_master_monitor_bfm.sv >>& $(COMPILE_LOG) 
-	
 	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/slave_agent_bfm/axi4_slave_agent_bfm.sv >>& $(COMPILE_LOG) 
 	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv >>& $(COMPILE_LOG)
-	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/slave_agent_bfm/axi4_slave_monitor_bfm.sv >>& $(COMPILE_LOG) 
-	
-	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/axi4_interface/axi4_if.sv >>& $(COMPILE_LOG) 
+	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/slave_agent_bfm/axi4_slave_monitor_bfm.sv >>& $(COMPILE_LOG)
+	$(VLOG) -work work $(INC_DIR) $(AXI_VIP_DIR)/hdl_top/axi4_interface/axi4_if.sv >>& $(COMPILE_LOG)  
 	
 	echo "------------------------------------------------------------"
 	echo "Compiling CPU Packages"
 	echo "------------------------------------------------------------"
 	echo ""
 	
-	$(VLOG) -work work $(INC_DIR) ./cpu/cpu_sequence_item/cpu_sequence_item_packages.sv >>& $(COMPILE_LOG) 
+	$(VLOG) -work work $(INC_DIR) ./cpu/cpu_sequence_item/cpu_sequence_item_packages.sv >>& $(COMPILE_LOG)
 	$(VLOG) -work work $(INC_DIR) ./cpu/cpu_active_agent/cpu_active_packages.sv >>& $(COMPILE_LOG) 
 	$(VLOG) -work work $(INC_DIR) ./cpu/cpu_passive_agent/cpu_passive_packages.sv >>& $(COMPILE_LOG) 
 	$(VLOG) -work work $(INC_DIR) ./cpu/cpu_packages.sv >>& $(COMPILE_LOG)
@@ -98,7 +89,7 @@ compile:
 	echo "------------------------------------------------------------"
 	echo ""
 	
-	$(VLOG) -work work $(INC_DIR) ./env/axi_fifo_packages.sv >>& $(COMPILE_LOG) 	
+	$(VLOG) -work work $(INC_DIR) ./env/axi_fifo_packages.sv >>& $(COMPILE_LOG)	
 	
 	echo "------------------------------------------------------------"
 	echo "Compiling Sequences"
@@ -114,7 +105,7 @@ compile:
 	echo "------------------------------------------------------------"
 	echo ""
 	
-	$(VLOG) -work work $(INC_DIR) ./test/axi_fifo_test_packages.sv >>& $(COMPILE_LOG) 
+	$(VLOG) -work work $(INC_DIR) .\test\axi_fifo_test_packages.sv >>& $(COMPILE_LOG) 
 	
 	echo "------------------------------------------------------------"
 	echo "Compiling Interface"
