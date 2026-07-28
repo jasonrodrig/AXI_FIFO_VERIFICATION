@@ -1,14 +1,11 @@
 # vsim -c -voptargs="+acc" -assertdebug -sva -coverage -l simulation.log -do "log -r /*; coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb; run -all; exit" -wlf waveform.wlf -L work "+UVM_TESTNAME=axi_fifo_base_test" work.top 
-# Start time: 16:21:23 on Jul 25,2026
-# ** Note: (vsim-3812) Design is being optimized...
+# Start time: 12:48:30 on Jul 28,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # ** Note: (vopt-143) Recognized 1 FSM in module "AXI_MASTER_WRITE_CONTROL(fast)".
-# ** Note: (vopt-143) Recognized 1 FSM in module "my_decoder(fast)".
-# ** Note: (vopt-143) Recognized 1 FSM in module "AXI_MASTER_READ_Control(fast)".
-# ** Note: (vopt-143) Recognized 1 FSM in module "write_response_handler(fast)".
-# //  Questa Sim-64
-# //  Version 10.7c win64 Aug 18 2018
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
 # //
-# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  Copyright 1991-2017 Mentor Graphics Corporation
 # //  All Rights Reserved.
 # //
 # //  QuestaSim and its associated documentation contain trade
@@ -55,51 +52,7 @@
 # Loading work.AXI_MASTER_READ_Control(fast)
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.axi4_if(fast)
-# ** Warning: (vsim-3015) [PCDPC] - Port size (128) does not match connection size (1) for port 'write_data'. The port definition is at: ../rtl/decoder.v(27).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
-# ** Warning: (vsim-3015) [PCDPC] - Port size (10) does not match connection size (2) for port 'arlock'. The port definition is at: ../rtl/decoder.v(49).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (2) for port 'rresp'. The port definition is at: ../rtl/decoder.v(61).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (2) for port 'bresp'. The port definition is at: ../rtl/decoder.v(66).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder File: ../rtl/axi_fifo_design.v Line: 131
-# ** Warning: (vsim-3015) [PCDPC] - Port size (2) does not match connection size (4) for port 'bresp'. The port definition is at: ../rtl/write_response_handler.v(8).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/decoder/wresp File: ../rtl/decoder.v Line: 372
-# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'AWID'. The port definition is at: ../rtl/AXI_Master.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'AWLEN'. The port definition is at: ../rtl/AXI_Master.v(34).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (32) for port 'WDATA'. The port definition is at: ../rtl/AXI_Master.v(46).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'ARLEN'. The port definition is at: ../rtl/AXI_Master.v(60).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (32) for port 'RDATA'. The port definition is at: ../rtl/AXI_Master.v(71).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'awlen_d'. The port definition is at: ../rtl/AXI_Master.v(81).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (32) for port 'wdata_d'. The port definition is at: ../rtl/AXI_Master.v(88).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (64) does not match connection size (32) for port 'rdata_d'. The port definition is at: ../rtl/AXI_Master.v(109).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'rid_d'. The port definition is at: ../rtl/AXI_Master.v(111).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi File: ../rtl/axi_fifo_design.v Line: 175
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'AWID'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_Master.v Line: 119
-# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (64) for port 'WDATA'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(47).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_Master.v Line: 119
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'awlen_d'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(63).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_Master.v Line: 119
-# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (64) for port 'wdata_d'. The port definition is at: ../rtl/AXI_MASTER_WRITE_CONTROL.v(70).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_WRITE_CONTROL File: ../rtl/AXI_Master.v Line: 119
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'ARLEN'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(32).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_Master.v Line: 174
-# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (64) for port 'RDATA'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(42).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_Master.v Line: 174
-# ** Warning: (vsim-3015) [PCDPC] - Port size (32) does not match connection size (64) for port 'rdata_d'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(62).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_Master.v Line: 174
-# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (8) for port 'rid_d'. The port definition is at: ../rtl/AXI_MASTER_READ_CONTROL.v(64).
-#    Time: 0 ps  Iteration: 0  Instance: /top/DUT/DUT_axi/AXI_READ_CONTROL File: ../rtl/AXI_Master.v Line: 174
-# Loading C:/questasim64_10.7c/uvm-1.1d\win64\uvm_dpi.dll
+# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
 # log -r /*
 #  coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb
 #  run -all
@@ -124,7 +77,7 @@
 #       (Specify +UVM_NO_RELNOTES to turn off this notice)
 # 
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
-# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(216) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
 # UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(94) @ 0: reporter [axi4 slave driver bfm] AXI4 SLAVE DRIVER BFM
 # UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_monitor_bfm.sv(82) @ 0: reporter [axi4 slave monitor bfm] AXI4 SLAVE MONITOR BFM
 # UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_agent_bfm.sv(175) @ 0: reporter [axi4 slave agent bfm] AXI4 SLAVE AGENT BFM
@@ -133,58 +86,58 @@
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8522) The number of coverpoint bins is zero for the coverpoint 'R_CHANNEL' of covergroup instance '\/cpu_pkg::cpu_subscriber::pas_cov '. All the user defined bins in the coverpoint are empty bins and hence it would not contribute towards the overall coverage result.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '31' is found in bin 'AWLEN_32' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 34
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(34): A higher value '31' is found in bin 'AWLEN_32' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_32' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '63' is found in bin 'AWLEN_64' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 35
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(35): A higher value '63' is found in bin 'AWLEN_64' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_64' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '127' is found in bin 'AWLEN_128' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 36
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(36): A higher value '127' is found in bin 'AWLEN_128' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_128' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '255' is found in bin 'AWLEN_256' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 37
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(37): A higher value '255' is found in bin 'AWLEN_256' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_256' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '31' is found in bin 'ARLEN_32' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 85
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(85): A higher value '31' is found in bin 'ARLEN_32' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_32' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '63' is found in bin 'ARLEN_64' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 86
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(86): A higher value '63' is found in bin 'ARLEN_64' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_64' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '127' is found in bin 'ARLEN_128' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 87
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(87): A higher value '127' is found in bin 'ARLEN_128' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_128' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '255' is found in bin 'ARLEN_256' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 88
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(88): A higher value '255' is found in bin 'ARLEN_256' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_256' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '31' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 141
-# ** Warning: (vsim-8474) A higher value '63' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 141
-# ** Warning: (vsim-8474) A higher value '127' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 141
-# ** Warning: (vsim-8474) A higher value '255' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 141
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(141): A higher value '31' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(141): A higher value '63' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(141): A higher value '127' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(141): A higher value '255' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8559) After removing the invalid values, the intersect values list associated with bin 'ignr' in Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8560) On evaluating the select expression of Cross bin 'AWLENGTH_CP_X_AWSIZE_X_AWBURST.ignr' in Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ', the bin is found to be empty since no cross products are selected.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) A higher value '31' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 144
-# ** Warning: (vsim-8474) A higher value '63' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 144
-# ** Warning: (vsim-8474) A higher value '127' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 144
-# ** Warning: (vsim-8474) A higher value '255' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f63bcdb File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 144
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(144): A higher value '31' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(144): A higher value '63' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(144): A higher value '127' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(144): A higher value '255' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8559) After removing the invalid values, the intersect values list associated with bin 'ignr' in Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8560) On evaluating the select expression of Cross bin 'ARLENGTH_CP_X_ARSIZE_X_ARBURST.ignr' in Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ', the bin is found to be empty since no cross products are selected.
@@ -491,8 +444,8 @@
 # [axi4_slave_seq_item_conv_class]    10
 # [cpu_base_sequence]     4
 # [cpu_subscriber]     2
-# ** Note: $finish    : C:/questasim64_10.7c/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 255 ns  Iteration: 68  Instance: /top
 # Saving coverage database on exit...
-# End time: 16:21:28 on Jul 25,2026, Elapsed time: 0:00:05
-# Errors: 0, Warnings: 52
+# End time: 12:48:33 on Jul 28,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 30

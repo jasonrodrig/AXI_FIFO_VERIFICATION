@@ -106,7 +106,7 @@ module Top_Module_AXI4#(
   wire                    rlast;        
   wire  [rsp_wid-1:0]     bresp;
   wire  [id_wid-1:0]      bid;
-  wire                    write_data;
+  wire  [127:0]           write_data;
   wire                    wvalid_d;
 
   // INSTANTIATION OF WRITE FIFO 
@@ -170,7 +170,7 @@ module Top_Module_AXI4#(
   );
 
   // INSTANTIATION OF AXI_MASTER
-  AXI_Master      #(.addr_width(32), .data_width(64))
+  AXI_Master      #(.addr_width(32), .data_width(32))
 
   DUT_axi (
 

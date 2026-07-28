@@ -46,7 +46,7 @@ module my_decoder # (
     output reg [len_wid-1:0]    arlen,
     output reg [siz_wid-1:0]    arsize,
 
-    output reg [loc_wid-11:0]   arlock,
+    output reg [loc_wid-1:0]   arlock,
     output reg [cach_wid-1:0]   arcache,
     output reg [prot_wid-1:0]   arprot,
 
@@ -58,12 +58,12 @@ module my_decoder # (
     //read  data and response signals from AXI4 Master
     input [id_wid-1:0]          rid,
     input [data_wid-1:0]        rdata,
-    input [3:0]                 rresp,
+    input [1:0]                 rresp,
     input                       rlast,
     input                       rd_rsp_en,
 
     //write response signals from AXI4 master
-    input [3:0]                 bresp,
+    input [1:0]                 bresp,
     input [id_wid-1:0]          bid,
     input                       wr_rsp_en
 

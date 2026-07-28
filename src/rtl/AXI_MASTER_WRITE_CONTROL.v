@@ -31,7 +31,7 @@ module AXI_MASTER_WRITE_CONTROL #(parameter  addr_width=32,
     /////////////AXI Write Address signals
     output  [3  : 0]                AWID,           
     output  [addr_width-1 : 0]            AWADDR, 
-    output  [7  : 0]                AWLEN,
+    output  [3  : 0]                AWLEN,
     output  [2  : 0]                AWSIZE,
     output  [1  : 0]                AWBURST,
     output                      AWVALID,

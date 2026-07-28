@@ -50,7 +50,7 @@ function buildExprTables() {
 	urlArgsObj = new UrlParserClass();
 	var divId = urlArgsObj.getScopeId();
 	var filenum = urlArgsObj.getFileNum();
-
+	
 	g_e_divId = "e" + divId;
 	testHitDataScopeId = divId;
 	var headID = document.getElementsByTagName("head")[0];
@@ -67,7 +67,7 @@ function buildCondTables() {
 	urlArgsObj = new UrlParserClass();
 	var divId = urlArgsObj.getScopeId();
 	var filenum = urlArgsObj.getFileNum();
-
+	
 	g_c_divId = "c" + divId;
 	var headID = document.getElementsByTagName("head")[0];
 	var jsonScript = document.createElement('script');
@@ -78,7 +78,7 @@ function buildCondTables() {
 }
 
 function processData(g_data, g_ce_divId) {
-	var divObj = document.getElementById("content");
+	var divObj = document.getElementById("content");	
 
 	if (g_ce_divId.slice(0,1) == 'e') {
 		document.body.insertBefore(
@@ -91,12 +91,12 @@ function processData(g_data, g_ce_divId) {
 			divObj);
 		g_c_divId = 0;
 	}
-
+	
 	var buttonsTable = utils_getButtonsTable();
 	document.body.insertBefore(
 		buttonsTable,
 		divObj);
-
+	
 	var show_excl_button = 0;
 	var t = 0;
 
@@ -114,8 +114,6 @@ function processData(g_data, g_ce_divId) {
 	var isDeepFec = 0;
 	var tmp;
 	var newRow;
-	var mTmp;
-	var multiBitWidth = 1;
 	for (var int = 1; int < mainArr.length; int++) {
 		divOfTable = document.createElement('div');
 		if (mainArr[int].cr == "e") {
@@ -205,27 +203,25 @@ function processData(g_data, g_ce_divId) {
 			celltxt = "Excluded";
 			newRow.cells[0].className = 'grey';
 		}
-		ec_createCell(newRow, 'TD', classtype, 0, 0, celltxt, 0, 0, 0, 0, 200, 0);
+		ec_createCell(newRow, 'TD', classtype, 0, 0, celltxt, 0, 0, 0, 0, 0, 0);
 
 		tmp = dataArr[0].d;
 		isDeepFec = tmp;
 
 		tmp = dataArr[0].F; // F is FEC
 		exFec = tmp;
-		mTmp = dataArr[0].m;
-		multiBitWidth = mTmp;
 		table.appendChild(newRow);
 		if (tmp) {
 			/** *********************************************************************** */
 			newRow = document.createElement('tr');
 
-			ec_createCell(newRow, 'TH', 'even', 0, 0, "Input Term", 0, 0, 0,
-					0, 200, 0);
-			ec_createCell(newRow, 'TH', 'even', 0, 0, "Covered", 0, 0, 0, 0,
-					200, 0);//ankit changed tmp to 0//change back to tmp
+			ec_createCell(newRow, 'TH', 'even', tmp, 0, "Input Term", 0, 0, 0,
+					0, 0, 0);
+			ec_createCell(newRow, 'TH', 'even', tmp, 0, "Covered", 0, 0, 0, 0,
+					0, 0);
 			ec_createCell(newRow, 'TH', 'even', 0, 0, "Reason For No Coverage",
-					0, 0, 0, 0, 200, 0);
-			ec_createCell(newRow, 'TH', 'even', 0, 0, "Hint", 0, 0, 0, 0, 200, 0);
+					0, 0, 0, 0, 0, 0);
+			ec_createCell(newRow, 'TH', 'even', 0, 0, "Hint", 0, 0, 0, 0, 0, 0);
 			table.appendChild(newRow);
 			var r = 2;
 			for (; r < dataArr.length; r++) {
@@ -235,7 +231,7 @@ function processData(g_data, g_ce_divId) {
 				if (!tmp) {
 					break;
 				}
-				ec_createCell(newRow, 'TD', 'even', 0, 0, tmp, 0, 0, 0,
+				ec_createCell(newRow, 'TD', 'even', exFec, 0, tmp, 0, 0, 0,
 						'center', 0, 0);
 
 				tmp = dataArr[r]['c'];
@@ -259,7 +255,7 @@ function processData(g_data, g_ce_divId) {
 					classtype = '';
 					break;
 				}
-				ec_createCell(newRow, 'TD', classtype, 0,  0, celltxt, 0, 0,
+				ec_createCell(newRow, 'TD', classtype, exFec, 0, celltxt, 0, 0,
 						0, 'center', 0, 0);
 
 				if (!excluded) {
@@ -277,114 +273,15 @@ function processData(g_data, g_ce_divId) {
 			}
 			newRow = document.createElement('tr');
 			if (exFec == 2) {
-				var mIndex = 0;
-				if(multiBitWidth > 1)
-				{
-					var mR = r + 1;
-					var lIndex = 0;
-					var MAX_INDEX_RANGE = 18;
-					var printArr = new Array(MAX_INDEX_RANGE);
-					var rangeArr = new Array(MAX_INDEX_RANGE);
-					for(lIndex = 0; lIndex < MAX_INDEX_RANGE; lIndex++)
-						rangeArr[lIndex] = -9999;
-					var rowCh = 105;
-					var searchCounter = 0;
-					var indexCounter = 0;
-					for(; mR < dataArr.length; mR += 2)
-					{
-						var lsb = dataArr[mR]['l'];
-						var msb = dataArr[mR]['y'];
-						for(searchCounter = 0; searchCounter < MAX_INDEX_RANGE; searchCounter++)
-						{
-							if(rangeArr[searchCounter] == lsb)
-								break;
-						}
-						if(searchCounter == MAX_INDEX_RANGE)
-						{
-							if(indexCounter < MAX_INDEX_RANGE)
-							{
-								printArr[indexCounter] =  rowCh++;
-								if(msb > lsb)
-							 		rangeArr[indexCounter] = lsb;
-								else
-							 		rangeArr[indexCounter] = -1 * lsb;
-
-								searchCounter = indexCounter;
-							 	indexCounter++;
-							}
-							else
-								searchCounter -= 1;
-						}
-					}
-				}
-
+				/* extended fec */
 				ec_createCell(newRow, 'TH', 'even', 0, 0, "Rows", 0, 0, 0, 0,
-						200, 0);
+						0, 0);
 				ec_createCell(newRow, 'TH', 'even', 0, 0, "FEC Target", 0, 0,
-						0, 0, 200, 0);
-
-				if(multiBitWidth == 0)
-					multiBitWidth = 1;
-				for(; mIndex < multiBitWidth; mIndex++)
-				{
-					var nIndex = 0;
-					var str1 = "Hits (->0)";
-					var str2 = "Hits (->1)";
-					if(multiBitWidth > 1)
-					{
-						for(; nIndex < indexCounter; nIndex++)
-						{
-							var local = rangeArr[nIndex];
-							var hitI = String.fromCharCode(printArr[nIndex]);
-							if(local >= 0)
-							{
-								local = +local + +mIndex;
-								str1 = str1.concat("<br>");
-								hitI = hitI.concat(" = " );
-								hitI = hitI.concat(""+local);
-								hitI = hitI.fontsize(2);
-								str1 = str1.concat(hitI.italics());
-
-								str2 = str2.concat("<br>");
-								str2 = str2.concat(hitI.italics());
-							}
-							else
-							{
-								local = -1 * local;
-								local = +local - +mIndex;
-								str1 = str1.concat("<br>");
-								hitI = hitI.concat(" = " );
-								hitI = hitI.concat(""+local);
-								hitI = hitI.fontsize(2);
-								str1 = str1.concat(hitI.italics());
-
-								str2 = str2.concat("<br>");
-							    str2 = str2.concat(hitI.italics());
-
-/*
-								str1 = str1.concat(String.fromCharCode(printArr[nIndex]));
-								str1 = str1.concat(" = " );
-								str1 = str1.concat(String(local));
-
-								str2 = str2.concat("<br>");
-								str2 = str2.concat(String.fromCharCode(printArr[nIndex]));
-								str2 = str2.concat(" = " );
-								str2 = str2.concat(String(local));*/
-							}
-
-						}
-
-					}
-
-					ec_createCell(newRow, 'TH', 'even', 0, 0, str1, 0, 0,
-							0, 0, 200, 0);
-					ec_createCell(newRow, 'TH', 'even', 0, 0, str2, 0, 0,
-							0, 0, 200, 0);
-				}
-				/*ec_createCell(newRow, 'TH', 'even', 0, 0, str1, 0, 0,
+						0, 0, 0, 0);
+				ec_createCell(newRow, 'TH', 'even', 0, 0, "Hits (->0)", 0, 0,
 						0, 0, 0, 0);
 				ec_createCell(newRow, 'TH', 'even', 0, 0, "Hits (->1)", 0, 0,
-						0, 0, 0, 0);*/
+						0, 0, 0, 0);
 				if (isDeepFec == 1) {
 					ec_createCell(newRow, 'TH', 'even', 0, 0,
 							"Matching Input Patterns (->0)", 0, 0, 0, 0, 0, 0);
@@ -410,13 +307,7 @@ function processData(g_data, g_ce_divId) {
 							+ dataArr[r]['n'], 0, 0, 0, "center", 0, 0);
 					ec_createCell(newRow, 'TD', 'even', 0, 0, dataArr[r]['z'], 0, 0, 0, "center", 0, 0);
 
-
-					for(mIndex = 0; mIndex < multiBitWidth; mIndex++)
-					{
-						var hitIndex = "h" + 2 * mIndex;
-						if(multiBitWidth == 1)
-							hitIndex = "h1";
-					tmp = dataArr[r][hitIndex];
+					tmp = dataArr[r]['h1'];
 					classtype = 'even';
 					if (tmp) {
 						hrefLnk = dataArr[r]['k1'];
@@ -444,16 +335,11 @@ function processData(g_data, g_ce_divId) {
 						relAtt = lnktxt = 0;
 						celltxt = "&nbsp;-&nbsp;";
 					}
-					ec_createCell(newRow, 'TD', classtype, 1, 0, celltxt, 0,
+					ec_createCell(newRow, 'TD', classtype, 0, 0, celltxt, 0,
 							lnktxt, relAtt, "center", 0, tooltip1);
 
 					classtype = 'even';
-
-					if(multiBitWidth == 1)
-						hitIndex = "h2";
-					else
-						hitIndex = "h" + (2 * mIndex + 1);
-					tmp = dataArr[r][hitIndex];
+					tmp = dataArr[r]['h2'];
 					if (tmp) {
 						hrefLnk = dataArr[r]['k2'];
 						celltxt = tmp;
@@ -479,12 +365,9 @@ function processData(g_data, g_ce_divId) {
 					} else {
 						lnktxt = relAtt = 0;
 						celltxt = "&nbsp;-&nbsp;";
-
 					}
-						ec_createCell(newRow, 'TD', classtype, 1, 0, celltxt, 0,
+					ec_createCell(newRow, 'TD', classtype, 0, 0, celltxt, 0,
 							lnktxt, relAtt, "center", 0, tooltip2);
-
-					}
 					ec_createCell(newRow, 'TD', classtype, (isDeepFec == 1) ? 0
 							: 2, 0, "&nbsp;" + dataArr[r]['c1'] + "&nbsp;", 0,
 							0, 0, "center", 0, 0);
@@ -499,94 +382,11 @@ function processData(g_data, g_ce_divId) {
 			} else {
 				/* fec */
 				ec_createCell(newRow, 'TH', 'even', 0, 0, "Rows", 0, 0, 0, 0,
-						200, 0);
+						0, 0);
 				ec_createCell(newRow, 'TH', 'even', 0, 0, "FEC Target", 0, 0,
-						0, 0, 200, 0);
-
-				var mIndex = 0;
-				if(multiBitWidth > 1)
-				{
-					var mR = r + 1;
-					var lIndex = 0;
-					var MAX_INDEX_RANGE = 18;
-					var printArr = new Array(MAX_INDEX_RANGE);
-					var rangeArr = new Array(MAX_INDEX_RANGE);
-					for(lIndex = 0; lIndex < MAX_INDEX_RANGE; lIndex++)
-						rangeArr[lIndex] = -9999;
-					var rowCh = 105;
-					var searchCounter = 0;
-					var indexCounter = 0;
-					for(; mR < dataArr.length; mR += 2)
-					{
-						var lsb = dataArr[mR]['l'];
-						var msb = dataArr[mR]['y'];
-						for(searchCounter = 0; searchCounter < MAX_INDEX_RANGE; searchCounter++)
-						{
-							if(rangeArr[searchCounter] == lsb)
-								break;
-						}
-						if(searchCounter == MAX_INDEX_RANGE)
-						{
-							if(indexCounter < MAX_INDEX_RANGE)
-							{
-							 printArr[indexCounter] =  rowCh++;
-							 if(msb > lsb)
-								 rangeArr[indexCounter] = lsb;
-							 else
-								 rangeArr[indexCounter] = -1 * lsb;
-							 searchCounter = indexCounter;
-							 indexCounter++;
-							}
-						}
-
-					}
-
-				}
-
-				if(multiBitWidth == 0)
-					multiBitWidth = 1;
-				for(; mIndex < multiBitWidth; mIndex++)
-				{
-					var nIndex = 0;
-					var str1 = "Hits";
-					if(multiBitWidth > 1)
-					{
-						for(; nIndex < indexCounter; nIndex++)
-						{
-							var local = rangeArr[nIndex];
-							var hit = String.fromCharCode(printArr[nIndex]);
-							if(local >= 0)
-							{
-								local = +local + +mIndex;
-								str1 = str1.concat("<br>");
-								hit = hit.concat(" = " );
-								hit = hit.concat(""+local);
-								hit = hit.italics();
-								str1 = str1.concat(hit.fontsize(2));
-							}
-							else
-							{
-								local = -1 * local;
-								var local = +local - +mIndex;
-								str1 = str1.concat("<br>");
-								hit = hit.concat(" = " );
-								hit = hit.concat(""+local);
-								hit = hit.italics();
-								str1 = str1.concat(hit.fontsize(2));
-
-								/*str1 = str1.concat(String.fromCharCode(printArr[nIndex]));
-								str1 = str1.concat(" = " );
-								str1 = str1.concat(String(local));*/
-							}
-
-						}
-
-					}
-
-
-					ec_createCell(newRow, 'TH', 'even', 0, 0, str1, 0, 0, 0, 0,
-						200, 0);
-				}
+						0, 0, 0, 0);
+				ec_createCell(newRow, 'TH', 'even', 0, 0, "Hits", 0, 0, 0, 0,
+						0, 0);
 				if (isDeepFec == 1)
 					ec_createCell(newRow, 'TH', 'even', 0, 0,
 							"Matching Input Patterns", 0, 0, 0, 0, 0, 0);
@@ -607,13 +407,7 @@ function processData(g_data, g_ce_divId) {
 							+ dataArr[r]['n'], 0, 0, 0, "center", 0, 0);
 					ec_createCell(newRow, 'TD', 'even', 0, 0, dataArr[r]['z'], 0, 0, 0, "center", 0, 0);
 					classtype = 'even';
-
-					for(mIndex = 0; mIndex < multiBitWidth; mIndex++)
-					{
-					var hitIndex = "h" + mIndex;
-					if(multiBitWidth == 1)
-						hitIndex = "h1";
-					tmp = dataArr[r][hitIndex];
+					tmp = dataArr[r]['h1'];
 					if (tmp) {
 						celltxt = tmp;
 						hrefLnk = dataArr[r]['k1']
@@ -641,7 +435,6 @@ function processData(g_data, g_ce_divId) {
 					}
 					ec_createCell(newRow, 'TD', classtype, 0, 0, celltxt, 0,
 							lnktxt, relAtt, "center", 0, hitCellToolTip);
-					}
 					ec_createCell(newRow, 'TD', classtype, 0, 0, "&nbsp;"
 							+ dataArr[r]['c1'] + "&nbsp;", 0, 0, 0, "center",
 							0, 0);

@@ -8,7 +8,7 @@ SHELL  := /bin/csh
 # Targets
 #===============================================================================
 .PHONY: all clean compile compile_log_err sim simulate_log_err
-all: compile sim
+all: compile compile_log_err sim simulate_log_err
 
 #===============================================================================
 # Environment Variables
