@@ -44,7 +44,7 @@ function buildFsmTables() {
 	urlArgsObj = new UrlParserClass();
 	var divId = urlArgsObj.getScopeId();
 	var filenum = urlArgsObj.getFileNum();
-	
+
 	g_fsm_divId = "f" + divId;
 	testHitDataScopeId = divId;
 	var headID = document.getElementsByTagName("head")[0];
@@ -76,7 +76,7 @@ function processFsmData(g_data) {
 		h4 = document.createElement('h4');
 		h4.innerHTML = 'UPF Object Type: ' + g_data[g_fsm_divId].isPa.objType;
 		document.body.insertBefore(h4, divObj);
-		
+
 		h4 = document.createElement('h4');
 		h4.innerHTML = 'UPF Object Path: ' + g_data[g_fsm_divId].isPa.objPath;
 		document.body.insertBefore(h4, divObj);
@@ -88,7 +88,7 @@ function processFsmData(g_data) {
 
 	buttonsTable = utils_getButtonsTable();
 	document.body.insertBefore(buttonsTable, divObj);
-	
+
 	var dataArr;
 	var allFsms = g_data[g_fsm_divId].FSMs;
 	var divOfTable = 0;
@@ -240,11 +240,11 @@ function processFsmData(g_data) {
 			lastRowOdd = lastRowOdd ? 0 : 1;
 			table.appendChild(newRow);
 		}
-		
+
 		divObj.appendChild(document.createElement('hr'));
 		divOfTable.appendChild(table);
 		divObj.appendChild(divOfTable);
-		
+
 	} // end for (allFsms)
 	if (show_excl_button == 1) {
 		if (buttonsTable) {

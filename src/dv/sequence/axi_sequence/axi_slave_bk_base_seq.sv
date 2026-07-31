@@ -33,11 +33,13 @@ task axi_slave_bk_base_seq::body();
 
 //  req.transfer_type=BLOCKING_WRITE;
 //  req.no_of_wait_states = 0;
-   start_item(req); 
+  repeat(2) begin
+  start_item(req); 
   if(!req.randomize() with { req.bresp == WRITE_OKAY; } ) 
     `uvm_fatal(get_type_name(),"randomization failed") 
    finish_item(req);
   req.print();
+  end
 
 endtask : body
 

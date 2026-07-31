@@ -16,7 +16,7 @@ function init() {
     arguments.callee.alreadyCalled = true;
     // kill the timer
     if (_timer) clearInterval(_timer);
-    
+
     if (!document.createElement || !document.getElementsByTagName) return;
 
 	global_intervalId = setInterval( 'waitTillTablesAreReady()', 200 );
@@ -30,7 +30,7 @@ function waitTillTablesAreReady() {
 }
 
 function continueProcessing() {
-	
+
 	tables = document.getElementsByTagName("TABLE");
 	for(var i =0; i<tables.length; i++) {
 		var tableInTable = (tables[i].getElementsByTagName("TABLE")).length > 0;
@@ -40,11 +40,11 @@ function continueProcessing() {
 	delete tables;
 	for(var table = 0; table < atomic_tables.length; table++) {
 		var curr_table = atomic_tables[table];
-		
+
 		if (curr_table.className.match("fpw")) {
 			continue;
 		}
-		
+
 		curr_table.table_unique_number = table;
 		curr_table.unsorted_rows = []; // array that holds arrays with the first positions of the rows of each table
 
@@ -54,7 +54,7 @@ function continueProcessing() {
 		// process the head of the table:
 		var level = curr_table.rows[0].cells[0].colSpan;
 		var headRawCells = [];
-		
+
 		if(curr_table.rows[0].cells[0].innerHTML.search("Total Coverage:") != -1) {
 			// the tables of the cov_summary page and Recursive Hierarchical Coverage Details and Local Instance Coverage Details
 			headRawCells = curr_table.rows[1].cells;
@@ -78,16 +78,16 @@ function continueProcessing() {
 		for(var i = 0; i < headRawCells.length; i++) {
 			if (i == 0) { /* 1st column is always sort by strings */
 				headRawCells[i].sorttable_sortfunction = sort_strings;
-				
+
 			} else if (per_test_page == 0) { /* columns after the 1st one, if it's not pertest page, then sort by numbers */
 				headRawCells[i].sorttable_sortfunction = sort_numbers;
-				
+
 			} else if (nonlossy_merge == 0) { /* if it's a pertest page, if it's not nonlossy merge, then merge by strings */
 				headRawCells[i].sorttable_sortfunction = sort_strings;
-				
+
 			} else { /* if it's a pertest page, if it's nonlossy merge, then merge by numbers */
 				headRawCells[i].sorttable_sortfunction = sort_numbers;
-				
+
 			}
 			headRawCells[i].sorttable_columnindex = i;
 			if (shifted_columns) headRawCells[i].sorttable_columnindex = i+1;
@@ -174,7 +174,7 @@ function reverse_rows(tbody, rows, col, headNode) {
 	newrows = [];
 	if(headNode.change_parents)
 		rows.reverse();
-	
+
 	for (var i=0; i<rows.length; i++) {
 		newrows[newrows.length] = rows[i];
 		if(rows[i][1].cells[col].children_ascending_order) {
@@ -185,9 +185,9 @@ function reverse_rows(tbody, rows, col, headNode) {
 			}
 			if(rows[i][1].cells[col].change_children)
 				rows[i][1].cells[col].children_ascending_order.reverse();
-		}	
+		}
 	}
-	 
+
 	for (var i= 0; i < newrows.length; i++) {
 		tbody.appendChild(newrows[i][1]);
     }
@@ -199,7 +199,7 @@ function reverse_rows(tbody, rows, col, headNode) {
 
 function sort_main_fn() {
 	if (this.className.search(/\bsorted_ascending\b/) != -1) {
-		reverse_rows(this.sorttable_tbody, this.ascending_row_order, this.sorttable_columnindex, this);		
+		reverse_rows(this.sorttable_tbody, this.ascending_row_order, this.sorttable_columnindex, this);
 		this.className = this.className.replace('sorted_ascending',
 												'sorted_descending');
 		this.removeChild(document.getElementById('sorttable_sortfwdind_' + this.sorttable_tbody.parentNode.table_unique_number));
@@ -223,7 +223,7 @@ function sort_main_fn() {
 		this.appendChild(sortnone);
 		return;
 	}
-	
+
 	// remove sorted_ascending classes
 	theadrow = this.parentNode;
     Array.forEach(theadrow.childNodes, function(cell) {
@@ -250,14 +250,14 @@ function sort_main_fn() {
 		parentCellNode.removeChild(sortrevind);
 		parentCellNode.appendChild(sortnone);
 	}
-	
+
 	this.className += ' sorted_ascending';
 	this.removeChild(document.getElementById('sorttable_sortnone_' + this.sorttable_tbody.parentNode.table_unique_number + "_" + this.sorttable_columnindex));
     sortfwdind = document.createElement('span');
     sortfwdind.id = "sorttable_sortfwdind_" + this.sorttable_tbody.parentNode.table_unique_number;
     sortfwdind.innerHTML = stIsIE ? '&nbsp<font face="webdings">6</font>' : '&nbsp;&#x25BE;';
 	this.appendChild(sortfwdind);
-	
+
 	// build an array to sort. This is a Schwartzian transform thing,
 	// i.e., we "decorate" each row with the actual sort key,
 	// sort based on the sort keys, and then put the rows back in order
@@ -278,12 +278,12 @@ function sort_main_fn() {
 			row_array[row_array.length] = [this.parentNode.to_be_sorted[i].cells_text[col], this.parentNode.to_be_sorted[i]];
 		}
 		sort_array(row_array, this.sorttable_sortfunction);
-		
+
 		this.ascending_row_order = row_array;
 		delete row_array;
 	}
 	tb = this.sorttable_tbody;
-	
+
 	for (var j=0; j<this.ascending_row_order.length; j++) {
 		tb.appendChild(this.ascending_row_order[j][1]);
 		if(this.ascending_row_order[j][1].cells[col].children_ascending_order) {

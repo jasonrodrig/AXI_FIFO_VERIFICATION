@@ -11,7 +11,7 @@ table.tableTheme {
 table.tableTheme td {
     border-style: none;
     border-radius: 0;      /* no rounded corners */
-    -webkit-border-radius: 0; 
+    -webkit-border-radius: 0;
     -moz-border-radius: 0;
     padding: 8px 18px;
 }
@@ -19,7 +19,7 @@ table.tableTheme td {
 table.tableTheme th {
 	border-style: none;
     border-radius: 0;      /* no rounded corners */
-    -webkit-border-radius: 0; 
+    -webkit-border-radius: 0;
     -moz-border-radius: 0;
     padding: 8px 18px;
 	font-weight:      bold;

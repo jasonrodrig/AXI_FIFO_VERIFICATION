@@ -19,7 +19,7 @@ td.OddTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
 }
 
@@ -27,7 +27,7 @@ td.ExclOddTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
     color:gray;
 }
@@ -36,7 +36,7 @@ td.ExclCntrOddTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
 	text-align:       center;
     color:gray;
@@ -46,7 +46,7 @@ td.GrayRightOddTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
 	text-align:       right;
     color:gray;
@@ -56,7 +56,7 @@ td.GrayCntrOddTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
 	text-align:       center;
     color:gray;
@@ -66,7 +66,7 @@ td.GrayOddTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
     color:gray;
 }
@@ -75,7 +75,7 @@ td.GrayRightEvenTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
      background-color: #FAFAFA;
 	text-align:       right;
     color:gray;
@@ -85,7 +85,7 @@ td.GrayCntrEvenTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
      background-color: #FAFAFA;
 	text-align:       center;
     color:gray;
@@ -95,7 +95,7 @@ td.GrayEvenTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #FAFAFA;
     color:gray;
 }
@@ -103,7 +103,7 @@ td.GrayRightOddTgTd {
 	width: auto;
 	border: 2px solid #9ac1c9;
 	background: url(../images/linkbg_odd.gif);
-    
+
 	text-align:       right;
     color:gray;
 }
@@ -150,7 +150,7 @@ td.CntrOddTd { /* odd - center text alignment */
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
     text-align:       center;
 }
@@ -160,7 +160,7 @@ td.RightOddTd { /* odd - right text alignment */
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
     text-align:       right;
 }
@@ -170,7 +170,7 @@ td.ExclCntrOddTd { /* odd - center text alignment */
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #EEEEEE;
     text-align:       center;
     color:gray;
@@ -180,7 +180,7 @@ td.EvenTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #FAFAFA;
 }
 
@@ -188,7 +188,7 @@ td.ExclEvenTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #FAFAFA;
     color: gray;
 }
@@ -197,7 +197,7 @@ td.ExclCntrEvenTd {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #FAFAFA;
 	text-align:       center;
     color: gray;
@@ -207,7 +207,7 @@ td.CntrEvenTd { /* even - center text alignment */
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #FAFAFA;
     text-align:       center;
 }
@@ -216,7 +216,7 @@ td.RightEvenTd { /* even - right text alignment */
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #FAFAFA;
     text-align:       right;
 }
@@ -225,7 +225,7 @@ td.ExclCntrEven { /* even - center text alignment */
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
     background-color: #FAFAFA;
     text-align:       center;
     color:gray;
@@ -235,7 +235,7 @@ td.bgRed {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
 	color:            white;
 	background-color: red;
 	font-weight:      bold;
@@ -246,7 +246,7 @@ td.bgYellow {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
 	color:            black;
 	background-color: yellow;
 	font-weight:      bold;
@@ -257,7 +257,7 @@ td.bgGreen {
     width:            auto;
     border-width:     1px;
     border-style:     solid;
-    
+
 	color:            white;
 	background-color: green;
 	font-weight:      bold;

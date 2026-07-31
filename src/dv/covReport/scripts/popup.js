@@ -21,7 +21,7 @@ function closeWin(){
 }
 
 function popUpWin(url, strWidth, strHeight){
-	
+
 	closeWin();
 	var tools = "resizable,toolbar=no,location=no,scrollbars=yes,width="+strWidth+",height="+strHeight+",left=0,top=0";
 	newWindow = window.open(url, 'newWin', tools);
@@ -33,15 +33,15 @@ function doPopUp(e)
 	//set defaults - if nothing in rel attrib, these will be used
 	var w = "400";
 	var h = "400";
-	
+
 	//look for parameters
 	var attribs = this.rel.split(" ");
 	if (attribs[1]!='undefined') {w = attribs[1];} // width
 	if (attribs[2]!='undefined') {h = attribs[2];} // height
-	
+
 	//call the popup script
 	popUpWin(this.href,w,h);
-	
+
 	//cancel the default link action if pop-up activated
 	if (window.event){
 		window.event.returnValue = false;

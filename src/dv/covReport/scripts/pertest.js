@@ -1,14 +1,14 @@
 function GetScopeIdBinIdClass() {
 	this.scopeId;
 	this.binId;
-	
+
 	var qs = location.search.substring(1, location.search.length);
 	var args = qs.split('&');
 	var pair;
-	
+
 	pair = args[0].split('=');
 	this.binId = pair[1];
-	
+
 	pair = args[1].split('=');
 	this.scopeId = pair[1];
 }

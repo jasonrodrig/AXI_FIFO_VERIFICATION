@@ -115,7 +115,7 @@ function processTogglesData(g_data) {
 	document.body.insertBefore(
 		utils_getPageHeaderH1("Toggle"),
 		divObj);
-		
+
 	var buttonsTable = utils_getButtonsTable();
 	document.body.insertBefore(
 		buttonsTable,
@@ -172,13 +172,13 @@ function processTogglesData(g_data) {
 	// Loop on the rows of the table
 	var dataArr = g_data[g_t_divId].items;
 	for (var r = 1; r < dataArr.length; r++) {
-		newRow = document.createElement('tr');	
+		newRow = document.createElement('tr');
 		var tmp;
 		var excluded = 0;
 		var columnSpan;
 		var classtype;
 		var celltxt;
-		
+
 		newRow.id = dataArr[r].id;
 		tmp = dataArr[r].s;
 		if (tmp)

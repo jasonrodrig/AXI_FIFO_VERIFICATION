@@ -1,4 +1,4 @@
-var dulist; 
+var dulist;
 var titlelist;
 jQuery.extend( jQuery.fn.dataTableExt.oSort, {
     "ducovcol-asc": function ( a, b ) {
@@ -15,7 +15,7 @@ jQuery.extend( jQuery.fn.dataTableExt.oSort, {
 		}
 		return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     },
- 
+
     "ducovcol-desc": function ( a, b ) {
 		var x, y;
 		if ((a[1].charAt(0)=='-') || (a[1].charAt(0)=='E')) {

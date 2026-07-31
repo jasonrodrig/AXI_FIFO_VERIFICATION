@@ -3,11 +3,11 @@
  * */
 function UrlParserClass() {
 	this.urlArgs = {};
-	
+
 	var qs = location.search.substring(1, location.search.length);
 	var args = qs.split('&');
 	var pair;
-	
+
 	for (var i=0 ; i<args.length ; i++) {
 		pair = args[i].split('=');
 		this.urlArgs[pair[0]] = pair[1];
@@ -50,7 +50,7 @@ function utils_getButtonsTable() {
 	td1.title = "Display all coverage scopes and bins.";
 	td1.innerHTML = "Show All";
 	row.appendChild(td1);
-	
+
 	td2.id = "showCov";
 	td2.width = "100";
 	td2.setAttribute("onclick", "showCov()");
@@ -58,7 +58,7 @@ function utils_getButtonsTable() {
 	td2.title = "Display only covered scopes and bins.";
 	td2.innerHTML = "Show Covered";
 	row.appendChild(td2);
-	
+
 	td3.id = "showMis";
 	td3.width = "100";
 	td3.setAttribute("onclick", "showMis()");
@@ -66,7 +66,7 @@ function utils_getButtonsTable() {
 	td3.title = "Display only uncovered scopes and bins.";
 	td3.innerHTML = "Show Missing";
 	row.appendChild(td3);
-	
+
 	btable.appendChild(row);
 
 	return btable;

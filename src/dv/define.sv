@@ -11,3 +11,4 @@
 `define CACH_WID         2                      
 `define PROT_WID         3                       
 `define RSP_WID          2
+`define DW               32

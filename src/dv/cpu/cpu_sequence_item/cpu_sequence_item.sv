@@ -1,10 +1,11 @@
+`define DW 32
+
 class cpu_sequence_item extends uvm_sequence_item;
 
   rand bit wr_en , rd_en; 
   rand bit [31:0] addr;
   rand bit [3:0]  wstrb;
-  rand bit [1023:0] wdata;
-
+  rand bit [`DW - 1:0] wdata;
   rand channel_e ch;
   rand txn_id_e txn_id;
   rand len_e  len;
@@ -23,6 +24,7 @@ class cpu_sequence_item extends uvm_sequence_item;
 
   //  FIFO Words  
   bit [127:0] fifo_word[];
+  int fifo_size; // determine the fifo size
 
   `uvm_object_utils_begin(cpu_sequence_item)
   `uvm_field_int(wr_en , UVM_ALL_ON)
@@ -57,7 +59,7 @@ class cpu_sequence_item extends uvm_sequence_item;
   }
 
   constraint c2{
-    if( ch == AW_CH )
+/*    if( ch == AW_CH )
     {  
       wstrb == 4'b0000;
       wdata == 1024'b0;
@@ -68,7 +70,9 @@ class cpu_sequence_item extends uvm_sequence_item;
       wstrb != 4'b0000;
       wdata != 1024'b0;
     }
-    else if(ch == AR_CH)
+ 
+    else 
+   */   if(ch == AR_CH)
     {
       wstrb == 4'b0000;
       wdata == 1024'b0;
@@ -85,12 +89,52 @@ function cpu_sequence_item::new(string name = "cpu_sequence_item");
 endfunction
 
 function void cpu_sequence_item::build_fifo_packet();
+  case(`DW)
+    32  : fifo_size = 1;
+    64  : fifo_size = 2;
+    128 : fifo_size = 2;
+    256 : fifo_size = 3;
+    512 : fifo_size = 5;
+    1024: fifo_size = 9;
+    default: fifo_size = 9;
+  endcase
+  $display("fifo_size =%d",fifo_size);
   if( ch == AW_CH || ch == W_CH )
   begin
+
     fifo_word.delete();
-    fifo_word = new[9];
+    fifo_word = new[fifo_size];
+    
+    if(`DW == 32) begin
+    fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , wdata , eop , 24'h0 };
+    end
+    
+    else if(`DW == 64) begin
+    fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , wdata };
+    fifo_word[1] = { eop , 120'h0 };
+    end
+
+    else if(`DW == 128) begin
+    fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , wdata[127:64] };
+    fifo_word[1] = { wdata[63:0] , eop , 72'h0 };
+    end
+
+    else if(`DW == 256) begin
+    fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , wdata[255:192] };
+    fifo_word[1] = { wdata[191:64] };
+    fifo_word[2] = {wdata[63:0],eop,56'h0}; 
+    end
+ 
+    else if(`DW == 512) begin
+    fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , wdata[511:448] };
+    fifo_word[1] = { wdata[447:320] };
+    fifo_word[2] = { wdata[319:192] };
+    fifo_word[3] = { wdata[191:64] };
+    fifo_word[4] = { wdata[63:0] , eop };
+    end
 
     // First FIFO word
+    else if(`DW == 1024) begin
     fifo_word[0] = { sop , txn_id , addr , len , size , burst , lock , cache , prot , wstrb , wdata[1023:960] };
 
     // Remaining data
@@ -104,6 +148,8 @@ function void cpu_sequence_item::build_fifo_packet();
 
     // Last FIFO word
     fifo_word[8] = { wdata[63:0] , eop , 56'h0 };
+    end
+
   end
 
   else if(ch == AR_CH)

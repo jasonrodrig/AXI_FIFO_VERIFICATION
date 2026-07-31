@@ -196,14 +196,14 @@ table.dataTable {
   table.dataTable tbody th.dt-body-nowrap,
   table.dataTable tbody td.dt-body-nowrap {
     white-space: nowrap; }
- 
+
 table.dataTable,
 table.dataTable th,
 table.dataTable td {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box; }
- 
+
 /*
  * Control feature layout
  */
@@ -347,7 +347,7 @@ table.dataTable td {
     content: "";
     clear: both;
     height: 0; }
- 
+
 @media screen and (max-width: 767px) {
   .dataTables_wrapper .dataTables_info,
   .dataTables_wrapper .dataTables_paginate {
@@ -362,7 +362,7 @@ table.dataTable td {
     text-align: center; }
   .dataTables_wrapper .dataTables_filter {
     margin-top: 0.5em; } }
-    
+
 /* ********** mti customization ********** */
 
 .dataTables_filter {

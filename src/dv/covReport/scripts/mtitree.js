@@ -18,7 +18,7 @@ function Node(id, pid, idx, text, url, popup, icon, title, open, nodeClass,selec
 	this.isSelected  = false;          // true = node is selected
 	this.hasChildren = false;          // true = node is parent
 	this.isLastChild = false;          // true = node is last child
-	this.selectClass = selectClass;	   // the class of the node when it is selected	
+	this.selectClass = selectClass;	   // the class of the node when it is selected
 	this.aClass      = nodeClass;     // the class of the node when it is not selected
 };
 

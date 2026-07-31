@@ -1,11 +1,10 @@
 # vsim -c -voptargs="+acc" -assertdebug -sva -coverage -l simulation.log -do "log -r /*; coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb; run -all; exit" -wlf waveform.wlf -L work "+UVM_TESTNAME=axi_fifo_base_test" work.top 
-# Start time: 12:48:30 on Jul 28,2026
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# ** Note: (vopt-143) Recognized 1 FSM in module "AXI_MASTER_WRITE_CONTROL(fast)".
-# //  Questa Sim
-# //  Version 10.6c linux Jul 25 2017
+# Start time: 11:39:42 on Jul 31,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# //  Questa Sim-64
+# //  Version 10.7c win64 Aug 18 2018
 # //
-# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  Copyright 1991-2018 Mentor Graphics Corporation
 # //  All Rights Reserved.
 # //
 # //  QuestaSim and its associated documentation contain trade
@@ -52,7 +51,7 @@
 # Loading work.AXI_MASTER_READ_Control(fast)
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.axi4_if(fast)
-# Loading /tools/mentor/questasim_10.6c/questasim/uvm-1.1d/linux/uvm_dpi.so
+# Loading C:/questasim64_10.7c/uvm-1.1d\win64\uvm_dpi.dll
 # log -r /*
 #  coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb
 #  run -all
@@ -77,7 +76,7 @@
 #       (Specify +UVM_NO_RELNOTES to turn off this notice)
 # 
 # UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(215) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
-# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(217) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(216) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
 # UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_driver_bfm.sv(94) @ 0: reporter [axi4 slave driver bfm] AXI4 SLAVE DRIVER BFM
 # UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_monitor_bfm.sv(82) @ 0: reporter [axi4 slave monitor bfm] AXI4 SLAVE MONITOR BFM
 # UVM_INFO ./axi_avip/hdl_top/slave_agent_bfm/axi4_slave_agent_bfm.sv(175) @ 0: reporter [axi4 slave agent bfm] AXI4 SLAVE AGENT BFM
@@ -86,58 +85,58 @@
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8522) The number of coverpoint bins is zero for the coverpoint 'R_CHANNEL' of covergroup instance '\/cpu_pkg::cpu_subscriber::pas_cov '. All the user defined bins in the coverpoint are empty bins and hence it would not contribute towards the overall coverage result.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(34): A higher value '31' is found in bin 'AWLEN_32' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '31' is found in bin 'AWLEN_32' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 34
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_32' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(35): A higher value '63' is found in bin 'AWLEN_64' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '63' is found in bin 'AWLEN_64' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 35
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_64' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(36): A higher value '127' is found in bin 'AWLEN_128' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '127' is found in bin 'AWLEN_128' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 36
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_128' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(37): A higher value '255' is found in bin 'AWLEN_256' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '255' is found in bin 'AWLEN_256' of Coverpoint 'AWLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 37
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'AWLEN_256' in Coverpoint 'AWLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(85): A higher value '31' is found in bin 'ARLEN_32' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '31' is found in bin 'ARLEN_32' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 85
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_32' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(86): A higher value '63' is found in bin 'ARLEN_64' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '63' is found in bin 'ARLEN_64' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 86
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_64' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(87): A higher value '127' is found in bin 'ARLEN_128' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '127' is found in bin 'ARLEN_128' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 87
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_128' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(88): A higher value '255' is found in bin 'ARLEN_256' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '255' is found in bin 'ARLEN_256' of Coverpoint 'ARLEN_CP'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 88
 # ** Warning: (vsim-8549) After dropping the illegal, ignore or invalid values, the values list associated with scalar bin 'ARLEN_256' in Coverpoint 'ARLEN_CP' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list. The bin will be taken out of coverage calculation.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(141): A higher value '31' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(141): A higher value '63' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(141): A higher value '127' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(141): A higher value '255' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '31' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 141
+# ** Warning: (vsim-8474) A higher value '63' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 141
+# ** Warning: (vsim-8474) A higher value '127' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 141
+# ** Warning: (vsim-8474) A higher value '255' is found in bin 'ignr' of Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 141
 # ** Warning: (vsim-8559) After removing the invalid values, the intersect values list associated with bin 'ignr' in Cross 'AWLENGTH_CP_X_AWSIZE_X_AWBURST' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8560) On evaluating the select expression of Cross bin 'AWLENGTH_CP_X_AWSIZE_X_AWBURST.ignr' in Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ', the bin is found to be empty since no cross products are selected.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(144): A higher value '31' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(144): A higher value '63' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(144): A higher value '127' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
-# ** Warning: (vsim-8474) ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv(144): A higher value '255' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
-#    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8474) A higher value '31' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 144
+# ** Warning: (vsim-8474) A higher value '63' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 144
+# ** Warning: (vsim-8474) A higher value '127' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 144
+# ** Warning: (vsim-8474) A higher value '255' is found in bin 'ignr' of Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST'. It is invalid and will be ignored.
+#    Time: 0 ps  Iteration: 7  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_3f628329 File: ./axi_avip/hvl_top/slave/axi4_slave_coverage.sv Line: 144
 # ** Warning: (vsim-8559) After removing the invalid values, the intersect values list associated with bin 'ignr' in Cross 'ARLENGTH_CP_X_ARSIZE_X_ARBURST' of Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ' has converged to empty list.
 #    Time: 0 ps  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-8560) On evaluating the select expression of Cross bin 'ARLENGTH_CP_X_ARSIZE_X_ARBURST.ignr' in Covergroup instance '\/axi4_slave_pkg::axi4_slave_coverage::axi4_slave_covergroup ', the bin is found to be empty since no cross products are selected.
@@ -260,6 +259,7 @@
 # [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 15000][0m INSIDE WRITE DATA CHANNEL
 # [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 15000][0m INSIDE WRITE_ADDRESS_PHASE
 # [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 15000][0m CPU sequence body started
+# fifo_size =          1
 # [1;32m[INFO][0m [1;36m(ID=SLAVE_DRIVER_WADDR_PHASE)[0m [1;34m[time = 85000][0m outside of awvalid
 # [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 115000][0m Converting write response: input bid = 0
 # [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 115000][0m WRITE_ADDRESS_CHANNEL::Received write address packet, awid = 0
@@ -323,21 +323,89 @@
 #   bresp      string         10    WRITE_OKAY              
 #   buser      integral       4     13                      
 # ----------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 125000][0m INSIDE WRITE_ADDRESS_PHASE
 # [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 125000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=SLAVE_DRIVER_WADDR_PHASE)[0m [1;34m[time = 135000][0m outside of awvalid
 # [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 135000][0m Converting write response: input bid = 0
-# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 135000][0m Print completed
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 135000][0m WRITE_ADDRESS_CHANNEL::Received write address packet, awid = 0
+# [1;32m[INFO][0m [1;36m(ID=SLAVE_STATUS_CHECK)[0m [1;34m[time = 135000][0m AFTER_FORK_JOIN_ANY:: SLAVE_ADDRESS_CHANNEL_STATUS =
+#  FINISHED
+# [1;32m[INFO][0m [1;36m(ID=SLAVE_STATUS_CHECK)[0m [1;34m[time = 135000][0m AFTER_FORK_JOIN_ANY:: SLAVE_WDATA_CHANNEL_STATUS = 
+#  WAITING
+# [1;32m[INFO][0m [1;36m(ID=SLAVE_STATUS_CHECK)[0m [1;34m[time = 135000][0m AFTER_FORK_JOIN_ANY:: SLAVE_WRESP_CHANNEL_STATUS = 
+# WAITING
+# ----------------------------------------------------------
+# Name         Type           Size  Value                   
+# ----------------------------------------------------------
+# req          axi4_slave_tx  -     @1599                   
+#   tx_type    string         5     WRITE                   
+#   awid       string         6     AWID_0                  
+#   awaddr     integral       32    'h9e8d646a              
+#   awlen      integral       4     'd1                     
+#   awsize     string         13    WRITE_2_BYTES           
+#   awburst    string         10    WRITE_INCR              
+#   awlock     string         19    WRITE_NORMAL_ACCESS     
+#   awcache    string         16    WRITE_BUFFERABLE        
+#   awprot     string         24    WRITE_NORMAL_SECURE_DATA
+#   awqos      integral       4     'h0                     
+#   wdata[0]   integral       32    'h0                     
+#   wdata[1]   integral       32    'h0                     
+#   wdata[2]   integral       32    'h0                     
+#   wdata[3]   integral       32    'h0                     
+#   wdata[4]   integral       32    'h0                     
+#   wdata[5]   integral       32    'h0                     
+#   wdata[6]   integral       32    'h0                     
+#   wdata[7]   integral       32    'h0                     
+#   wdata[8]   integral       32    'h0                     
+#   wdata[9]   integral       32    'h0                     
+#   wdata[10]  integral       32    'h0                     
+#   wdata[11]  integral       32    'h0                     
+#   wdata[12]  integral       32    'h0                     
+#   wdata[13]  integral       32    'h0                     
+#   wdata[14]  integral       32    'h0                     
+#   wdata[15]  integral       32    'h0                     
+#   wdata[16]  integral       32    'h0                     
+#   wstrb[0]   integral       4     'h0                     
+#   wstrb[1]   integral       4     'h0                     
+#   wstrb[2]   integral       4     'h0                     
+#   wstrb[3]   integral       4     'h0                     
+#   wstrb[4]   integral       4     'h0                     
+#   wstrb[5]   integral       4     'h0                     
+#   wstrb[6]   integral       4     'h0                     
+#   wstrb[7]   integral       4     'h0                     
+#   wstrb[8]   integral       4     'h0                     
+#   wstrb[9]   integral       4     'h0                     
+#   wstrb[10]  integral       4     'h0                     
+#   wstrb[11]  integral       4     'h0                     
+#   wstrb[12]  integral       4     'h0                     
+#   wstrb[13]  integral       4     'h0                     
+#   wstrb[14]  integral       4     'h0                     
+#   wstrb[15]  integral       4     'h0                     
+#   wstrb[16]  integral       4     'h0                     
+#   wlast      integral       1     'd0                     
+#   wuser      integral       4     'd0                     
+#   bid        string         5     BID_0                   
+#   bresp      string         10    WRITE_OKAY              
+#   buser      integral       4     13                      
+# ----------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 155000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 165000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 175000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 175000][0m W data sampled | beats=17 wlast=0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 175000][0m WRITE_RESPONSE_CHANNEL::Slave driver sending out bid = 0
+# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 175000][0m Print completed
 # -------------------------------------------------------------------------------------------------------
 # Name                           Type               Size  Value                                          
 # -------------------------------------------------------------------------------------------------------
 # req                            cpu_sequence_item  -     @1595                                          
 #   wr_en                        integral           1     'h1                                            
 #   rd_en                        integral           1     'h0                                            
-#   wstrb                        integral           4     'h0                                            
+#   wstrb                        integral           4     'hf                                            
 #   addr                         integral           32    'h9e8d646a                                     
-#   wdata                        integral           1024  'h0                                            
+#   wdata                        integral           32    'he4d5e3bc                                     
 #   ch                           channel_e          2     AW_CH                                          
 #   txn_id                       txn_id_e           4     ID_0                                           
-#   len                          len_e              4     BURST_LEN4                                     
+#   len                          len_e              4     BURST_LEN2                                     
 #   size                         size_e             3     BYTE2                                          
 #   burst                        burst_e            2     INCR                                           
 #   lock                         lock_e             2     NORMAL_ACCESS                                  
@@ -347,32 +415,62 @@
 #   full                         integral           1     'h0                                            
 #   empty                        integral           1     'h0                                            
 #   begin_time                   time               64    15000                                          
-#   end_time                     time               64    135000                                         
+#   end_time                     time               64    175000                                         
 #   depth                        int                32    'd2                                            
 #   parent sequence (name)       string             9     write_seq                                      
 #   parent sequence (full name)  string             47    uvm_test_top.env.cpu_active_agt.sqr_h.write_seq
 #   sequencer                    string             37    uvm_test_top.env.cpu_active_agt.sqr_h          
 # -------------------------------------------------------------------------------------------------------
-# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 135000][0m CPU sequence body started
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 155000][0m Converting write response: input bid = 0
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 165000][0m Converting write response: input bid = 0
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 175000][0m Converting write response: input bid = 0
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 185000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 175000][0m CPU sequence body started
+# fifo_size =          1
+# [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 185000][0m INSIDE WRITE DATA CHANNEL
 # [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 195000][0m Converting write response: input bid = 0
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 195000][0m W data sampled | beats=17 wlast=0
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 195000][0m WRITE_RESPONSE_CHANNEL::Slave driver sending out bid = 0
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 215000][0m Converting write response: input bid = 0
-# PACKET INPUT SIZE IS 0
+# PACKET INPUT SIZE IS 1
 # ------------------------------------------------------------
 # Name           Type           Size  Value                   
 # ------------------------------------------------------------
-# axi4_slave_tx  axi4_slave_tx  -     @1933                   
+# axi4_slave_tx  axi4_slave_tx  -     @1905                   
 #   tx_type      string         5     WRITE                   
 #   awid         string         6     AWID_0                  
-#   awaddr       integral       32    'h0                     
-#   awlen        integral       4     'd0                     
-#   awsize       string         12    WRITE_1_BYTE            
-#   awburst      string         11    WRITE_FIXED             
+#   awaddr       integral       32    'h9e8d646a              
+#   awlen        integral       4     'd1                     
+#   awsize       string         13    WRITE_2_BYTES           
+#   awburst      string         10    WRITE_INCR              
+#   awlock       string         19    WRITE_NORMAL_ACCESS     
+#   awcache      string         16    WRITE_BUFFERABLE        
+#   awprot       string         24    WRITE_NORMAL_SECURE_DATA
+#   awqos        integral       4     'h0                     
+#   wdata[0]     integral       32    'hbc530000              
+#   wdata[1]     integral       32    'he4d5e3                
+#   wstrb[0]     integral       4     'hf                     
+#   wstrb[1]     integral       4     'hf                     
+#   wlast        integral       1     'd0                     
+#   wuser        integral       4     'd0                     
+#   bid          string         5     BID_0                   
+#   bresp        string         12    WRITE_SLVERR            
+#   buser        integral       4     'd0                     
+# ------------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=Sequencer         )[0m [1;34m[time = 195000][0m Dropping response for sequence 3, sequence not found.  Probable cause: sequence exited or has been killed
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 195000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_monitor_proxy)[0m [1;34m[time = 195000][0m Sending out write response, bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 245000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 265000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 275000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 285000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 285000][0m W data sampled | beats=17 wlast=0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_driver_proxy)[0m [1;34m[time = 285000][0m WRITE_RESPONSE_CHANNEL::Slave driver sending out bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 305000][0m Converting write response: input bid = 0
+# PACKET INPUT SIZE IS 1
+# ------------------------------------------------------------
+# Name           Type           Size  Value                   
+# ------------------------------------------------------------
+# axi4_slave_tx  axi4_slave_tx  -     @2029                   
+#   tx_type      string         5     WRITE                   
+#   awid         string         6     AWID_0                  
+#   awaddr       integral       32    'h9e8d646a              
+#   awlen        integral       4     'd1                     
+#   awsize       string         13    WRITE_2_BYTES           
+#   awburst      string         10    WRITE_INCR              
 #   awlock       string         19    WRITE_NORMAL_ACCESS     
 #   awcache      string         16    WRITE_BUFFERABLE        
 #   awprot       string         24    WRITE_NORMAL_SECURE_DATA
@@ -383,69 +481,69 @@
 #   bresp        string         12    WRITE_SLVERR            
 #   buser        integral       4     'd0                     
 # ------------------------------------------------------------
-# [1;32m[INFO][0m [1;36m(ID=Sequencer         )[0m [1;34m[time = 215000][0m Dropping response for sequence 3, sequence not found.  Probable cause: sequence exited or has been killed
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 215000][0m Converting write response: input bid = 0
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_monitor_proxy)[0m [1;34m[time = 215000][0m Sending out write response, bid = 0
-# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 255000][0m Print completed
-# --------------------------------------------------------
-# Name                           Type               Size  Value                                                                                                                                                                                                                                                             
-# --------------------------------------------------------
-# req                            cpu_sequence_item  -     @1849                                                                                                                                                                                                                                                             
-#   wr_en                        integral           1     'h1                                                                                                                                                                                                                                                               
-#   rd_en                        integral           1     'h0                                                                                                                                                                                                                                                               
-#   wstrb                        integral           4     'hf                                                                                                                                                                                                                                                               
-#   addr                         integral           32    'h0                                                                                                                                                                                                                                                               
-#   wdata                        integral           1024  'hac5dee26138f1e412b837f6cfc5ba55a32909646a7dcf2d82548e8617f7194e840c7c757a72ab2834aa8d6c81faa745bc33510649b942a7fce0e8a9dcf3bed4ab8618577efc46d44451941352e6c3ca44a4d7b5271fe41227226c99892148f191953d60522c82ea6856a0d5de35ed30fc478551171b6680e0b962608d5acfdeb
-#   ch                           channel_e          2     W_CH                                                                                                                                                                                                                                                              
-#   txn_id                       txn_id_e           4     ID_0                                                                                                                                                                                                                                                              
-#   len                          len_e              4     BURST_LEN4                                                                                                                                                                                                                                                        
-#   size                         size_e             3     BYTE2                                                                                                                                                                                                                                                             
-#   burst                        burst_e            2     INCR                                                                                                                                                                                                                                                              
-#   lock                         lock_e             2     NORMAL_ACCESS                                                                                                                                                                                                                                                     
-#   cache                        cache_e            2     BUFFERABLE                                                                                                                                                                                                                                                        
-#   prot                         prot_e             3     NORMAL_SECURE_DATA                                                                                                                                                                                                                                                
-#   rd_data                      integral           128   'h0                                                                                                                                                                                                                                                               
-#   full                         integral           1     'h0                                                                                                                                                                                                                                                               
-#   empty                        integral           1     'h0                                                                                                                                                                                                                                                               
-#   begin_time                   time               64    135000                                                                                                                                                                                                                                                            
-#   end_time                     time               64    255000                                                                                                                                                                                                                                                            
-#   depth                        int                32    'd2                                                                                                                                                                                                                                                               
-#   parent sequence (name)       string             9     write_seq                                                                                                                                                                                                                                                         
-#   parent sequence (full name)  string             47    uvm_test_top.env.cpu_active_agt.sqr_h.write_seq                                                                                                                                                                                                                   
-#   sequencer                    string             37    uvm_test_top.env.cpu_active_agt.sqr_h                                                                                                                                                                                                                             
-# --------------------------------------------------------
-# [1;32m[INFO][0m [1;36m(ID=TEST_DONE         )[0m [1;34m[time = 255000][0m 'run' phase is ready to proceed to the 'extract' phase
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_coverage)[0m [1;34m[time = 255000][0m AXI4 Slave Agent Coverage = 27.19 %
-# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 255000][0m Input Coverage = 62.50 %
-# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 255000][0m Output Coverage = 50.00 %
+# [1;32m[INFO][0m [1;36m(ID=Sequencer         )[0m [1;34m[time = 305000][0m Dropping response for sequence 3, sequence not found.  Probable cause: sequence exited or has been killed
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_seq_item_conv_class)[0m [1;34m[time = 305000][0m Converting write response: input bid = 0
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_monitor_proxy)[0m [1;34m[time = 305000][0m Sending out write response, bid = 0
+# [1;32m[INFO][0m [1;36m(ID=cpu_base_sequence )[0m [1;34m[time = 335000][0m Print completed
+# -------------------------------------------------------------------------------------------------------
+# Name                           Type               Size  Value                                          
+# -------------------------------------------------------------------------------------------------------
+# req                            cpu_sequence_item  -     @1889                                          
+#   wr_en                        integral           1     'h1                                            
+#   rd_en                        integral           1     'h0                                            
+#   wstrb                        integral           4     'hf                                            
+#   addr                         integral           32    'ha4ea7358                                     
+#   wdata                        integral           32    'h2ab0ab91                                     
+#   ch                           channel_e          2     W_CH                                           
+#   txn_id                       txn_id_e           4     ID_1                                           
+#   len                          len_e              4     BURST_LEN2                                     
+#   size                         size_e             3     BYTE2                                          
+#   burst                        burst_e            2     INCR                                           
+#   lock                         lock_e             2     NORMAL_ACCESS                                  
+#   cache                        cache_e            2     BUFFERABLE                                     
+#   prot                         prot_e             3     NORMAL_SECURE_DATA                             
+#   rd_data                      integral           128   'h0                                            
+#   full                         integral           1     'h0                                            
+#   empty                        integral           1     'h0                                            
+#   begin_time                   time               64    175000                                         
+#   end_time                     time               64    335000                                         
+#   depth                        int                32    'd2                                            
+#   parent sequence (name)       string             9     write_seq                                      
+#   parent sequence (full name)  string             47    uvm_test_top.env.cpu_active_agt.sqr_h.write_seq
+#   sequencer                    string             37    uvm_test_top.env.cpu_active_agt.sqr_h          
+# -------------------------------------------------------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=TEST_DONE         )[0m [1;34m[time = 335000][0m 'run' phase is ready to proceed to the 'extract' phase
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_coverage)[0m [1;34m[time = 335000][0m AXI4 Slave Agent Coverage = 27.19 %
+# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 335000][0m Input Coverage = 62.50 %
+# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 335000][0m Output Coverage = 50.00 %
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :   39
+# UVM_INFO :   54
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
-# [AXI4_SLAVE_DRIVER_BFM]     4
+# [AXI4_SLAVE_DRIVER_BFM]     6
 # [Questa UVM]     2
 # [RNTST]     1
-# [SLAVE_DRIVER_WADDR_PHASE]     1
-# [SLAVE_STATUS_CHECK]     3
-# [Sequencer]     1
+# [SLAVE_DRIVER_WADDR_PHASE]     2
+# [SLAVE_STATUS_CHECK]     6
+# [Sequencer]     2
 # [TEST_DONE]     1
 # [UVMTOP]     1
 # [axi4 slave agent bfm]     1
 # [axi4 slave driver bfm]     1
 # [axi4 slave monitor bfm]     1
 # [axi4_slave_coverage]     1
-# [axi4_slave_driver_proxy]     4
-# [axi4_slave_monitor_proxy]     1
-# [axi4_slave_seq_item_conv_class]    10
+# [axi4_slave_driver_proxy]     7
+# [axi4_slave_monitor_proxy]     2
+# [axi4_slave_seq_item_conv_class]    14
 # [cpu_base_sequence]     4
 # [cpu_subscriber]     2
-# ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 255 ns  Iteration: 68  Instance: /top
+# ** Note: $finish    : C:/questasim64_10.7c/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 335 ns  Iteration: 68  Instance: /top
 # Saving coverage database on exit...
-# End time: 12:48:33 on Jul 28,2026, Elapsed time: 0:00:03
+# End time: 11:39:47 on Jul 31,2026, Elapsed time: 0:00:05
 # Errors: 0, Warnings: 30

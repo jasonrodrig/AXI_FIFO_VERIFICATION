@@ -10,7 +10,7 @@ class cpu_base_sequence extends uvm_sequence #(cpu_sequence_item);
     channel_e ch     = AW_CH,
     txn_id_e  txn_id = ID_0,
     len_e     len    = BURST_LEN1,
-    size_e    size   = BYTE4,
+    size_e    size   = BYTE1,
     burst_e   burst  = FIXED,
     lock_e    lock   = NORMAL_ACCESS,
     cache_e   cache  = BUFFERABLE,
@@ -31,7 +31,7 @@ task cpu_base_sequence::send_transaction(
   channel_e ch     = AW_CH,
   txn_id_e  txn_id = ID_0,
   len_e     len    = BURST_LEN1,
-  size_e    size   = BYTE4,
+  size_e    size   = BYTE1,
   burst_e   burst  = FIXED,
   lock_e    lock   = NORMAL_ACCESS,
   cache_e   cache  = BUFFERABLE,
@@ -65,9 +65,9 @@ task cpu_base_sequence::send_transaction(
 endtask
 
 task cpu_base_sequence::body();
-  send_transaction(1,0,AW_CH,ID_0,BURST_LEN4,BYTE2,INCR);
+  send_transaction(1,0,AW_CH,ID_0,BURST_LEN2,BYTE2,INCR,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
   req.print();
-  send_transaction(1,0,W_CH,ID_0,BURST_LEN4,BYTE2,INCR,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
+  send_transaction(1,0,W_CH,ID_1,BURST_LEN2,BYTE2,INCR,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
   req.print();
 endtask
 

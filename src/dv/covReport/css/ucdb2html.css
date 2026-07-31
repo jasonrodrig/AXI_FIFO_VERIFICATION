@@ -59,7 +59,7 @@ table.tableTheme {
 table.tableTheme td, table.tableTheme th {
        border-style: none;
        border-radius: 0;      /* no rounded corners */
-       -webkit-border-radius: 0; 
+       -webkit-border-radius: 0;
        -moz-border-radius: 0;
        padding: 8px 18px;
 }
@@ -110,7 +110,7 @@ th {
 }
 
 table, th, td {
-	-webkit-border-radius: .3em; 
+	-webkit-border-radius: .3em;
 	-moz-border-radius: .3em;
 	border-radius: .3em;
 }
@@ -124,7 +124,7 @@ th, td {
 }
 
 td.sharpEdge {
-	-webkit-border-radius: 0; 
+	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
 }
@@ -146,9 +146,9 @@ td.invisible {
 	/* This invisible cell force the background to be white
 	   we need to do this so that we keep these indentation
 	   cells out of the row color.
-	   
+
 	   There is another class called invisible_nobg to make
-	   indentation but following a same background of the row. 
+	   indentation but following a same background of the row.
 	*/
 	width:            20px;
 	border-width:     0;
@@ -508,7 +508,7 @@ table.fpw { /* fill Page Width Table */
 	width: 100%; /* needed to force the table to occupy all the page */
 	background-color: #D0D0D0;
 	border-style:    none;
-	-webkit-border-radius: 0; 
+	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
 }
@@ -557,7 +557,7 @@ tr.v { /* even row. used in pertest.htm */
 }
 .handMouse {
 	/* When mouse hovers over this item, it takes the hand shape (hyperlink) */
-	
+
 	/* we need the following 2 values to handle different browsers */
 	cursor:pointer;
 	cursor:hand;

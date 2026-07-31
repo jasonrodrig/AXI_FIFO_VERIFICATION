@@ -1,14 +1,14 @@
-QUESTA := /home/share/questa.csh
-SHELL  := /bin/csh
+#QUESTA := /home/share/questa.csh
+#SHELL  := /bin/csh
 
-.ONESHELL:
-.SILENT:
+#.ONESHELL:
+#.SILENT:
 #.SHELLFLAGS = -e
 #===============================================================================
 # Targets
 #===============================================================================
 .PHONY: all clean compile compile_log_err sim simulate_log_err
-all: compile compile_log_err sim simulate_log_err
+all: compile sim 
 
 #===============================================================================
 # Environment Variables
@@ -161,6 +161,8 @@ clean:
 	coverage.ucdb \
 	covReport
 
+wave:
+	vsim -view waveform.wlf
 #===============================================================================
 # Compile Report
 #===============================================================================
@@ -173,22 +175,22 @@ compile_log_err:
 	echo ""
 	
 	echo "Error Location:"
-	grep -i "\*\* at" $(COMPILE_LOG) 
+	#grep -i "\*\* at" $(COMPILE_LOG) 
 	
-	if ($status != 0) then
-			echo " No Error Location Found"
-	endif
+	#if ($status != 0) then
+	#		echo " No Error Location Found"
+	#endif
 	
 	echo ""
 	
 	echo "Summary:"
-	grep -i "Errors:" $(COMPILE_LOG) 
+	#grep -i "Errors:" $(COMPILE_LOG) 
 	
-	if ($status != 0) then
+	#if ($status != 0) then
 			echo ""
 			echo "============ Compilation Successful ==============="
 			echo ""
-	endif
+	#endif
 	
 	echo ""
 	
@@ -210,4 +212,5 @@ simulate_log_err:
 	echo ""
 	echo "Waveform : vsim -view waveform.wlf"
 	echo "Coverage : covReport/index.html"
+
 
