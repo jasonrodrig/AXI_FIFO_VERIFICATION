@@ -7,6 +7,7 @@ class axi_fifo_environment extends uvm_env;
   axi_fifo_virtual_sequencer  vseqr;
   axi4_slave_agent            axi_slave_agt;
   axi4_slave_agent_config     axi_slave_cfg;
+  axi_fifo_scoreboard         axi_scb; 
   cpu_subscriber              cpu_sub;
 
   extern function new(string name = "axi_fifo_environment", uvm_component parent);
@@ -34,11 +35,14 @@ function void axi_fifo_environment::build_phase(uvm_phase phase);
   pas_agt = cpu_passive_agent::type_id::create("cpu_passive_agt", this);
 
   cpu_sub = cpu_subscriber::type_id::create("cpu_sub", this);
+  axi_scb = axi_fifo_scoreboard::type_id::create("axi_fifo_scoreboard",this);
+
   vseqr   = axi_fifo_virtual_sequencer::type_id::create("vseqr", this);
 
-  set_config_int("act_agt", "is_active", UVM_ACTIVE);
-  set_config_int("pas_agt", "is_active", UVM_PASSIVE);
-
+  //set_config_int("act_agt", "is_active", UVM_ACTIVE);
+  //set_config_int("pas_agt", "is_active", UVM_PASSIVE);
+  set_config_int("cpu_active_agt", "is_active", UVM_ACTIVE);
+  set_config_int("cpu_passive_agt", "is_active", UVM_PASSIVE);
 endfunction
 
 function void axi_fifo_environment::connect_phase(uvm_phase phase);
@@ -50,6 +54,9 @@ function void axi_fifo_environment::connect_phase(uvm_phase phase);
   act_agt.a_mon_h.a_mon_port.connect(cpu_sub.analysis_export);
   pas_agt.cpu_pass_mon.passive_mon_port.connect(cpu_sub.sub_pass_mon_port);
 
+  act_agt.a_mon_h.a_mon_port.connect(axi_scb.act_scb_port);
+  pas_agt.cpu_pass_mon.passive_mon_port.connect(axi_scb.pas_scb_port);
+
 endfunction
 
-
+ 

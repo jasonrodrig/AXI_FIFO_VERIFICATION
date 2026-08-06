@@ -30,4 +30,9 @@ task cpu_passive_monitor::cpu_monitor_code();
   seq.full    = fifo_vif.full;
   seq.empty   = fifo_vif.empty;
   passive_mon_port.write(seq);
+
+$display("rd_data = %032h", seq.rd_data);
+$display("full     = %0d", seq.full);
+$display("empty     = %0d", seq.empty);
+$display("--------------------------------");
 endtask

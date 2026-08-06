@@ -25,13 +25,21 @@ endfunction: build_phase
 task cpu_active_monitor::run_phase(uvm_phase phase);
   repeat(2)@(fifo_vif.cpu_active_mon_cb);
   forever begin
-   seq = cpu_sequence_item::type_id::create("cpu_act_seq_item");
-   repeat(1)@(fifo_vif.cpu_active_mon_cb);
-   // coding logic
-    seq.wr_en = fifo_vif.cpu_active_mon_cb.wr_en;
-    seq.wr_data = fifo_vif.cpu_active_mon_cb.wr_data;
-    seq.rd_en = fifo_vif.cpu_active_mon_cb.rd_en;
-    a_mon_port.write(seq);
+   @(fifo_vif.cpu_active_mon_cb);
+  
+  // if (fifo_vif.cpu_active_mon_cb.wr_en) begin
+     seq = cpu_sequence_item::type_id::create("cpu_act_seq_item");
+     seq.wr_en   = fifo_vif.cpu_active_mon_cb.wr_en;
+     seq.wr_data = fifo_vif.cpu_active_mon_cb.wr_data;
+     seq.rd_en   = fifo_vif.cpu_active_mon_cb.rd_en;
+     seq.full    = fifo_vif.cpu_active_mon_cb.full;   
+     a_mon_port.write(seq);
+$display("--------------------------------");
+$display("wr_en   = %0b", seq.wr_en);
+$display("wr_data = %032h", seq.wr_data);
+$display("SOP     = %02h", seq.wr_data[127:120]);
+$display("--------------------------------");
+  // end
   end
 endtask: run_phase
-
+ 

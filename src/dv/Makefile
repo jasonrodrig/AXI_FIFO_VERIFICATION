@@ -105,7 +105,7 @@ compile:
 	echo "------------------------------------------------------------"
 	echo ""
 	
-	$(VLOG) -work work $(INC_DIR) .\test\axi_fifo_test_packages.sv 
+	$(VLOG) -work work $(INC_DIR) ./test/axi_fifo_test_packages.sv 
 	
 	echo "------------------------------------------------------------"
 	echo "Compiling Interface"

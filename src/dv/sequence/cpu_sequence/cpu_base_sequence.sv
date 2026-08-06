@@ -63,11 +63,39 @@ task cpu_base_sequence::send_transaction(
  `uvm_info(get_type_name(),"Print completed",UVM_NONE)
 
 endtask
-
+/*
 task cpu_base_sequence::body();
   send_transaction(1,0,AW_CH,ID_0,BURST_LEN2,BYTE2,INCR,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
   req.print();
   send_transaction(1,0,W_CH,ID_1,BURST_LEN2,BYTE2,INCR,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
   req.print();
+endtask
+*/
+
+task cpu_base_sequence::body();
+
+  // ---- WRITE #1 ----
+  send_transaction(1,0,AW_CH,ID_0,BURST_LEN2,BYTE2,INCR,
+                    NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
+  req.print();
+
+  // Pop the response for WRITE #1. wr_en=0/rd_en=1 -- the driver's
+  // read-only branch just pulses rd_en to drain the next available
+  // response beat, it doesn't use ch/addr/etc for this, but they're
+  // still set to valid values here for traceability in the log.
+  send_transaction(0,1,AR_CH,ID_0,BURST_LEN1,BYTE1,FIXED,
+                    NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
+  req.print();
+
+  // ---- WRITE #2 ----
+  send_transaction(1,0,W_CH,ID_1,BURST_LEN2,BYTE2,INCR,
+                    NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
+  req.print();
+
+  // Pop the response for WRITE #2
+  send_transaction(0,1,AR_CH,ID_1,BURST_LEN1,BYTE1,FIXED,
+                    NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
+  req.print();
+
 endtask
 

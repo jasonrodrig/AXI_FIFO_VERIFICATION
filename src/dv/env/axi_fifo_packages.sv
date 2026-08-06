@@ -17,8 +17,8 @@ package axi_fifo_pkg;
 
   // Integration Components
   `include "axi_fifo_virtual_sequencer.sv"
+  `include "axi_fifo_scoreboard.sv"
   `include "axi_fifo_environment.sv"
-  //`include "axi_fifo_scoreboard.sv"
   `include "axi_fifo_report_server.sv"
 
 endpackage : axi_fifo_pkg 
