@@ -1,14 +1,15 @@
-#QUESTA := /home/share/questa.csh
-#SHELL  := /bin/csh
+QUESTA := /home/share/questa.csh
+SHELL  := /bin/csh
 
-#.ONESHELL:
+.ONESHELL:
 #.SILENT:
 #.SHELLFLAGS = -e
 #===============================================================================
 # Targets
 #===============================================================================
 .PHONY: all clean compile compile_log_err sim simulate_log_err
-all: compile sim 
+
+all: clean compile sim 
 
 #===============================================================================
 # Environment Variables
@@ -42,6 +43,7 @@ INC_DIR = \
 #===============================================================================
 compile:
 	
+	source $(QUESTA)
 	echo "------------------------------------------------------------"
 	echo "Compiling RTL Packages"
 	echo "------------------------------------------------------------"
@@ -129,6 +131,8 @@ compile:
 # Simulation
 #===============================================================================
 sim:
+	
+	source $(QUESTA)
 	$(VSIM) \
 	-c \
 	-voptargs="+acc" \
@@ -140,6 +144,7 @@ sim:
 	-wlf waveform.wlf \
 	-L work \
 	+UVM_TESTNAME=axi_fifo_base_test \
+	+UVM_VERBOSITY=UVM_NONE\
 	work.top
 	
 	vcover report -html coverage.ucdb -htmldir covReport -details
@@ -154,12 +159,13 @@ clean:
 	transcript \
 	vsim.wlf \
 	vsim_stacktrace.vstf \
+	wave.vcd \
 	waveform.wlf \
 	top.log \
 	compile.log \
 	simulation.log \
 	coverage.ucdb \
-	covReport
+	covReport 
 
 wave:
 	vsim -view waveform.wlf

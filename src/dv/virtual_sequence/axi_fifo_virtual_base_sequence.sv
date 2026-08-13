@@ -23,6 +23,11 @@ class axi_fifo_virtual_base_sequence extends uvm_sequence;
         axi_seq.start(p_sequencer.axi_slave_wr_seqr); 
       end
 
+      begin
+        axi_seq = axi_slave_bk_base_seq::type_id::create("axi_seq");
+        axi_seq.start(p_sequencer.axi_slave_rd_seqr); 
+      end
+
     join_any
     wait fork;
 

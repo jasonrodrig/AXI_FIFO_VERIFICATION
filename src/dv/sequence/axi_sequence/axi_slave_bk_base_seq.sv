@@ -31,15 +31,34 @@ endfunction : new
 task axi_slave_bk_base_seq::body();
   req = axi4_slave_tx::type_id::create("req");
 
-//  req.transfer_type=BLOCKING_WRITE;
-//  req.no_of_wait_states = 0;
-  repeat(2) begin
+  req.tx_type = WRITE;
+
+  repeat(1) begin
   start_item(req); 
-  if(!req.randomize() with { req.bresp == WRITE_OKAY; } ) 
+    if(!req.randomize() with { req.bresp == WRITE_OKAY; req.transfer_type == OUTSTANDING_WRITE ; } ) 
     `uvm_fatal(get_type_name(),"randomization failed") 
    finish_item(req);
   req.print();
   end
+ 
+
+  req.tx_type = READ;
+    
+  repeat(1) begin
+  start_item(req); 
+
+  req.tx_type = READ;
+    /*    if(!req.randomize() with { 
+      req.arid   == ARID_0 ; req.araddr == 'b1 ; req.arlen == 2 ; req.arburst == READ_INCR ;
+      req.arlock == READ_NORMAL_ACCESS ; req.arcache == READ_BUFFERABLE; 
+      req.arprot == READ_NORMAL_SECURE_DATA; req.rid == RID_0 ; req.rresp == READ_OKAY;
+      req.transfer_type == OUTSTANDING_READ ; } ) 
+    `uvm_fatal(get_type_name(),"randomization failed") 
+ */
+    finish_item(req);
+  req.print();
+  end
+
 
 endtask : body
 

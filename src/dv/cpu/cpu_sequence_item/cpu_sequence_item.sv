@@ -75,7 +75,7 @@ class cpu_sequence_item extends uvm_sequence_item;
    */   if(ch == AR_CH)
     {
       wstrb == 4'b0000;
-      wdata == 1024'b0;
+      wdata == 'b0;
     }
   }
 
@@ -98,7 +98,7 @@ function void cpu_sequence_item::build_fifo_packet();
     1024: fifo_size = 9;
     default: fifo_size = 9;
   endcase
-  $display("fifo_size =%d",fifo_size);
+ 
   if( ch == AW_CH || ch == W_CH )
   begin
 

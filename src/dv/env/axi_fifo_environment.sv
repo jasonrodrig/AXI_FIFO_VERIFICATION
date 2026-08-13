@@ -56,6 +56,12 @@ function void axi_fifo_environment::connect_phase(uvm_phase phase);
 
   act_agt.a_mon_h.a_mon_port.connect(axi_scb.act_scb_port);
   pas_agt.cpu_pass_mon.passive_mon_port.connect(axi_scb.pas_scb_port);
+  
+  axi_slave_agt.axi4_slave_mon_proxy_h.axi4_slave_write_address_analysis_port.connect(axi_scb.axi_slave_write_address_port);
+  axi_slave_agt.axi4_slave_mon_proxy_h.axi4_slave_write_data_analysis_port.connect(axi_scb.axi_slave_write_data_port);
+  axi_slave_agt.axi4_slave_mon_proxy_h.axi4_slave_write_response_analysis_port.connect(axi_scb.axi_slave_write_response_port);
+  axi_slave_agt.axi4_slave_mon_proxy_h.axi4_slave_read_address_analysis_port.connect(axi_scb.axi_slave_read_address_port);
+  axi_slave_agt.axi4_slave_mon_proxy_h.axi4_slave_read_data_analysis_port.connect(axi_scb. axi_slave_read_data_port);
 
 endfunction
 

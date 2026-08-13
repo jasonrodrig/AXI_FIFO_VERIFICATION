@@ -74,6 +74,7 @@ endtask
 
 task cpu_base_sequence::body();
 
+  repeat(1)
   // ---- WRITE #1 ----
   send_transaction(1,0,AW_CH,ID_0,BURST_LEN2,BYTE2,INCR,
                     NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
@@ -83,19 +84,20 @@ task cpu_base_sequence::body();
   // read-only branch just pulses rd_en to drain the next available
   // response beat, it doesn't use ch/addr/etc for this, but they're
   // still set to valid values here for traceability in the log.
-  send_transaction(0,1,AR_CH,ID_0,BURST_LEN1,BYTE1,FIXED,
-                    NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
+  
+  send_transaction(1,0,AR_CH,ID_0,BURST_LEN2,BYTE2,FIXED,
+                      NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
   req.print();
 
   // ---- WRITE #2 ----
-  send_transaction(1,0,W_CH,ID_1,BURST_LEN2,BYTE2,INCR,
-                    NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
-  req.print();
+  //send_transaction(1,0,W_CH,ID_1,BURST_LEN2,BYTE2,INCR,
+  //                  NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
+  //req.print();
 
   // Pop the response for WRITE #2
-  send_transaction(0,1,AR_CH,ID_1,BURST_LEN1,BYTE1,FIXED,
-                    NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
-  req.print();
+  //send_transaction(0,1,AR_CH,ID_1,BURST_LEN1,BYTE1,FIXED,
+  //                  NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
+  //req.print();
 
 endtask
 
