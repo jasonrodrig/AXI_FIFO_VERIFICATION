@@ -54,10 +54,14 @@ class axi_fifo_scoreboard extends uvm_scoreboard;
   axi4_slave_tx read_address_q[$];
   axi4_slave_tx read_data_q[$];
   
-  
+  axi4_slave_tx aw_channel_seq;
+  axi4_slave_tx wr_addr_seq; 
+  axi4_slave_tx wr_data_seq;
   //------------------------------------------------------------
   // Reference Memory
   //------------------------------------------------------------
+  
+  event aw_captured;
 
   typedef struct {
     bit [3:0]  awid;
@@ -69,6 +73,7 @@ class axi_fifo_scoreboard extends uvm_scoreboard;
   } expected_w;
 
   expected_w expected_write_q[$];
+  expected_w extract_w_struct;
 
   bit [31:0] ref_mem[bit[31:0]];  
 
@@ -91,7 +96,6 @@ class axi_fifo_scoreboard extends uvm_scoreboard;
   bit [1:0]  arlock [bit[3:0]];
   bit [1:0]  arcache[bit[3:0]];
   bit [2:0]  arprot [bit[3:0]];
-  // bit [3:0]  wstrobe[bit[3:0]];
 
   //------------------------------------------------------------
   // Statistics
@@ -166,9 +170,6 @@ endfunction
 //==============================================================
 
 function void axi_fifo_scoreboard::write_act_imp_scb(cpu_sequence_item pkt);
-//  cpu_sequence_item pkt_copy;
-
-//  $cast( pkt_copy,pkt.clone() );
   
   if( pkt.wr_data != 0 ) begin
     temp.push_back(pkt);
@@ -224,7 +225,6 @@ task axi_fifo_scoreboard::run_phase(uvm_phase phase);
     wait(temp.size() > 0);
     tx = temp.pop_front();
 
-    $display( " wr_data = %0h ",tx.wr_data[63:56]);
     //-------------------------------------------------------
     // Wait until one complete packet is collected
     //-------------------------------------------------------
@@ -252,10 +252,8 @@ task axi_fifo_scoreboard::run_phase(uvm_phase phase);
     
     else if(tx.wr_data[63:56] == 0)
     begin
-      fork
         compare_read_address_channel();  
      // compare_read_data_channel();
-      join
     end
    
   end
@@ -356,7 +354,7 @@ task axi_fifo_scoreboard::decode_packet();
       exp_w.strb = aw_w_signals_temp[35:32];
       exp_w.beat = beat;
       exp_w.last = (beat == num_beats-1);
-      // expected_write_q.push_back(exp_w);
+      expected_write_q.push_back(exp_w);
 
       `uvm_info( get_type_name(), $sformatf( "EXPECTED W : BEAT=%0d ID=%0h ADDR=%08h DATA=%08h STRB=%0h LAST=%0b" , beat , exp_w.awid , exp_w.addr ,  exp_w.data , exp_w.strb , exp_w.last ) , UVM_NONE )
 
@@ -399,7 +397,8 @@ task axi_fifo_scoreboard::decode_packet();
           );
         end
         else begin
-
+          ref_mem[ burst_addr + byte_lane ] = 'b0;
+ 
           $display(
             "BYTE[%0d] : 
             ADDR = 0x%08h | 
@@ -456,13 +455,7 @@ task axi_fifo_scoreboard::decode_packet();
 endtask
 
 
-function bit[31:0] axi_fifo_scoreboard::calculate_burst_addr(
-  input bit [31:0] start_addr,
-  input bit [3:0]  len,
-  input bit [2:0]  size,
-  input bit [1:0]  burst,
-  input int        beat
-);
+function bit[31:0] axi_fifo_scoreboard::calculate_burst_addr( input bit [31:0] start_addr , input bit [3:0] len , input bit [2:0] size , input bit [1:0] burst , input int beat );
 
   bit [31:0] bytes_per_beat;
   bit [31:0] burst_bytes;
@@ -481,16 +474,15 @@ function bit[31:0] axi_fifo_scoreboard::calculate_burst_addr(
     // FIXED
     //------------------------------------------------------
 
-    if(burst == 2'b00) begin
+    if(burst == 2'b00) 
       addr = start_addr;
-    end
 
     //------------------------------------------------------
     // INCR
     //------------------------------------------------------
-    else if(burst == 2'b01) begin
+    else if(burst == 2'b01) 
       addr = start_addr + (beat * bytes_per_beat);
-    end
+    
 
     //------------------------------------------------------
     // WRAP
@@ -525,9 +517,8 @@ function bit[31:0] axi_fifo_scoreboard::calculate_burst_addr(
     // Reserved
     //------------------------------------------------------
 
-    else begin
+    else 
       addr = start_addr;
-    end
 
     return addr;
 
@@ -536,64 +527,104 @@ endfunction
 
 
 task axi_fifo_scoreboard::compare_write_address_channel();
-  axi4_slave_tx wr_addr_seq;
 
   wait(write_address_q.size() > 0) 
   wr_addr_seq = write_address_q.pop_front(); 
-  
-  `uvm_info( get_type_name(), " ENTERD THE WRITE ADDRESS CHANNEL " , UVM_NONE) 
 
-  if(!aw_w_id.exists(wr_addr_seq.awid)) `uvm_error(get_type_name(), $sformatf("AW_ID mismatch : expected %0h actual %0h", wr_addr_seq.awid ,aw_w_id[wr_addr_seq.awid] ) )
+  if (!$cast(aw_channel_seq, wr_addr_seq.clone())) `uvm_fatal("SCB_CLONE_CAST", "Failed to cast clone to axi4_slave_tx");  
+  -> aw_captured;
+
+  if(!aw_w_id.exists(wr_addr_seq.awid)) `uvm_error(get_type_name(), $sformatf("AW_ID mismatch : actual %0h expected %0h", wr_addr_seq.awid ,aw_w_id[wr_addr_seq.awid] ) )
   else begin
     `uvm_info(get_type_name(), $sformatf("AW_id : %d exists",wr_addr_seq.awid ) ,UVM_NONE) 
 
     if (awaddr[wr_addr_seq.awid] == wr_addr_seq.awaddr) `uvm_info(get_type_name(), $sformatf("AWADDR match: %0h", wr_addr_seq.awaddr), UVM_NONE)
-    else                                                `uvm_error(get_type_name(), $sformatf("AWADDR mismatch: expected %0h actual %0h", wr_addr_seq.awaddr, awaddr[wr_addr_seq.awid]))
+    else                                                `uvm_error(get_type_name(), $sformatf("AWADDR mismatch: actual %0h expected %0h", wr_addr_seq.awaddr, awaddr[wr_addr_seq.awid]))
 
     if (awlen[wr_addr_seq.awid] == wr_addr_seq.awlen)   `uvm_info(get_type_name(), $sformatf("AWLEN match: %0d", wr_addr_seq.awlen), UVM_NONE)
-    else                                                `uvm_error(get_type_name(), $sformatf("AWLEN mismatch: expected %0d actual %0d", wr_addr_seq.awlen, awlen[wr_addr_seq.awid]))
+    else                                                `uvm_error(get_type_name(), $sformatf("AWLEN mismatch: actual %0d expected %0d", wr_addr_seq.awlen, awlen[wr_addr_seq.awid]))
 
     if (awsize[wr_addr_seq.awid] == wr_addr_seq.awsize) `uvm_info(get_type_name(), $sformatf("AWSIZE match: %0d", wr_addr_seq.awsize), UVM_NONE)
-    else                                                `uvm_error(get_type_name(), $sformatf("AWSIZE mismatch: expected %0d actual %0d", wr_addr_seq.awsize, awsize[wr_addr_seq.awid]))
+    else                                                `uvm_error(get_type_name(), $sformatf("AWSIZE mismatch: actual %0d expected %0d", wr_addr_seq.awsize, awsize[wr_addr_seq.awid]))
 
     if (awburst[wr_addr_seq.awid] == wr_addr_seq.awburst) `uvm_info(get_type_name(), $sformatf("AWBURST match: %0d", wr_addr_seq.awburst), UVM_NONE)
-    else                                                  `uvm_error(get_type_name(), $sformatf("AWBURST mismatch: expected %0d actual %0d", wr_addr_seq.awburst, awburst[wr_addr_seq.awid]))
+    else                                                  `uvm_error(get_type_name(), $sformatf("AWBURST mismatch: actual %0d expected %0d", wr_addr_seq.awburst, awburst[wr_addr_seq.awid]))
 
     if (awlock[wr_addr_seq.awid] == wr_addr_seq.awlock)   `uvm_info(get_type_name(), $sformatf("AWLOCK match: %0d", wr_addr_seq.awlock), UVM_NONE)
-    else                                                  `uvm_error(get_type_name(), $sformatf("AWLOCK mismatch: expected %0d actual %0d", wr_addr_seq.awlock, awlock[wr_addr_seq.awid]))
+    else                                                  `uvm_error(get_type_name(), $sformatf("AWLOCK mismatch: actual %0d expected %0d", wr_addr_seq.awlock, awlock[wr_addr_seq.awid]))
 
     if (awcache[wr_addr_seq.awid] == wr_addr_seq.awcache) `uvm_info(get_type_name(), $sformatf("AWCACHE match: %0d", wr_addr_seq.awcache), UVM_NONE)
-    else                                                  `uvm_error(get_type_name(), $sformatf("AWCACHE mismatch: expected %0d actual %0d", wr_addr_seq.awcache, awcache[wr_addr_seq.awid]))
+    else                                                  `uvm_error(get_type_name(), $sformatf("AWCACHE mismatch: actual %0d expected %0d", wr_addr_seq.awcache, awcache[wr_addr_seq.awid]))
 
     if (awprot[wr_addr_seq.awid] == wr_addr_seq.awprot)   `uvm_info(get_type_name(), $sformatf("AWPROT match: %0d", wr_addr_seq.awprot), UVM_NONE)
-    else                                                  `uvm_error(get_type_name(), $sformatf("AWPROT mismatch: expected %0d actual %0d", wr_addr_seq.awprot, awprot[wr_addr_seq.awid]))
+    else                                                  `uvm_error(get_type_name(), $sformatf("AWPROT mismatch: actual %0d expected %0d", wr_addr_seq.awprot, awprot[wr_addr_seq.awid]))
   end
- 
+
 endtask
 
 task axi_fifo_scoreboard::compare_write_data_channel();
-  axi4_slave_tx wr_data_seq;
+  bit [31:0] burst_addr , expected_wdata , byte_addr;
+  bit [7:0] expected_byte , actual_byte;
 
-  wait(write_data_q.size() > 0) 
-  wr_data_seq = write_data_q.pop_front();  
+  @aw_captured;
 
-  `uvm_info( get_type_name(), " ENTERD THE WRITE DATA CHANNEL " , UVM_NONE) 
+  for (int beat = 0 ; beat < aw_channel_seq.awlen + 1 ; beat++) 
+  begin
 
-  if(!aw_w_id.exists(wr_data_seq.awid)) `uvm_error(get_type_name(), $sformatf("W_ID mismatch : expected %0h actual %0h", wr_data_seq.awid ,aw_w_id[wr_data_seq.awid] ) )
-  else begin
-    `uvm_info(get_type_name(), $sformatf("W_id : %d exists",wr_data_seq.awid ) ,UVM_NONE) 
+    wait(write_data_q.size() > 0 && expected_write_q.size > 0) ;
+    wr_data_seq = write_data_q.pop_front();
+    extract_w_struct = expected_write_q.pop_front();
 
-  if (wstrobe[wr_data_seq.awid] == wr_data_seq.wstrb[0]) `uvm_info(get_type_name(), $sformatf("WSTRB match: %0h", wr_data_seq.wstrb[0]), UVM_NONE) 
-  else                                                `uvm_error(get_type_name(), $sformatf("WSTRB mismatch: expected %0h actual %0h", wr_data_seq.wstrb[0], wstrobe[wr_data_seq.awid])) 
-  
-  $display("BURST_TYPE = %D" , wr_data_seq.awburst.name() );
-  $display("BURST_LEN = %D"  , wr_data_seq.awlen) ;
-  $display("BURST_SIZE = %D" , wr_data_seq.awsize.name() );
+    burst_addr = calculate_burst_addr( aw_channel_seq.awaddr , aw_channel_seq.awlen , aw_channel_seq.awsize , aw_channel_seq.awburst , beat );
 
+    if(!aw_w_id.exists(aw_channel_seq.awid)) `uvm_error(get_type_name(), $sformatf("W_ID mismatch : actual %0h expected %0h", aw_channel_seq.awid ,aw_w_id[aw_channel_seq.awid] ) )
+    else                                     `uvm_info(get_type_name(), $sformatf("W_id : %d exists",aw_channel_seq.awid ) ,UVM_NONE) 
+
+    if (extract_w_struct.strb == wr_data_seq.wstrb[0]) `uvm_info(get_type_name(), $sformatf("WSTRB match: %0h", wr_data_seq.wstrb[0]), UVM_NONE) 
+    else                                               `uvm_error(get_type_name(), $sformatf("WSTRB mismatch: actual %0h expected %0h", wr_data_seq.wstrb[0], extract_w_struct.strb )) 
+
+    if (extract_w_struct.last == wr_data_seq.wlast) `uvm_info(get_type_name(), $sformatf("WLAST match: %0h", wr_data_seq.wlast), UVM_NONE) 
+    else                                            `uvm_error(get_type_name(), $sformatf("WLAST mismatch: actual %0h expected %0h", wr_data_seq.wlast, extract_w_struct.last )) 
+
+    // ======================================================
+    // BYTE LANE COMPARISON
+    // ======================================================
+
+    for (int lane = 0; lane < 4; lane++)
+    begin
+
+      if (wr_data_seq.wstrb[0][lane]) 
+      begin
+        byte_addr = burst_addr + lane;
+        actual_byte = wr_data_seq.wdata[0][lane*8 +: 8];
+
+        // -------------------------------------------
+        // Check reference memory
+        // -------------------------------------------
+
+        if (!ref_mem.exists(byte_addr)) `uvm_error( get_type_name() , $sformatf( "REF_MEM MISS : BYTE_ADDR=0x%08h LANE=%0d" , byte_addr , lane ) )
+
+        else begin
+        expected_byte = ref_mem[byte_addr];
+
+        // ---------------------------------------
+        // Compare actual vs expected byte
+        // ---------------------------------------
+
+        if (actual_byte == expected_byte) `uvm_info( get_type_name(), $sformatf( "BYTE[%0d] MATCH : ADDR=0x%08h DATA=0x%02h WSTRB=1", lane, byte_addr, actual_byte), UVM_NONE)
+        else                              `uvm_error( get_type_name(), $sformatf( "BYTE[%0d] MISMATCH : ADDR=0x%08h ACTUAL=0x%02h EXPECTED=0x%02h WSTRB=1", lane , byte_addr , actual_byte , expected_byte ) )
+
+        end
+      end
+
+        // ------------------------------------------------
+        // WSTRB = 0 means this byte lane is not valid.
+        // We should NOT compare its data.
+        // ------------------------------------------------
+      else  `uvm_info( get_type_name(), $sformatf( "BYTE[%0d] INVALID : WSTRB=0", lane),  UVM_NONE);
+    end
   end
- 
 endtask
-
 
 
 task axi_fifo_scoreboard::compare_read_address_channel();
@@ -602,32 +633,30 @@ task axi_fifo_scoreboard::compare_read_address_channel();
   wait(read_address_q.size() > 0) 
   rd_addr_seq = read_address_q.pop_front(); 
   
-  `uvm_info( get_type_name(), " ENTERD THE READ ADDRESS CHANNEL " , UVM_NONE) 
-
-  if(!ar_id.exists(rd_addr_seq.arid)) `uvm_error(get_type_name(), $sformatf("AR_ID mismatch : expected %0h actual %0h", rd_addr_seq.arid ,ar_id[rd_addr_seq.arid] ) )
+  if(!ar_id.exists(rd_addr_seq.arid)) `uvm_error(get_type_name(), $sformatf("AR_ID mismatch : actual %0h expected %0h", rd_addr_seq.arid ,ar_id[rd_addr_seq.arid] ) )
   else begin
     `uvm_info(get_type_name(), $sformatf("ar_id : %d exists",rd_addr_seq.arid ) ,UVM_NONE) 
 
     if (araddr[rd_addr_seq.arid] == rd_addr_seq.araddr) `uvm_info(get_type_name(), $sformatf("ARADDR match: %0h", rd_addr_seq.araddr), UVM_NONE)
-    else                                                `uvm_error(get_type_name(), $sformatf("ARADDR mismatch: expected %0h actual %0h", rd_addr_seq.araddr, araddr[rd_addr_seq.arid]))
+    else                                                `uvm_error(get_type_name(), $sformatf("ARADDR mismatch: actual %0h expected %0h", rd_addr_seq.araddr, araddr[rd_addr_seq.arid]))
 
     if (arlen[rd_addr_seq.arid] == rd_addr_seq.arlen)   `uvm_info(get_type_name(), $sformatf("ARLEN match: %0d", rd_addr_seq.arlen), UVM_NONE)
-    else                                                `uvm_error(get_type_name(), $sformatf("ARLEN mismatch: expected %0d actual %0d", rd_addr_seq.arlen, arlen[rd_addr_seq.arid]))
+    else                                                `uvm_error(get_type_name(), $sformatf("ARLEN mismatch: actual %0d expected %0d", rd_addr_seq.arlen, arlen[rd_addr_seq.arid]))
 
     if (arsize[rd_addr_seq.arid] == rd_addr_seq.arsize) `uvm_info(get_type_name(), $sformatf("ARSIZE match: %0d", rd_addr_seq.arsize), UVM_NONE)
-    else                                                `uvm_error(get_type_name(), $sformatf("ARSIZE mismatch: expected %0d actual %0d", rd_addr_seq.arsize, arsize[rd_addr_seq.arid]))
+    else                                                `uvm_error(get_type_name(), $sformatf("ARSIZE mismatch: actual %0d expected %0d", rd_addr_seq.arsize, arsize[rd_addr_seq.arid]))
 
     if (arburst[rd_addr_seq.arid] == rd_addr_seq.arburst) `uvm_info(get_type_name(), $sformatf("ARBURST match: %0d", rd_addr_seq.arburst), UVM_NONE)
-    else                                                  `uvm_error(get_type_name(), $sformatf("ARBURST mismatch: expected %0d actual %0d", rd_addr_seq.arburst, arburst[rd_addr_seq.arid]))
+    else                                                  `uvm_error(get_type_name(), $sformatf("ARBURST mismatch: actual %0d expected %0d", rd_addr_seq.arburst, arburst[rd_addr_seq.arid]))
 
     if (arlock[rd_addr_seq.arid] == rd_addr_seq.arlock)   `uvm_info(get_type_name(), $sformatf("ARLOCK match: %0d", rd_addr_seq.arlock), UVM_NONE)
-    else                                                  `uvm_error(get_type_name(), $sformatf("ARLOCK mismatch: expected %0d actual %0d", rd_addr_seq.arlock, arlock[rd_addr_seq.arid]))
+    else                                                  `uvm_error(get_type_name(), $sformatf("ARLOCK mismatch: actual %0d expected %0d", rd_addr_seq.arlock, arlock[rd_addr_seq.arid]))
 
     if (arcache[rd_addr_seq.arid] == rd_addr_seq.arcache) `uvm_info(get_type_name(), $sformatf("ARCACHE match: %0d", rd_addr_seq.arcache), UVM_NONE)
-    else                                                  `uvm_error(get_type_name(), $sformatf("ARCACHE mismatch: expected %0d actual %0d", rd_addr_seq.arcache, arcache[rd_addr_seq.arid]))
+    else                                                  `uvm_error(get_type_name(), $sformatf("ARCACHE mismatch: actual %0d expected %0d", rd_addr_seq.arcache, arcache[rd_addr_seq.arid]))
 
     if (arprot[rd_addr_seq.arid] == rd_addr_seq.arprot)   `uvm_info(get_type_name(), $sformatf("ARPROT match: %0d", rd_addr_seq.arprot), UVM_NONE)
-    else                                                  `uvm_error(get_type_name(), $sformatf("ARPROT mismatch: expected %0d actual %0d", rd_addr_seq.arprot, arprot[rd_addr_seq.arid]))
+    else                                                  `uvm_error(get_type_name(), $sformatf("ARPROT mismatch: actual %0d expected %0d", rd_addr_seq.arprot, arprot[rd_addr_seq.arid]))
   end
  
 endtask

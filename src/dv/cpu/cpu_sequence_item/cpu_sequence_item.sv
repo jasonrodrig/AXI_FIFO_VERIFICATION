@@ -81,6 +81,11 @@ class cpu_sequence_item extends uvm_sequence_item;
 
   constraint c3 { addr % ( 1 << size ) == 0; }
   constraint c4 { if( burst == WRAP ) addr % ( ( len + 1 ) * ( 1 << size ) ) == 0; }
+  constraint c5 { if( burst == WRAP ) len inside { BURST_LEN2 , BURST_LEN4, BURST_LEN8, BURST_LEN16 } ;}
+
+    /* function void post_randomize(); */
+    /*   if(burst == WRAP) addr = addr + 4; */
+    /* endfunction */
 
 endclass
 

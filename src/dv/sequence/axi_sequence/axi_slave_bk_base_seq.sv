@@ -38,7 +38,7 @@ task axi_slave_bk_base_seq::body();
     if(!req.randomize() with { req.bresp == WRITE_OKAY; req.transfer_type == OUTSTANDING_WRITE ; } ) 
     `uvm_fatal(get_type_name(),"randomization failed") 
    finish_item(req);
-  req.print();
+  //req.print();
   end
  
 
@@ -56,7 +56,7 @@ task axi_slave_bk_base_seq::body();
     `uvm_fatal(get_type_name(),"randomization failed") 
  */
     finish_item(req);
-  req.print();
+  //req.print();
   end
 
 
