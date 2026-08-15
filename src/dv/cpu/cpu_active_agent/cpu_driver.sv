@@ -53,7 +53,7 @@ task cpu_driver::drive_to_dut();
   begin
     fifo_vif.cpu_driver_cb.wr_en   <= 0;
     fifo_vif.cpu_driver_cb.rd_en   <= 1;
-    fifo_vif.cpu_driver_cb.wr_data <= '0;
+    fifo_vif.cpu_driver_cb.wr_data <= 'b0;
     @(fifo_vif.cpu_driver_cb);
   end
 
@@ -92,7 +92,7 @@ task cpu_driver::drive_to_dut();
   //------------------------------------------------------------
   fifo_vif.cpu_driver_cb.wr_en   <= 0;
   fifo_vif.cpu_driver_cb.rd_en   <= 0;
-  fifo_vif.cpu_driver_cb.wr_data <= '0;
+  fifo_vif.cpu_driver_cb.wr_data <= 'b0;
   repeat(15) @(fifo_vif.cpu_driver_cb);
 
 endtask

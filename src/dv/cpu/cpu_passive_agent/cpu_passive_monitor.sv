@@ -8,7 +8,6 @@ class cpu_passive_monitor extends uvm_monitor;
   extern function new (string name = "cpu_passive_monitor", uvm_component parent);
   extern function void build_phase(uvm_phase phase);
   extern task run_phase(uvm_phase phase);
-  extern task cpu_monitor_code();
 
 endclass
 
@@ -24,20 +23,15 @@ function void cpu_passive_monitor::build_phase(uvm_phase phase);
 endfunction
 
 task cpu_passive_monitor::run_phase(uvm_phase phase);
-  repeat(2) @(posedge fifo_vif.clk);
+  repeat(2) @(posedge fifo_vif.cpu_passive_mon_cb);
   forever begin  
     seq = cpu_sequence_item::type_id::create("cpu_seq");
-    cpu_monitor_code();   
+    @(posedge fifo_vif.cpu_passive_mon_cb);
+    seq.rd_data = fifo_vif.cpu_passive_mon_cb.rd_data;
+    seq.full    = fifo_vif.cpu_passive_mon_cb.full;
+    seq.empty   = fifo_vif.cpu_passive_mon_cb.empty;
+    seq.rd_en   = fifo_vif.cpu_passive_mon_cb.rd_en;
+    passive_mon_port.write(seq);
   end
-
 endtask
 
-task cpu_passive_monitor::cpu_monitor_code();
-  // monitor logic
-  @(posedge fifo_vif.clk);
-  seq.rd_data = fifo_vif.rd_data;
-  seq.full    = fifo_vif.full;
-  seq.empty   = fifo_vif.empty;
-  passive_mon_port.write(seq);
-
-endtask

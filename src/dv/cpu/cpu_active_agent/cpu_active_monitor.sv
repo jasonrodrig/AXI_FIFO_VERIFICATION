@@ -35,7 +35,8 @@ task cpu_active_monitor::run_phase(uvm_phase phase);
      seq.full    = fifo_vif.cpu_active_mon_cb.full;   
      a_mon_port.write(seq);
      //seq.print();
-/* $display("--------------------------------"); */
+
+ /* $display("--------------------------------"); */
 /* $display("wr_en   = %0b", seq.wr_en); */
 /* $display("wr_data = %032h", seq.wr_data); */
 /* $display("SOP     = %02h", seq.wr_data[127:120]); */

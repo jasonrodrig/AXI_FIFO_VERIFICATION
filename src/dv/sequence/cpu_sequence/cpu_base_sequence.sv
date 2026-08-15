@@ -5,7 +5,7 @@ class cpu_base_sequence extends uvm_sequence #(cpu_sequence_item);
 
   extern function new(string name = "cpu_base_sequence");
   extern task send_transaction( 
-    bit       wr_en  = 1'b1,
+    bit       wr_en  = 1'b0,
     bit       rd_en  = 1'b0,
     channel_e ch     = AW_CH,
     txn_id_e  txn_id = ID_0,
@@ -26,7 +26,7 @@ function cpu_base_sequence::new(string name = "cpu_base_sequence");
 endfunction
 
 task cpu_base_sequence::send_transaction(
-  bit       wr_en  = 1'b1,
+  bit       wr_en  = 1'b0,
   bit       rd_en  = 1'b0,
   channel_e ch     = AW_CH,
   txn_id_e  txn_id = ID_0,
@@ -76,9 +76,8 @@ task cpu_base_sequence::body();
   //req.print();
 
   // Pop the response for WRITE #2
-  //send_transaction(0,1,AR_CH,ID_1,BURST_LEN1,BYTE1,FIXED,
-  //                  NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
-  //req.print();
+  send_transaction(0,1,AR_CH,ID_1,BURST_LEN1,BYTE1,FIXED,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
+//  req.print();
 
 endtask
 

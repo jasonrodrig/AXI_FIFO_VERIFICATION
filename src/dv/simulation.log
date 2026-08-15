@@ -1,5 +1,5 @@
 # vsim -c -voptargs="+acc" -assertdebug -sva -coverage -l simulation.log -do "log -r /*; coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb; run -all; exit" -wlf waveform.wlf -L work "+UVM_TESTNAME=axi_fifo_base_test" "+UVM_VERBOSITY=UVM_NONE" work.top 
-# Start time: 13:29:55 on Aug 15,2026
+# Start time: 22:51:09 on Aug 15,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vopt-143) Recognized 1 FSM in module "AXI_MASTER_WRITE_CONTROL(fast)".
 # ** Note: (vopt-143) Recognized 1 FSM in module "my_decoder(fast)".
@@ -307,8 +307,6 @@
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 25000][0m AWLOCK  = 0 (0x0)
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 25000][0m AWCACHE = 0 (0x0)
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 25000][0m AWPROT  = 0 (0x0)
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 25000][0m WSTRB   = 0xf
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 25000][0m WDATA   = 0xe4d5e3bc
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 25000][0m ==============================================================
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 25000][0m  
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 25000][0m EXPECTED W : BEAT=0 ID=0 ADDR=9e8d6468 DATA=e4d5e3bc STRB=f LAST=0
@@ -447,26 +445,12 @@
 # [1;31m[ERROR][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m LANE[3] | 0x9e8d6477 | 0x0     | 0xe4      | 1     | MISMATCH
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ---------------------------------------------------------------
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m  
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m  
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ==============================================================
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m FIELD   | VALUE               
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m --------------------------------------------------------------
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m AR_ID   = 0 (0x0)
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ARADDR  = 0xa4ea7358
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ARLEN   = 1 (0x1)
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ARSIZE  = 1 (0x1)
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ARBURST = 0 (0x0)
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ARLOCK  = 0 (0x0)
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ARCACHE = 0 (0x0)
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ARPROT  = 0 (0x0)
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m ==============================================================
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 185000][0m  
 # [1;32m[INFO][0m [1;36m(ID=AXI4_SLAVE_DRIVER_BFM)[0m [1;34m[time = 205000][0m INSIDE WRITE DATA CHANNEL
 # PACKET INPUT SIZE IS 2
 # ------------------------------------------------------------
 # Name           Type           Size  Value                   
 # ------------------------------------------------------------
-# axi4_slave_tx  axi4_slave_tx  -     @1993                   
+# axi4_slave_tx  axi4_slave_tx  -     @1989                   
 #   tx_type      string         5     WRITE                   
 #   awid         string         6     AWID_0                  
 #   awaddr       integral       32    'h9e8d6468              
@@ -487,6 +471,28 @@
 #   bresp        string         12    WRITE_SLVERR            
 #   buser        integral       4     'd0                     
 # ------------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m  
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ==============================================================
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m FIELD   | VALUE               
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m --------------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m B_ID    = 0 (0x0)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m BRESP   = 2 (0x2)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ==============================================================
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m  
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m  
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ==============================================================
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m FIELD   | VALUE               
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m --------------------------------------------------------------
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m AR_ID   = 0 (0x0)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ARADDR  = 0xa4ea7358
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ARLEN   = 1 (0x1)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ARSIZE  = 1 (0x1)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ARBURST = 0 (0x0)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ARLOCK  = 0 (0x0)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ARCACHE = 0 (0x0)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ARPROT  = 0 (0x0)
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m ==============================================================
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 215000][0m  
 # [1;32m[INFO][0m [1;36m(ID=SLAVE_DRIVER_RADDR_PHASE)[0m [1;34m[time = 255000][0m outside of arvalid
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 265000][0m  
 # [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 265000][0m ==============================================================
@@ -507,7 +513,7 @@
 #  -----------------------------------------------------------------
 # Name                 Type           Size  Value                  
 # -----------------------------------------------------------------
-# tx                   axi4_slave_tx  -     @2074                  
+# tx                   axi4_slave_tx  -     @2070                  
 #   tx_type            string         4     READ                   
 #   arid               string         6     ARID_0                 
 #   araddr             integral       32    'h0                    
@@ -528,7 +534,7 @@
 #  -----------------------------------------------------------------
 # Name                 Type           Size  Value                  
 # -----------------------------------------------------------------
-# tx                   axi4_slave_tx  -     @2102                  
+# tx                   axi4_slave_tx  -     @2098                  
 #   tx_type            string         4     READ                   
 #   arid               string         6     ARID_0                 
 #   araddr             integral       32    'h0                    
@@ -545,31 +551,32 @@
 #   no_of_wait_states  integral       32    'h0                    
 # -----------------------------------------------------------------
 # 
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 335000][0m =========================================
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 335000][0m Total Packets : 2
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 335000][0m Pass Count    : 0
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 335000][0m Fail Count    : 0
-# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 335000][0m =========================================
-# [1;32m[INFO][0m [1;36m(ID=axi4_slave_coverage)[0m [1;34m[time = 335000][0m AXI4 Slave Agent Coverage = 33.28 %
-# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 335000][0m Input Coverage = 62.50 %
-# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 335000][0m Output Coverage = 50.00 %
+# [1;31m[ERROR][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 345000][0m invlaid read packet extracted from read fifo
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 495000][0m =========================================
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 495000][0m Total Packets : 3
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 495000][0m Pass Count    : 0
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 495000][0m Fail Count    : 0
+# [1;32m[INFO][0m [1;36m(ID=axi_fifo_scoreboard)[0m [1;34m[time = 495000][0m =========================================
+# [1;32m[INFO][0m [1;36m(ID=axi4_slave_coverage)[0m [1;34m[time = 495000][0m AXI4 Slave Agent Coverage = 33.28 %
+# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 495000][0m Input Coverage = 75.00 %
+# [1;32m[INFO][0m [1;36m(ID=cpu_subscriber    )[0m [1;34m[time = 495000][0m Output Coverage = 83.33 %
 # 
 # --- UVM Report Summary ---
 # 
 # ** Report counts by severity
-# UVM_INFO :  180
+# UVM_INFO :  186
 # UVM_WARNING :    0
-# UVM_ERROR :   16
+# UVM_ERROR :   17
 # UVM_FATAL :    0
 # ** Report counts by id
 # [AXI4_SLAVE_DRIVER_BFM]     4
 # [SLAVE_DRIVER_RADDR_PHASE]     2
 # [axi4_slave_coverage]     1
 # [axi4_slave_monitor_proxy]     2
-# [axi_fifo_scoreboard]   185
+# [axi_fifo_scoreboard]   192
 # [cpu_subscriber]     2
 # ** Note: $finish    : /tools/mentor/questasim_10.6c/questasim/linux/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 335 ns  Iteration: 67  Instance: /top
+#    Time: 495 ns  Iteration: 67  Instance: /top
 # Saving coverage database on exit...
-# End time: 13:29:59 on Aug 15,2026, Elapsed time: 0:00:04
+# End time: 22:51:14 on Aug 15,2026, Elapsed time: 0:00:05
 # Errors: 0, Warnings: 64
