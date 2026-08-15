@@ -1,0 +1,6 @@
+var g_db_data = [
+{dummy:0},
+{name:'act_cov',f:1,type:6,id:6059,tb:'6',h:'4',m:'2',hp:'66.66%',cov:['62.50%','Y'],g:'100.00%',gp:['62.50%','Y'],opts:[[],['merge_instance','auto(true)']],hdlPath:'/cpu_pkg/cpu_subscriber',parent:'6058'},
+{name:'pas_cov',f:1,type:6,id:6071,tb:'5',h:'3',m:'2',hp:'60.00%',cov:['50.00%','Y'],g:'100.00%',gp:['50.00%','Y'],opts:[[],['merge_instance','auto(true)']],hdlPath:'/cpu_pkg/cpu_subscriber',parent:'6058'},
+{name:'axi4_slave_covergroup',f:1,type:6,id:6090,tb:'308',h:'23',m:'285',hp:'7.46%',cov:['33.28%','R'],g:'100.00%',gp:['33.28%','R'],opts:[[],['merge_instance','auto(true)']],hdlPath:'/axi4_slave_pkg/axi4_slave_coverage',parent:'6089'}];
+processConsCovergroupsData(g_db_data);
