@@ -67,7 +67,7 @@ task cpu_base_sequence::body();
   send_transaction(1,0,AW_CH,ID_0,BURST_LEN4,BYTE4,INCR,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b1111);
 //  req.print();
   
-  send_transaction(1,0,AR_CH,ID_0,BURST_LEN2,BYTE2,FIXED,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
+  send_transaction(1,0,AR_CH,ID_0,BURST_LEN4,BYTE4,INCR,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
 //  req.print();
 
   // ---- WRITE #2 ----
@@ -76,7 +76,7 @@ task cpu_base_sequence::body();
   //req.print();
 
   // Pop the response for WRITE #2
-  send_transaction(0,1,AR_CH,ID_1,BURST_LEN1,BYTE1,FIXED,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
+  repeat(2) send_transaction(0,1,AR_CH,ID_1,BURST_LEN1,BYTE1,FIXED,NORMAL_ACCESS,BUFFERABLE,NORMAL_SECURE_DATA,4'b0000);
 //  req.print();
 
 endtask

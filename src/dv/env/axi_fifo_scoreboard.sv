@@ -80,6 +80,7 @@ class axi_fifo_scoreboard extends uvm_scoreboard;
   expected_w extract_w_struct;
 
   bit [31:0] ref_mem[bit[31:0]];  
+  bit [31:0] vip_mem[bit[31:0]];
 
   bit [3:0]  aw_w_id[bit[3:0]];
   bit [31:0] awaddr [bit[3:0]];
@@ -101,6 +102,8 @@ class axi_fifo_scoreboard extends uvm_scoreboard;
 
   bit [3:0]  bid    [bit[3:0]];
   bit [3:0]  bresp  [bit[3:0]];
+  bit [3:0]  rid    [bit[3:0]][bit[3:0]];
+  bit [3:0]  rresp  [bit[3:0]][bit[3:0]];
 
   event aw_captured;
 
@@ -145,7 +148,7 @@ class axi_fifo_scoreboard extends uvm_scoreboard;
   extern task compare_write_response_channel( bit [3:0] b_id , bit [3:0] bresp );
   extern task compare_read_address_channel();  
   extern task store_read_data_and_response_from_axi_slave();  
-  //extern task compare_read_data_channel();
+  extern task compare_read_data_channel( bit [3:0] actual_r_id , bit [3:0] actual_rresp , bit [7:0] actual_rdata );
 
 endclass
 
@@ -311,7 +314,7 @@ task axi_fifo_scoreboard::collect_packet();
         if( !(word_out.rd_data[127:120] == 8'hAA && word_out.rd_data[111:104] == 8'h53 ) ) `uvm_error(get_type_name(), $sformatf(" Invalid SOP = %02h | Invalid EOP = %02h ", word_out.rd_data[127:120] , word_out.rd_data[111:104] ) );
         b_signals.push_back(word_out.rd_data[119:112]);
       end
-      //    119 - 116 | 115 - 108 | 107 - 104 |
+      
       else if( word_out.rd_data[103:96] != 'b0 && word_out.rd_data[127:104] != 'b0 && word_out.rd_data[95:0] != 'b0 ) begin
         if( !(word_out.rd_data[127:120] == 8'hAA && word_out.rd_data[103:96] == 8'h53 )) `uvm_error(get_type_name(), $sformatf(" Invalid SOP = %02h | Invalid EOP = %02h ", word_out.rd_data[127:120] , word_out.rd_data[103:96] ) );
         r_signals.push_back(word_out.rd_data[119:104]);
@@ -336,10 +339,11 @@ task axi_fifo_scoreboard::decode_packet();
   expected_w exp_w;
   int num_beats;
 
-  bit [3:0] id;
+  bit [ 3:0] id;
   bit [87:0] aw_w_signals_temp;
   bit [51:0] ar_signals_temp;
-  bit [7:0] b_signals_temp;
+  bit [ 7:0] b_signals_temp;
+  bit [15:0] r_signals_temp;
 
   bit [31:0] bytes_per_beat;
   bit [31:0] burst_addr;
@@ -348,6 +352,10 @@ task axi_fifo_scoreboard::decode_packet();
   bit [3:0] b_id;
   bit [3:0] bresp;
 
+  bit [3:0] r_id;
+  bit [3:0] rresp;
+  bit [7:0] rdata;
+  
   if(aw_w_signals.size() > 0) begin
     aw_w_signals_temp = aw_w_signals.pop_front(); 
     id          = aw_w_signals_temp[87:84];      
@@ -474,6 +482,14 @@ task axi_fifo_scoreboard::decode_packet();
     compare_write_response_channel( b_id , bresp );
   end
 
+  else if(r_signals.size() > 0) begin
+   r_signals_temp = r_signals.pop_front();
+    r_id  = r_signals_temp[119:116];
+    rdata = r_signals_temp[115:108];
+    rresp = r_signals_temp[107:104];  
+   compare_read_data_channel( r_id , rresp, rdata );
+  end
+
 endtask
 
 function bit[31:0] axi_fifo_scoreboard::calculate_burst_addr( input bit [31:0] start_addr , input bit [3:0] len , input bit [2:0] size , input bit [1:0] burst , input int beat );
@@ -547,7 +563,7 @@ task axi_fifo_scoreboard::compare_write_data_channel();
     wr_data_seq = write_data_q.pop_front();
     extract_w_struct = expected_write_q.pop_front();
 
-    burst_addr = calculate_burst_addr( aw_channel_seq.awaddr , aw_channel_seq.awlen , aw_channel_seq.awsize , aw_channel_seq.awburst , beat );
+    burst_addr = calculate_burst_addr(aw_channel_seq.awaddr , aw_channel_seq.awlen , aw_channel_seq.awsize , aw_channel_seq.awburst , beat );
 
     `uvm_info(get_type_name() ," ",UVM_NONE)
     `uvm_info(get_type_name(), "==============================================================", UVM_NONE)
@@ -680,6 +696,107 @@ task axi_fifo_scoreboard::compare_read_address_channel();
 endtask
 
 task axi_fifo_scoreboard::store_read_data_and_response_from_axi_slave();  
+
+  bit [31:0] burst_addr, byte_addr;
+  bit [7:0] expected_byte;
+
+  for (int beat = 0 ; beat < rd_addr_seq.arlen + 1 ; beat++) 
+  begin
+
+    wait( read_data_q.size() > 0 )
+    rd_data_seq = read_data_q.pop_front();
+
+    rid[rd_data_seq.rid][beat] = rd_data_seq.rid;
+    rresp[rd_data_seq.rid][beat] = rd_data_seq.rresp;
+
+    burst_addr = calculate_burst_addr( rd_addr_seq.araddr , rd_addr_seq.arlen , rd_addr_seq.arsize , rd_addr_seq.arburst , beat );
+    
+    `uvm_info(get_type_name() ," ",UVM_NONE)
+    `uvm_info(get_type_name(), "==============================================================", UVM_NONE)
+    `uvm_info(get_type_name(), "FIELD      | EXPECTED     |                                   ", UVM_NONE)
+    `uvm_info(get_type_name(), "--------------------------------------------------------------", UVM_NONE)
+    `uvm_info(get_type_name(), $sformatf("R_ID       | %-12d |  ", rd_data_seq.rid ) ,UVM_NONE) 
+    `uvm_info(get_type_name(), $sformatf("BEAT       | %-12d |  ", beat            ), UVM_NONE )
+    `uvm_info(get_type_name(), $sformatf("RDATA      | %-12d |  ", rd_data_seq.rdata[0] ) , UVM_NONE)
+    `uvm_info(get_type_name(), $sformatf("RLAST      | %-12d |  ", rd_data_seq.rlast ) , UVM_NONE)   
+    `uvm_info(get_type_name() ," ",UVM_NONE)
+
+    `uvm_info(get_type_name(), "---------------------------------------------------------------",UVM_NONE)
+    `uvm_info(get_type_name(), $sformatf("BEAT=%0d               | BURST_ADDR=0x%08h",beat, burst_addr),UVM_NONE)
+    `uvm_info(get_type_name(), "LANE    | ADDRESS    | EXPECTED  |                             ",UVM_NONE)
+    `uvm_info(get_type_name(), "---------------------------------------------------------------",UVM_NONE) 
+
+    // ======================================================
+    // BYTE LANE COMPARISON
+    // ======================================================
+
+    for (int lane = 0; lane < 4; lane++)
+    begin
+        byte_addr = burst_addr + lane;
+        expected_byte = rd_data_seq.rdata[0][lane*8 +: 8];
+        vip_mem[byte_addr] = expected_byte; // storing the read data information coming from slave vip
+        `uvm_info(get_type_name(),$sformatf("LANE[%0d] | 0x%08h | 0x%-05h   | ",lane,byte_addr,expected_byte),UVM_NONE) 
+    end
+  
+  `uvm_info(get_type_name(),"---------------------------------------------------------------",UVM_NONE)
+  `uvm_info(get_type_name() ," ",UVM_NONE)
+
+  end
+
+endtask
+
+task axi_fifo_scoreboard::compare_read_data_channel( bit [3:0] actual_r_id , bit [3:0] actual_rresp , bit [7:0] actual_rdata );
+  bit [ 31 : 0 ] burst_addr, byte_addr;
+  bit [  7 : 0 ] actual_byte, expected_byte;
+
+  for (int beat = 0 ; beat < arlen[actual_r_id] + 1 ; beat++) 
+  begin
+
+    burst_addr = calculate_burst_addr( araddr[actual_r_id] , arlen[actual_r_id] , arsize[actual_r_id] , arburst[actual_r_id] , beat );
+
+    `uvm_info(get_type_name() ," ",UVM_NONE)
+    `uvm_info(get_type_name(), "==============================================================", UVM_NONE)
+    `uvm_info(get_type_name(), "FIELD      | ACTUAL       | EXPECTED     | RESULT", UVM_NONE)
+    `uvm_info(get_type_name(), "--------------------------------------------------------------", UVM_NONE)
+    `uvm_info(get_type_name(), $sformatf("R_ID       | %-12d | %-12d | %s", actual_r_id, rid[actual_r_id][beat], ( actual_r_id == rid[actual_r_id][beat]) ? "MATCH" : "MISMATCH"), UVM_NONE) 
+    `uvm_info(get_type_name(), $sformatf("R_RESP     | %-12d | %-12d | %s", actual_rresp, rresp[actual_r_id][beat], ( actual_rresp == rresp[actual_r_id][beat]) ? "MATCH" : "MISMATCH"), UVM_NONE)
+    `uvm_info(get_type_name(), "==============================================================", UVM_NONE)
+    `uvm_info(get_type_name() ," ",UVM_NONE)
+
+    if( actual_r_id  != rid[actual_r_id][beat] )     `uvm_error(get_type_name(), $sformatf("R_ID mismatch    : actual %0h expected %0h", actual_r_id , rid[actual_r_id][beat] ) )
+    if( actual_rresp != rresp[actual_r_id][beat] )   `uvm_error(get_type_name(), $sformatf("RRESP mismatch   : actual %0h expected %0h", actual_rresp , rresp[actual_r_id][beat] ) )
+
+    `uvm_info(get_type_name(), "---------------------------------------------------------------",UVM_NONE)
+    `uvm_info(get_type_name(), $sformatf("BEAT=%0d               |   BURST_ADDR=0x%08h",beat, burst_addr),UVM_NONE)
+    `uvm_info(get_type_name(), "LANE    | ADDRESS    | ACTUAL  | EXPECTED  | RESULT",UVM_NONE)
+    `uvm_info(get_type_name(), "---------------------------------------------------------------",UVM_NONE) 
+
+    // ======================================================
+    // BYTE LANE COMPARISON
+    // ======================================================
+
+    for (int lane = 0; lane < 4; lane++)
+    begin
+
+      byte_addr = burst_addr + lane;
+      actual_byte = actual_rdata[lane*8 +: 8];
+
+      // Check reference memory
+      if (!vip_mem.exists(byte_addr)) `uvm_error(get_type_name(),$sformatf("LANE[%0d] | 0x%08h | 0x%-05h | --------- | REF_MEM MISS",lane,byte_addr,actual_byte))     
+      else begin
+        expected_byte = vip_mem[byte_addr];
+
+        // Compare actual vs expected byte
+        if (actual_byte == expected_byte) `uvm_info(get_type_name(),$sformatf("LANE[%0d] | 0x%08h | 0x%-05h | 0x%-05h   | MATCH",lane,byte_addr,actual_byte,expected_byte),UVM_NONE) 
+        else                              `uvm_error(get_type_name(),$sformatf("LANE[%0d] | 0x%08h | 0x%-05h | 0x%-05h   | MISMATCH",lane,byte_addr,actual_byte,expected_byte ))
+
+      end
+    end
+
+    `uvm_info(get_type_name(),"---------------------------------------------------------------",UVM_NONE)
+    `uvm_info(get_type_name() ," ",UVM_NONE)
+
+  end  
 
 endtask
 
