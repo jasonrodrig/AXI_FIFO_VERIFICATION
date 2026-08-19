@@ -10,26 +10,26 @@ class axi_fifo_virtual_base_sequence extends uvm_sequence;
     super.new(name);
   endfunction
 
-  virtual task body();
+  /* virtual task body(); */
 
-    fork
-      begin
-        seq = cpu_base_sequence::type_id::create("write_seq");
-        seq.start(p_sequencer.cpu_seqr_h); 
-      end
+  /*   fork */
+  /*     begin */
+  /*       seq = cpu_base_sequence::type_id::create("write_seq"); */
+  /*       seq.start(p_sequencer.cpu_seqr_h); */ 
+  /*     end */
 
-      begin
-        axi_seq = axi_slave_bk_base_seq::type_id::create("axi_seq");
-        axi_seq.start(p_sequencer.axi_slave_wr_seqr); 
-      end
+  /*     begin */
+  /*       axi_seq = axi_slave_bk_base_seq::type_id::create("axi_seq"); */
+  /*       axi_seq.start(p_sequencer.axi_slave_wr_seqr); */ 
+  /*     end */
 
-      begin
-        axi_seq = axi_slave_bk_base_seq::type_id::create("axi_seq");
-        axi_seq.start(p_sequencer.axi_slave_rd_seqr); 
-      end
+  /*     begin */
+  /*       axi_seq = axi_slave_bk_base_seq::type_id::create("axi_seq"); */
+  /*       axi_seq.start(p_sequencer.axi_slave_rd_seqr); */ 
+  /*     end */
 
-    join_any
-    wait fork;
+  /*   join_any */
+  /*   wait fork; */
 
-  endtask 
+  /* endtask */ 
 endclass

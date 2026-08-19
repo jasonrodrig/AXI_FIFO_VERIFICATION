@@ -12,5 +12,8 @@
   // Importing the required packages
   //-------------------------------------------------------
   `include "cpu_base_sequence.sv"
+  `include "fixed_sequence/byte1/fixed_byte1_len1_sequence.sv"
+  `include "fixed_sequence/byte2/fixed_byte2_len1_sequence.sv"
+  `include "fixed_sequence/byte4/fixed_byte4_len1_sequence.sv"
 
  endpackage : cpu_sequence_pkg

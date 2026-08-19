@@ -143,7 +143,6 @@ sim:
 	-do "log -r /*; coverage save -onexit -assert -directive -cvg -codeAll coverage.ucdb; run -all; exit" \
 	-wlf waveform.wlf \
 	-L work \
-	+UVM_TESTNAME=axi_fifo_base_test \
 	+UVM_VERBOSITY=UVM_NONE\
 	work.top
 	

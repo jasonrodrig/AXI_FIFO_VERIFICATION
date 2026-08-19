@@ -235,7 +235,10 @@ module top;
   end
 
   initial begin 
-    run_test("axi_fifo_base_test");
+   //run_test("axi_fifo_base_test");
+    
+    run_test("fixed_byte1_len1_test");
+    
     //run_test("axi_fifo_regression_test");
     #1000000 ; $finish;
   end

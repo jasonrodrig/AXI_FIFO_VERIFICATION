@@ -10,6 +10,7 @@ class axi_slave_bk_base_seq extends uvm_sequence #(axi4_slave_tx);
   // Externally defined Function
   //-------------------------------------------------------
   extern function new(string name = "axi_slave_bk_base_seq");
+  extern task assign_bid(bit [3:0] bid = 'b0 );
   extern task body();
 endclass : axi_slave_bk_base_seq
 
@@ -24,41 +25,39 @@ function axi_slave_bk_base_seq::new(string name = "axi_slave_bk_base_seq");
   super.new(name);
 endfunction : new
 
+task axi_slave_bk_base_seq::assign_bid( bit [3:0] bid = 'b0);
+
+  req = axi4_slave_tx::type_id::create("req");
+    
+  start_item(req);
+  
+  req.tx_type = WRITE;
+  if(!req.randomize() with { this.bid == local::bid ; req.bresp == WRITE_OKAY; req.transfer_type == OUTSTANDING_WRITE ; } ) 
+  `uvm_fatal(get_type_name(),"randomization failed") 
+  
+  finish_item(req);
+
+  start_item(req); 
+
+  req.tx_type = READ;
+  
+  if(!req.randomize() with { 
+    /* req.arid   == ARID_0 ; req.araddr == 'b1 ; req.arlen == 2 ; req.arburst == READ_INCR ;
+    req.arlock == READ_NORMAL_ACCESS ; req.arcache == READ_BUFFERABLE; 
+    req.arprot == READ_NORMAL_SECURE_DATA; req.rid == RID_0 ;*/
+    this.arid == local::bid ; req.rresp == READ_OKAY ; req.transfer_type == OUTSTANDING_READ ; } ) 
+  `uvm_fatal(get_type_name(),"randomization failed") 
+  
+  finish_item(req);
+
+endtask
+
 //-----------------------------------------------------------------------------
 // Task : body
 // based on the request from driver task will drive the transactions
 //-----------------------------------------------------------------------------
 task axi_slave_bk_base_seq::body();
-  req = axi4_slave_tx::type_id::create("req");
-
-  req.tx_type = WRITE;
-
-  repeat(1) begin
-  start_item(req); 
-    if(!req.randomize() with { req.bresp == WRITE_OKAY; req.transfer_type == OUTSTANDING_WRITE ; } ) 
-    `uvm_fatal(get_type_name(),"randomization failed") 
-   finish_item(req);
-  //req.print();
-  end
- 
-
-  req.tx_type = READ;
-    
-  repeat(1) begin
-  start_item(req); 
-
-  req.tx_type = READ;
-    /*    if(!req.randomize() with { 
-      req.arid   == ARID_0 ; req.araddr == 'b1 ; req.arlen == 2 ; req.arburst == READ_INCR ;
-      req.arlock == READ_NORMAL_ACCESS ; req.arcache == READ_BUFFERABLE; 
-      req.arprot == READ_NORMAL_SECURE_DATA; req.rid == RID_0 ; req.rresp == READ_OKAY;
-      req.transfer_type == OUTSTANDING_READ ; } ) 
-    `uvm_fatal(get_type_name(),"randomization failed") 
- */
-    finish_item(req);
-  //req.print();
-  end
-
-
+  assign_bid(0);
 endtask : body
+
 

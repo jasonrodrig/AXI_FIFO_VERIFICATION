@@ -15,5 +15,5 @@ package axi_fifo_test_pkg;
 
   //including base_test for testing
   `include "axi_fifo_base_test.sv"
-
+  `include "fixed_test/byte1_test/fixed_byte1_len1_test.sv"
 endpackage : axi_fifo_test_pkg

@@ -9,7 +9,7 @@ class axi_fifo_base_test extends uvm_test;
   extern function new(string name = "axi_fifo_base_test", uvm_component parent);
   extern function void build_phase(uvm_phase phase);
   extern function void end_of_elaboration_phase(uvm_phase phase);
-  extern task run_phase(uvm_phase phase);
+//  extern task run_phase(uvm_phase phase);
 
 endclass
 
@@ -28,10 +28,10 @@ function void axi_fifo_base_test::end_of_elaboration_phase(uvm_phase phase);
   uvm_top.print_topology();
 endfunction
 
-task axi_fifo_base_test::run_phase(uvm_phase phase);
-  phase.raise_objection(this);
-  vseq = axi_fifo_virtual_base_sequence::type_id::create("vseq");
-  vseq.start(env.vseqr);
-  //phase.phase_done.set_drain_time(this, 20);
-  phase.drop_objection(this);
-endtask
+/* task axi_fifo_base_test::run_phase(uvm_phase phase); */
+/*   phase.raise_objection(this); */
+/*   vseq = axi_fifo_virtual_base_sequence::type_id::create("vseq"); */
+/*   vseq.start(env.vseqr); */
+/*   //phase.phase_done.set_drain_time(this, 20); */
+/*   phase.drop_objection(this); */
+/* endtask */
